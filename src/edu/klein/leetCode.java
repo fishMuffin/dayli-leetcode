@@ -1,9 +1,7 @@
 package edu.klein;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.print.attribute.standard.NumberOfInterveningJobs;
+import java.util.*;
 
 public class leetCode {
     /**
@@ -82,17 +80,53 @@ public class leetCode {
      * @return
      */
     public int[][] allCellsDistOrder(int rows, int cols, int rCenter, int cCenter) {
-        Map<Integer, int[]> map = new HashMap<>();
-        int[] vector = new int[2];
+//        参考了答案
+        int[][] res = new int[rows * cols][];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                int distance = Math.abs(rCenter - i) + Math.abs(cCenter - j);
-                vector[0] = i;
-                vector[1] = j;
-                map.put(distance, vector);
+                res[i * cols + j] = new int[]{i, j};
             }
         }
-        int[][] res;
+        Arrays.sort(res, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return (Math.abs(o1[0] - rCenter) + Math.abs(o1[1] - cCenter)) - (Math.abs(o2[0] - rCenter) + Math.abs(o2[1] - cCenter));
+            }
+        });
         return res;
+    }
+
+    public int[][] allCellsDistOrder1(int rows, int cols, int rCenter, int cCenter) {
+        int[][] ret = new int[rows * cols][];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                ret[i * cols + j] = new int[]{i, j};
+            }
+        }
+        Arrays.sort(ret, new Comparator<int[]>() {
+            public int compare(int[] a, int[] b) {
+                return (Math.abs(a[0] - rCenter) + Math.abs(a[1] - cCenter)) - (Math.abs(b[0] - rCenter) + Math.abs(b[1] - cCenter));
+            }
+        });
+        return ret;
+    }
+
+    public static Map<Integer, int[]> sortMapByKey(Map<Integer, int[]> map) {
+        if (map == null || map.isEmpty()) {
+            return null;
+        }
+        Map<Integer, int[]> sortMap = new TreeMap<>(new MapKeyComparator());
+        sortMap.putAll(map);
+        return sortMap;
+    }
+
+
+}
+
+class MapKeyComparator implements Comparator<Integer> {
+
+    @Override
+    public int compare(Integer s1, Integer s2) {
+        return s1.compareTo(s2);
     }
 }
