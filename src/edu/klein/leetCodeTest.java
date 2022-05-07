@@ -23,10 +23,27 @@ class leetCodeTest {
         System.out.println(b);
     }
 
-    @Test void testAllCellsDistOrder(){
+    @Test
+    void testAllCellsDistOrder() {
         int[][] ints = new leetCode().allCellsDistOrder(2, 3, 1, 2);
 //        int[][] ints = new leetCode().allCellsDistOrder1(2, 3, 1, 2);
         System.out.println(ints);
+    }
+
+
+    @Test
+    void testCountCharacters() {
+        String[] words = {"hello", "world", "leetcode"};
+        String chars = "welldonehoneyr";
+        int i = new leetCode().countCharacters(words, chars);
+        System.out.println(i);
+    }
+
+    @Test
+    void testIsBoomerang() {
+        int[][] points = {{1, 1}, {2, 2}, {3, 3}};
+        boolean boomerang = new leetCode().isBoomerang(points);
+        System.out.println(boomerang);
     }
 
 

@@ -1,7 +1,9 @@
 package edu.klein;
 
 import javax.print.attribute.standard.NumberOfInterveningJobs;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class leetCode {
     /**
@@ -111,22 +113,69 @@ public class leetCode {
         return ret;
     }
 
-    public static Map<Integer, int[]> sortMapByKey(Map<Integer, int[]> map) {
-        if (map == null || map.isEmpty()) {
-            return null;
+
+    /**
+     * 给你一份『词汇表』（字符串数组） words 和一张『字母表』（字符串） chars。
+     * <p>
+     * 假如你可以用 chars 中的『字母』（字符）拼写出 words 中的某个『单词』（字符串），那么我们就认为你掌握了这个单词。
+     * <p>
+     * 注意：每次拼写（指拼写词汇表中的一个单词）时，chars 中的每个字母都只能用一次。
+     * <p>
+     * 返回词汇表 words 中你掌握的所有单词的 长度之和。
+     * <p>
+     * 输入：words = ["hello","world","leetcode"], chars = "welldonehoneyr"
+     * 输出：10
+     * 解释：
+     * 可以形成字符串 "hello" 和 "world"，所以答案是 5 + 5 = 10。
+     *
+     * @param words
+     * @param chars
+     * @return
+     */
+    public int countCharacters(String[] words, String chars) {
+        int res = 0;
+        for (String word : words) {
+            int tick = 0;
+            byte[] bytes = word.getBytes();
+            byte[] charsBytes = chars.getBytes();
+            for (int i = 0; i < bytes.length; i++) {
+                for (int j = 0; j < chars.length(); j++) {
+                    if (bytes[i] == charsBytes[j]) {
+                        tick++;
+                        charsBytes[j] = 0;
+                        break;
+                    }
+                }
+            }
+            if (tick == word.length()) res += tick;
         }
-        Map<Integer, int[]> sortMap = new TreeMap<>(new MapKeyComparator());
-        sortMap.putAll(map);
-        return sortMap;
+        return res;
+    }
+
+    /**
+     * 给定一个数组 points ，其中 points[i] = [xi, yi] 表示 X-Y 平面上的一个点，如果这些点构成一个 回旋镖 则返回 true 。
+     * <p>
+     * 回旋镖 定义为一组三个点，这些点 各不相同 且 不在一条直线上 。
+     * <p>
+     * 输入：points = [[1,1],[2,2],[3,3]]
+     * 输出：false
+     * <p>
+     * 参考了答案:
+     * 思路:
+     * 判断三点是否同直线，直接思路就是判断斜率。
+     * 假设三点分别为a(x1, y1), b(x2, y2), c(x3,y3),
+     * a、b两点的斜率为 k1 = (y2 - y1) / (x2 - x1)
+     * a、c两点的斜率为 k2 = (y3 - y1) / (x3 - x1)
+     * 如果在同一直线，则k1 = k2，考虑到分母为0 的情况，可以直接交叉相乘，省去判断0的情况，直接判断
+     * (y2 - y1) * (x3 - x1) 与 (y3 - y1) * (x2 - x1)
+     * 不相等即为不在同一直线上
+     *
+     * @param points
+     * @return
+     */
+    public boolean isBoomerang(int[][] points) {
+        return (points[1][1] - points[0][1]) * (points[2][0] - points[0][0]) != (points[2][1] - points[0][1]) * (points[1][0] - points[0][0]);
     }
 
 
-}
-
-class MapKeyComparator implements Comparator<Integer> {
-
-    @Override
-    public int compare(Integer s1, Integer s2) {
-        return s1.compareTo(s2);
-    }
 }
