@@ -1,9 +1,6 @@
 package edu.klein;
 
-import javax.print.attribute.standard.NumberOfInterveningJobs;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.stream.IntStream;
 
 public class leetCode {
     /**
@@ -276,6 +273,12 @@ public class leetCode {
         put('M', 1000);
     }};
 
+    /**
+     * 答案
+     *
+     * @param s
+     * @return
+     */
     public int romanToInt1(String s) {
         int ans = 0;
         int n = s.length();
@@ -290,6 +293,37 @@ public class leetCode {
         return ans;
     }
 
+    /**
+     * 编写一个函数来查找字符串数组中的最长公共前缀。
+     * <p>
+     * 如果不存在公共前缀，返回空字符串 ""。
+     * <p>
+     * 输入：strs = ["flower","flow","flight"]
+     * 输出："fl"
+     *
+     * @param strs
+     * @return
+     */
+    public String longestCommonPrefix(String[] strs) {
+        String res = "";
+        int minLength = strs[0].length();
+        for (int i = 0; i < strs.length; i++) {
+            minLength = minLength < strs[i].length() ? minLength : strs[i].length();
+        }
+        for (int i = 0; i < minLength; i++) {
+            Map<Character, Integer> map = new HashMap<>();
+            for (int j = 0; j < strs.length; j++) {
+                if (strs[j].length() == 0) break;
+                map.put(strs[j].charAt(i), 1);
+            }
+            if (map.size() == 1) {
+                res += strs[0].charAt(i);
+            } else {
+                break;
+            }
+        }
+        return res;
+    }
 
     public String subRoman(String str, String subStr) {
         String substring = str.substring(subStr.length());

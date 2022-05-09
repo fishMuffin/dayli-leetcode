@@ -86,9 +86,22 @@ class leetCodeTest {
     }
 
     @Test
+    void testLongestCommonPrefix() {
+//        String str=""
+//                ["flower","flow","flight"]
+//        String[] strs = {"flower", "flow", "flight"};
+//        ["ab", "a"]
+//        String[] strs = {""};
+        String[] strs = {"ab", "a"};
+//        String[] strs = {"flower", "flower","flower","flower"};
+        String s = new leetCode().longestCommonPrefix(strs);
+        System.out.println(s);
+    }
+
+    @Test
     void subStringTest() {
         String s = "MCMCMXCIV"; //1994
-        String str="CM";
+        String str = "CM";
         String cm1 = s.replaceFirst("CM", "");
         System.out.println(cm1);
         String substring = s.substring(1, 3);
