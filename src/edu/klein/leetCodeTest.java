@@ -46,6 +46,12 @@ class leetCodeTest {
         System.out.println(boomerang);
     }
 
+    @Test
+    void testIsPalindrome() {
+        boolean palindrome = new leetCode().isPalindrome(12345321);
+        System.out.println(palindrome);
+    }
+
 
     @Test
     public void testBubleSort() {
