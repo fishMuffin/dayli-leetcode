@@ -2,6 +2,9 @@ package edu.klein;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 
 class leetCodeTest {
 
@@ -68,9 +71,54 @@ class leetCodeTest {
         output(nums);
     }
 
+    @Test
+    void testRomanToInt() {
+//        String s = "XLIII";
+        String s = "MCMXCIV"; //1994
+        int i = new leetCode().romanToInt1(s);
+        System.out.println(i);
+    }
+
     public void output(int[] res) {
         for (int i = 0; i < res.length; i++) {
             System.out.print(res[i] + " ");
         }
+    }
+
+    @Test
+    void subStringTest() {
+        String s = "MCMCMXCIV"; //1994
+        String str="CM";
+        String cm1 = s.replaceFirst("CM", "");
+        System.out.println(cm1);
+        String substring = s.substring(1, 3);
+        String substring1 = s.substring(2);
+        String substring2 = s.substring(3);
+        System.out.println(substring);
+        System.out.println(substring1);
+        System.out.println(substring2);
+//        int res = 0;
+//        Map<String, Integer> mapSpecial = new LinkedHashMap<>();
+//        mapSpecial.put("CM", 900);
+//        mapSpecial.put("CD", 400);
+//        mapSpecial.put("XC", 90);
+//        mapSpecial.put("XL", 40);
+//        mapSpecial.put("IX", 9);
+//        mapSpecial.put("IV", 4);
+//        String[] strList = {};
+//        String[] strings = mapSpecial.keySet().toArray(strList);
+//        for (int i = 0; i < strings.length; i++) {
+//            String key = strings[i];
+//            if (s.length() < key.length()) break;
+//            if (s.contains(key)) {//MCMXCIV->MXCIV
+//                s = s.substring(s.indexOf(key), key.length());
+////                s.substring()
+//
+//
+//                res += mapSpecial.get(key);
+//                i = 0;
+//            }
+//        }
+//        s.substring()
     }
 }
