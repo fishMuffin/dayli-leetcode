@@ -106,6 +106,13 @@ class leetCodeTest {
     }
 
     @Test
+    void testRemoveDuplicates() {
+        int[] nums = {0,0,1,1,1,2,2,3,3,4};
+        int i = new leetCode().removeDuplicates(nums);
+        System.out.println(i);
+    }
+
+    @Test
     void commonTest() {
         String s = "()[]{}";
         byte[] bytes = s.getBytes();
