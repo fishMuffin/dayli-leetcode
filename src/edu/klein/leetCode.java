@@ -325,8 +325,30 @@ public class leetCode {
         return res;
     }
 
-    public String subRoman(String str, String subStr) {
-        String substring = str.substring(subStr.length());
-        return substring;
+    /**
+     * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+     * <p>
+     * 有效字符串需满足：
+     * <p>
+     * 左括号必须用相同类型的右括号闭合。
+     * 左括号必须以正确的顺序闭合。
+     * <p>
+     * 输入：s = "()[]{}"
+     * 输出：true
+     *
+     * @param s
+     * @return
+     */
+    public boolean isValid(String s) {
+        Stack<Byte> stack = new Stack();
+        byte[] bytes = s.getBytes();
+        for (int i = 0; i < bytes.length; i++) {
+            if (!stack.isEmpty() && (stack.peek() + 1 == bytes[i] || stack.peek() + 2 == bytes[i])) {
+                stack.pop();
+            } else {
+                stack.push(bytes[i]);
+            }
+        }
+        return stack.isEmpty();
     }
 }
