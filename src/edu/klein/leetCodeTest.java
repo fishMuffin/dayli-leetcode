@@ -125,6 +125,16 @@ class leetCodeTest {
     }
 
     @Test
+    void testStrStr() {
+//        String haystack = "hello";
+//        String needle = "llo";
+        String haystack = "mississippi";
+        String needle = "issip";
+        int i = new leetCode().strStr(haystack, needle);
+        System.out.println(i);
+    }
+
+    @Test
     void commonTest() {
         String s = "()[]{}";
         byte[] bytes = s.getBytes();
