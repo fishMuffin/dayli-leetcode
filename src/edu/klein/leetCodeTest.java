@@ -135,6 +135,14 @@ class leetCodeTest {
     }
 
     @Test
+    void testSearchInsert() {
+        int[] nums = {1, 3, 5, 6};
+        int target = 2;
+        int i = new leetCode().searchInsert(nums, target);
+        System.out.println(i);
+    }
+
+    @Test
     void commonTest() {
         String s = "()[]{}";
         byte[] bytes = s.getBytes();
