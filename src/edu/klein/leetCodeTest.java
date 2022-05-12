@@ -2,6 +2,7 @@ package edu.klein;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -165,6 +166,14 @@ class leetCodeTest {
 //        String str2 = "AAACCC";
         String s = new leetCode().gcdOfStrings(str1, str2);
         System.out.println(s);
+    }
+
+    @Test
+    void testFindOcurrences() {
+        String text = "alice is a good girl she is a good student";
+        String first = "a", second = "good";
+        String[] ocurrences = new leetCode().findOcurrences(text, first, second);
+        Arrays.stream(ocurrences).forEach(s -> System.out.println(s));
     }
 
     @Test
