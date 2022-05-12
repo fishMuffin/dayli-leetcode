@@ -494,4 +494,50 @@ public class leetCode {
         return i;
     }
 
+    /**
+     * 给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+     * <p>
+     * 子数组 是数组中的一个连续部分。
+     * 输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
+     * 输出：6
+     * 解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+     *
+     * @param nums
+     * @return
+     */
+    public int maxSubArray(int[] nums) {
+        int res = nums[0];
+        int pre = 0;
+        for (int i = 0; i < nums.length; i++) {
+            pre = pre + nums[i] > nums[i] ? pre + nums[i] : nums[i];
+            res = res > pre ? res : pre;
+        }
+        return res;
+
+//        if (nums.length == 1) return nums[0];
+//        int res = 0;
+//        for (int i = 0; i < nums.length - 1; i++) {
+//            if (i + 1 == nums.length - 1 && res == 0 && nums[i + 1] > 0) return nums[i + 1];
+//            if (nums[i] > 0 && (nums[i + 1] + nums[i] > 0)) {
+//                res += nums[i];
+//                res += nums[i + 1];
+//                i++;
+//            } else if (res != 0 && (nums[i + 1] + nums[i] > 0)) {
+//                res += nums[i];
+//            }
+//
+//        }
+//        return res;
+    }
+
+    public int maxSubArray1(int[] nums) {
+        int pre = 0, maxAns = nums[0];
+        for (int x : nums) {
+            pre = Math.max(pre + x, x);
+            maxAns = Math.max(maxAns, pre);
+        }
+        return maxAns;
+    }
+
+
 }

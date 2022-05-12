@@ -143,6 +143,15 @@ class leetCodeTest {
     }
 
     @Test
+    void testMaxSubArray() {
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+//        int[] nums = {5,4,-1,7,8};
+//        int[] nums = {-2,1};
+        int i = new leetCode().maxSubArray(nums);
+        System.out.println(i);
+    }
+
+    @Test
     void commonTest() {
         String s = "()[]{}";
         byte[] bytes = s.getBytes();
