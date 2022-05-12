@@ -540,4 +540,93 @@ public class leetCode {
     }
 
 
+    /**
+     * 对于字符串 s 和 t，只有在 s = t + ... + t（t 自身连接 1 次或多次）时，我们才认定 “t 能除尽 s”。
+     * <p>
+     * 给定两个字符串 str1 和 str2 。返回 最长字符串 x，要求满足 x 能除尽 str1 且 X 能除尽 str2 。
+     * <p>
+     * 输入：str1 = "ABABAB", str2 = "ABAB"
+     * 输出："AB"
+     * <p>
+     * 提交次数:5
+     * 解决方式:参考答案后自己解决
+     *
+     * @param str1
+     * @param str2
+     * @return
+     */
+    public String gcdOfStrings(String str1, String str2) {
+        String res = "";
+        int len1 = str1.length();
+        int len2 = str2.length();
+        for (int i = Math.min(len1, len2); i >= 1; i--) {
+            if (len1 % i == 0 && len2 % i == 0) {
+                for (int j = 0; j < i; j++) {
+                    if (str1.charAt(j) == str2.charAt(j)) {
+                        res += str1.charAt(j);
+                    } else return "";
+                }
+                break;
+            }
+        }
+        String tmp = "";
+        String longer = len1 > len2 ? str1 : str2;
+        String shorter = len1 < len2 ? str1 : str2;
+        for (int i = 0; i < Math.max(len1, len2); i += res.length()) {
+            if (shorter.length() == i && !tmp.equals(shorter)) {
+                return "";
+            }
+            tmp += res;
+        }
+        return tmp.equals(longer) ? res : "";
+
+//        String res = "";
+//        int maxLen = Math.max(str1.length(), str2.length());
+//        int minLen = Math.min(str1.length(), str2.length());
+//        String longer = str1.length() > str2.length() ? str1 : str2;
+//        String another = str1.contains(longer) ? str2 : str1;
+//        boolean appendFlag = true;
+//        int len = 0;
+//        for (int i = 0, j = 0; i < maxLen; i++) {
+//
+//            if (maxLen % (i + 1) == 0 && minLen % (i + 1) == 0) len = i;
+//            if (j == minLen) {
+//                j = 0;
+//                appendFlag = false;
+//            }
+//            if (longer.charAt(i) == another.charAt(j)) {
+//                if (appendFlag)
+//                    res += str1.charAt(i);
+//                j++;
+//            } else return "";
+//        }
+//        if (longer.length() % res.length() != 0) {
+//            res = res.substring(0, longer.length() % res.length());
+//        }
+//        return res;
+    }
+
+    public String gcdOfStrings1(String str1, String str2) {
+        int len1 = str1.length(), len2 = str2.length();
+        for (int i = Math.min(len1, len2); i >= 1; --i) { // 从长度大的开始枚举
+            if (len1 % i == 0 && len2 % i == 0) {
+                String X = str1.substring(0, i);
+                if (check(X, str1) && check(X, str2)) {
+                    return X;
+                }
+            }
+        }
+        return "";
+    }
+
+    public boolean check(String t, String s) {
+        int lenx = s.length() / t.length();
+        StringBuffer ans = new StringBuffer();
+        for (int i = 1; i <= lenx; ++i) {
+            ans.append(t);
+        }
+        return ans.toString().equals(s);
+    }
+
+
 }

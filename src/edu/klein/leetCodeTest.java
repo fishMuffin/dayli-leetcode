@@ -152,6 +152,22 @@ class leetCodeTest {
     }
 
     @Test
+    void testGcdOfStrings() {
+//        String str1 = "ABABABAB";
+//        String str2 = "ABABAB";
+//        String str1 = "ABCDEF";
+//        String str2 = "ABC";
+//        String str1 = "LEET";
+//        String str2 = "CODE";
+        String str1 = "TAUXXTAUXXTAUXXTAUXXTAUXX";
+        String str2 = "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX";
+//        String str1 = "AAAAAAAAA";
+//        String str2 = "AAACCC";
+        String s = new leetCode().gcdOfStrings(str1, str2);
+        System.out.println(s);
+    }
+
+    @Test
     void commonTest() {
         String s = "()[]{}";
         byte[] bytes = s.getBytes();
