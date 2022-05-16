@@ -219,11 +219,15 @@ class leetCodeTest {
     }
 
     @Test
+    void testSingleNumber() {
+        int[] nums = {1, 2, 1, 2, 4};
+        int i = new leetCode().singleNumber(nums);
+        System.out.println(i);
+    }
+
+    @Test
     void commonTest() {
-        String s = "()[]{}";
-        byte[] bytes = s.getBytes();
-        for (byte aByte : bytes) {
-            System.out.println(aByte);
-        }
+        int num=1^2;
+        System.out.println(num);
     }
 }

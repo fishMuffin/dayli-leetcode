@@ -850,11 +850,12 @@ public class leetCode {
      * <p>
      * 输入：nums = [4,3,2,7,8,2,3,1]
      * 输出：[5,6]
-     *
+     * <p>
      * 提交次数:1
      * 解决方式:自己解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
+     *
      * @param nums
      * @return
      */
@@ -868,5 +869,46 @@ public class leetCode {
             if (count[i] == 0) res.add(i + 1);
         }
         return res;
+    }
+
+    /**
+     * 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+     * 输入: [4,1,2,1,2]
+     * 输出: 4
+     * <p>
+     * 提交次数:1
+     * 解决方式:自己解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     * <p>
+     * 官网思路:
+     * 任何数和 00 做异或运算，结果仍然是原来的数，即 a⊕0=a。
+     * 任何数和其自身做异或运算，结果是 00，即 a⊕a=0。
+     * 异或运算满足交换律和结合律，即 a⊕b⊕a=b⊕a⊕a=b⊕(a⊕a)=b⊕0=b
+     *
+     * @param nums
+     * @return
+     */
+    public int singleNumber(int[] nums) {
+        int single = 0;
+        for (int num : nums) {
+            single ^= num;
+        }
+        return single;
+
+
+//        for (int i = 0; i < nums.length; i++) {
+//            boolean flag = false;
+//            int res = nums[i];
+//            for (int j = 0; j < nums.length; j++) {
+//                if (i == j) continue;
+//                if (res == nums[j]) {
+//                    flag = true;
+//                    break;
+//                }
+//            }
+//            if (!flag) return res;
+//        }
+//        return 0;
     }
 }
