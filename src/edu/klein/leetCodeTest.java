@@ -202,6 +202,12 @@ class leetCodeTest {
         int i = new leetCode().majorityElement(nums);
         System.out.println(i);
     }
+    @Test
+    void testMoveZeroes(){
+//        int[] nums = {0,1,0,3,12};
+        int[] nums = {2,1};
+        new leetCode().moveZeroes(nums);
+    }
 
     @Test
     void commonTest() {
