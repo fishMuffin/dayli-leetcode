@@ -671,7 +671,7 @@ public class leetCode {
      * 预期：[1,1,1,2,3,4]
      * 下标 2 、4 、5 处的学生高度不匹配。
      * <p>
-     * 提交次数:1
+     * 提交次数:3
      * 解决方式:自己一次解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
@@ -687,7 +687,7 @@ public class leetCode {
             count[heights[i]]++;
         }
         for (int i = 0, j = 0; i < count.length; i++) {
-            for (int k=0; k < count[i]; j++,k++) {
+            for (int k = 0; k < count[i]; j++, k++) {
                 if (heights[j] != i) res += 1;
             }
         }
@@ -725,6 +725,29 @@ public class leetCode {
             }
         }
         return count;
+    }
+
+    /**
+     * 编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 s 的形式给出。
+     * <p>
+     * 不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。
+     * <p>
+     * 输入：s = ["H","a","n","n","a","h"]
+     * 输出：["h","a","n","n","a","H"]
+     *
+     * 提交次数:1
+     * 解决方式:自己一次解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param s
+     */
+    public void reverseString(char[] s) {
+        for (int i = 0, j = s.length - 1; i < j; i++, j--) {
+            if (s[i] == s[j]) continue;
+            char temp = s[i];
+            s[i] = s[j];
+            s[j] = temp;
+        }
     }
 
 

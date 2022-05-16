@@ -175,11 +175,18 @@ class leetCodeTest {
         String[] ocurrences = new leetCode().findOcurrences(text, first, second);
         Arrays.stream(ocurrences).forEach(s -> System.out.println(s));
     }
+
     @Test
-    void testHeightChecker(){
-        int[] nums={1,1,4,2,1,3};
+    void testHeightChecker() {
+        int[] nums = {1, 1, 4, 2, 1, 3};
         int i = new leetCode().heightChecker(nums);
         System.out.println(i);
+    }
+
+    @Test
+    void testReverseString() {
+        char[] s = {'H', 'e', 'l', 'l', 'o'};
+        new leetCode().reverseString(s);
     }
 
     @Test
