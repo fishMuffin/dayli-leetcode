@@ -636,6 +636,10 @@ public class leetCode {
      * <p>
      * 输入：text = "alice is a good girl she is a good student", first = "a", second = "good"
      * 输出：["girl","student"]
+     * <p>
+     * 提交次数:1
+     * 解决方式:自己一次解决
+     * 未来是否需要更优化的解题方法:否
      *
      * @param text
      * @param first
@@ -649,6 +653,78 @@ public class leetCode {
             if (s[i].equals(first) && s[i + 1].equals(second) && (i + 2) < s.length) res.add(s[i + 2]);
         }
         return res.toArray(res.toArray(new String[0]));
+    }
+
+    /**
+     * 学校打算为全体学生拍一张年度纪念照。根据要求，学生需要按照 非递减 的高度顺序排成一行。
+     * <p>
+     * 排序后的高度情况用整数数组 expected 表示，其中 expected[i] 是预计排在这一行中第 i 位的学生的高度（下标从 0 开始）。
+     * <p>
+     * 给你一个整数数组 heights ，表示 当前学生站位 的高度情况。heights[i] 是这一行中第 i 位学生的高度（下标从 0 开始）。
+     * <p>
+     * 返回满足 heights[i] != expected[i] 的 下标数量 。
+     * <p>
+     * 输入：heights = [1,1,4,2,1,3]
+     * 输出：3
+     * 解释：
+     * 高度：[1,1,4,2,1,3]
+     * 预期：[1,1,1,2,3,4]
+     * 下标 2 、4 、5 处的学生高度不匹配。
+     * <p>
+     * 提交次数:1
+     * 解决方式:自己一次解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     *
+     * @param heights
+     * @return
+     */
+    public int heightChecker(int[] heights) {
+        //参考答案思想
+        int res = 0;
+        int[] count = new int[101];
+        for (int i = 0; i < heights.length; i++) {
+            count[heights[i]]++;
+        }
+        for (int i = 0, j = 0; i < count.length; i++) {
+            for (int k=0; k < count[i]; j++,k++) {
+                if (heights[j] != i) res += 1;
+            }
+        }
+        return res;
+
+
+        //冒泡排序再对比
+//        int res = 0;
+//        int[] expected = heights.clone();
+//        for (int i = 0; i < expected.length; i++) {
+//            for (int j = 0; j < expected.length - i - 1; j++) {
+//                if (expected[j] > expected[j + 1]) {
+//                    int temp = expected[j + 1];
+//                    expected[j + 1] = expected[j];
+//                    expected[j] = temp;
+//                }
+//            }
+//        }
+//        for (int i = 0; i < heights.length; i++) {
+//            if (heights[i] != expected[i]) res += 1;
+//        }
+//        return res;
+
+    }
+
+    public int heightChecker1(int[] heights) {
+        int[] arr = new int[101];
+        for (int height : heights) {
+            arr[height]++;
+        }
+        int count = 0;
+        for (int i = 1, j = 0; i < arr.length; i++) {
+            while (arr[i]-- > 0) {
+                if (heights[j++] != i) count++;
+            }
+        }
+        return count;
     }
 
 
