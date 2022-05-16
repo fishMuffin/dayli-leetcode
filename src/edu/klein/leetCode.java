@@ -734,11 +734,12 @@ public class leetCode {
      * <p>
      * 输入：s = ["H","a","n","n","a","h"]
      * 输出：["h","a","n","n","a","H"]
-     *
+     * <p>
      * 提交次数:1
      * 解决方式:自己一次解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param s
      */
     public void reverseString(char[] s) {
@@ -751,4 +752,35 @@ public class leetCode {
     }
 
 
+    public String reverseStringToString(String s) {
+        String res="";
+        for (int i = s.length()-1; i >=0; i--) {
+            res+=s.charAt(i);
+        }
+        return res;
+    }
+
+    /**
+     * 给定一个字符串 s ，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序
+     * <p>
+     * 输入：s = "Let's take LeetCode contest"
+     * 输出："s'teL ekat edoCteeL tsetnoc"
+     *
+     * 提交次数:1
+     * 解决方式:自己一次解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param s
+     * @return
+     */
+    public String reverseWords(String s) {
+        String res = "";
+        String[] split = s.split(" ");
+        for (int i = 0; i < split.length; i++) {
+            res += reverseStringToString(split[i]);
+            if(i<split.length-1)
+                res += " ";
+        }
+        return res;
+    }
 }

@@ -188,6 +188,13 @@ class leetCodeTest {
         char[] s = {'H', 'e', 'l', 'l', 'o'};
         new leetCode().reverseString(s);
     }
+    @Test
+    void testReverseWords(){
+        String s = "Let's take LeetCode contest";
+        String s1 = new leetCode().reverseWords(s);
+        System.out.println(s1);
+    }
+
 
     @Test
     void commonTest() {
