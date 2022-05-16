@@ -753,9 +753,9 @@ public class leetCode {
 
 
     public String reverseStringToString(String s) {
-        String res="";
-        for (int i = s.length()-1; i >=0; i--) {
-            res+=s.charAt(i);
+        String res = "";
+        for (int i = s.length() - 1; i >= 0; i--) {
+            res += s.charAt(i);
         }
         return res;
     }
@@ -765,11 +765,12 @@ public class leetCode {
      * <p>
      * 输入：s = "Let's take LeetCode contest"
      * 输出："s'teL ekat edoCteeL tsetnoc"
-     *
+     * <p>
      * 提交次数:1
      * 解决方式:自己一次解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param s
      * @return
      */
@@ -778,9 +779,38 @@ public class leetCode {
         String[] split = s.split(" ");
         for (int i = 0; i < split.length; i++) {
             res += reverseStringToString(split[i]);
-            if(i<split.length-1)
+            if (i < split.length - 1)
                 res += " ";
         }
         return res;
+    }
+
+    /**
+     * 给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n/2 ⌋ 的元素。
+     * <p>
+     * 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+     * <p>
+     * 输入：nums = [2,2,1,1,1,2,2]
+     * 输出：2
+     *
+     * 提交次数:2
+     * 解决方式:自己一次解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param nums
+     * @return
+     */
+    public int majorityElement(int[] nums) {
+        if(nums.length==1) return nums[0];
+        int maxCount = nums.length / 2;
+        for (int i = 0; i < nums.length; i++) {
+            int count = 1;
+            for (int j = 0; j < nums.length; j++) {
+                if (i == j) continue;
+                if (nums[i] == nums[j]) count++;
+                if (count > maxCount) return nums[i];
+            }
+        }
+        return 0;
     }
 }
