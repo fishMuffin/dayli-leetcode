@@ -821,11 +821,12 @@ public class leetCode {
      * 请注意 ，必须在不复制数组的情况下原地对数组进行操作。
      * 输入: nums = [0,1,0,3,12]
      * 输出: [1,3,12,0,0]
-     *
+     * <p>
      * 提交次数:2
      * 解决方式:自己解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param nums
      */
     public void moveZeroes(int[] nums) {
@@ -842,5 +843,30 @@ public class leetCode {
                 }
             }
         }
+    }
+
+    /**
+     * 给你一个含 n 个整数的数组 nums ，其中 nums[i] 在区间 [1, n] 内。请你找出所有在 [1, n] 范围内但没有出现在 nums 中的数字，并以数组的形式返回结果。
+     * <p>
+     * 输入：nums = [4,3,2,7,8,2,3,1]
+     * 输出：[5,6]
+     *
+     * 提交次数:1
+     * 解决方式:自己解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     * @param nums
+     * @return
+     */
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        int[] count = new int[nums.length];
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            count[nums[i] - 1]++;
+        }
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] == 0) res.add(i + 1);
+        }
+        return res;
     }
 }

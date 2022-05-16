@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -202,11 +203,19 @@ class leetCodeTest {
         int i = new leetCode().majorityElement(nums);
         System.out.println(i);
     }
+
     @Test
-    void testMoveZeroes(){
+    void testMoveZeroes() {
 //        int[] nums = {0,1,0,3,12};
-        int[] nums = {2,1};
+        int[] nums = {2, 1};
         new leetCode().moveZeroes(nums);
+    }
+
+    @Test
+    void testFindDisappearedNumbers() {
+        int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};
+        List<Integer> disappearedNumbers = new leetCode().findDisappearedNumbers(nums);
+        System.out.println(disappearedNumbers);
     }
 
     @Test
