@@ -911,4 +911,69 @@ public class leetCode {
 //        }
 //        return 0;
     }
+
+    /**
+     * Todo https://leetcode.cn/problems/generate-parentheses/
+     * 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
+     * <p>
+     * 输入：n = 3
+     * 输出：["((()))","(()())","(())()","()(())","()()()"]
+     * <p>
+     * 难度:中
+     * 提交次数:1
+     * 解决方式:
+     * 未来是否需要更优化的解题方法:
+     * 未来是否需要复盘:是
+     *
+     * @param n
+     * @return
+     */
+    public List<String> generateParenthesis(int n) {
+        String s = "";
+        for (int i = 0; i < n; i++) {
+            s += "(";
+            for (int j = 0; j < n; j++) {
+                s += ")";
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。
+     * <p>
+     * 最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
+     * <p>
+     * 你可以假设除了整数 0 之外，这个整数不会以零开头。
+     * <p>
+     * 输入：digits = [4,3,2,1]
+     * 输出：[4,3,2,2]
+     * 解释：输入数组表示数字 4321。
+     *
+     * 提交次数:1
+     * 解决方式:自己解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param digits
+     * @return
+     */
+    public int[] plusOne(int[] digits) {
+        int extras = 1;
+        for (int i = digits.length - 1; i >= 0; i--) {
+            digits[i] += extras;
+            if (digits[i] == 10) {
+                if (i == 0) {
+                    int[] res = new int[digits.length + 1];
+                    res[0] = 1;
+                    return res;
+                }
+                digits[i] = 0;
+                extras = 1;
+            } else {
+                break;
+            }
+        }
+        return digits;
+    }
 }

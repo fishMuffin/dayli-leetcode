@@ -224,7 +224,21 @@ class leetCodeTest {
         int i = new leetCode().singleNumber(nums);
         System.out.println(i);
     }
+    @Test
+    void testGenerateParenthesis(){
+        int i=3;
+        List<String> strings = new leetCode().generateParenthesis(i);
+        System.out.println(strings);
+    }
 
+    @Test
+    void testPlusOne(){
+//        int[] nums={4,3,2,1};
+        int[] nums={9,9,9,9};
+        int[] ints = new leetCode().plusOne(nums);
+        System.out.println(ints);
+
+    }
     @Test
     void commonTest() {
         int num=1^2;
