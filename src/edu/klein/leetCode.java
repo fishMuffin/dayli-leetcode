@@ -949,7 +949,7 @@ public class leetCode {
      * 输入：digits = [4,3,2,1]
      * 输出：[4,3,2,2]
      * 解释：输入数组表示数字 4321。
-     *
+     * <p>
      * 提交次数:1
      * 解决方式:自己解决
      * 未来是否需要更优化的解题方法:否
@@ -975,5 +975,42 @@ public class leetCode {
             }
         }
         return digits;
+    }
+
+    /**
+     * 编写一个算法来判断一个数 n 是不是快乐数。
+     * <p>
+     * 「快乐数」 定义为：
+     * <p>
+     * 对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和。
+     * 然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。
+     * 如果这个过程 结果为 1，那么这个数就是快乐数。
+     * 如果 n 是 快乐数 就返回 true ；不是，则返回 false
+     * <p>
+     * 输入：n = 19
+     * 输出：true
+     * 解释：
+     * 1^2 + 9^2 = 82
+     * 8^2 + 2^2 = 68
+     * 6^2 + 8^2 = 100
+     * 1^2 + 0^2 + 0^2 = 1
+     *
+     * 提交次数:3
+     * 解决方式:自己解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     * 优化思路:1.哈希集合检测循环,2.快慢指针法
+     * @param n
+     * @return
+     */
+    public boolean isHappy(int n) {
+        String numStr = n + "";
+        if (numStr.length() == 1 && n != 1 &&n!=7) return false;
+        int res = 0;
+        for (int i = 0; i < numStr.length(); i++) {
+            Integer integer = Integer.valueOf(numStr.charAt(i) + "");
+            res += Math.pow(integer, 2);
+        }
+        return res == 1 ? true : isHappy(res);
     }
 }

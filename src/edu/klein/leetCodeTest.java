@@ -240,6 +240,13 @@ class leetCodeTest {
 
     }
     @Test
+    void testIsHappy(){
+//        int i=19;
+        int i=2;
+        boolean happy = new leetCode().isHappy(i);
+        System.out.println(happy);
+    }
+    @Test
     void commonTest() {
         int num=1^2;
         System.out.println(num);
