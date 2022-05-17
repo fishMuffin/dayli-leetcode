@@ -220,7 +220,8 @@ class leetCodeTest {
 
     @Test
     void testSingleNumber() {
-        int[] nums = {1, 2, 1, 2, 4};
+//        int[] nums = {1, 2, 1, 2, 4};
+        int[] nums = {-10,-9,-8,-7,};
         int i = new leetCode().singleNumber(nums);
         System.out.println(i);
     }
@@ -245,6 +246,15 @@ class leetCodeTest {
         int i=2;
         boolean happy = new leetCode().isHappy(i);
         System.out.println(happy);
+    }
+
+    @Test
+    void testContainsDuplicate(){
+//        int[] nums={1,1,1,3,3,4,3,2,4,2};
+//        int[] nums={-24500,-24499,-24498,4,3,2,4,2};
+        int[] nums={-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10};
+        boolean b = new leetCode().containsDuplicate(nums);
+        System.out.println(b);
     }
     @Test
     void commonTest() {

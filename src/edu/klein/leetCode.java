@@ -994,23 +994,45 @@ public class leetCode {
      * 8^2 + 2^2 = 68
      * 6^2 + 8^2 = 100
      * 1^2 + 0^2 + 0^2 = 1
-     *
+     * <p>
      * 提交次数:3
      * 解决方式:自己解决
      * 未来是否需要更优化的解题方法:是
      * 未来是否需要复盘:是
      * 优化思路:1.哈希集合检测循环,2.快慢指针法
+     *
      * @param n
      * @return
      */
     public boolean isHappy(int n) {
         String numStr = n + "";
-        if (numStr.length() == 1 && n != 1 &&n!=7) return false;
+        if (numStr.length() == 1 && n != 1 && n != 7) return false;
         int res = 0;
         for (int i = 0; i < numStr.length(); i++) {
             Integer integer = Integer.valueOf(numStr.charAt(i) + "");
             res += Math.pow(integer, 2);
         }
         return res == 1 ? true : isHappy(res);
+    }
+
+
+    /**
+     * 给你一个整数数组 nums 。如果任一值在数组中出现 至少两次 ，返回 true ；如果数组中每个元素互不相同，返回 false 。
+     * 输入：nums = [1,1,1,3,3,4,3,2,4,2]
+     * 输出：true
+     *
+     * 提交次数:2
+     * 解决方式:参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param nums
+     * @return
+     */
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length-1; i++) {
+            if(nums[i]==nums[i+1]) return true;
+        }
+        return false;
     }
 }
