@@ -291,6 +291,13 @@ class leetCodeTest {
     }
 
     @Test
+    void testIntersect() {
+        int[] nums1 = {1, 2, 2, 1}, nums2 = {2, 2};
+        int[] intersect = new leetCode().intersect(nums1, nums2);
+        System.out.println(intersect);
+    }
+
+    @Test
     void commonTest() {
         System.out.println((int) 'z' - 96);
     }
