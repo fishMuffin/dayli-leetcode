@@ -284,7 +284,14 @@ class leetCodeTest {
     }
 
     @Test
+    void testFizzBuzz() {
+        int n = 15;
+        List<String> strings = new leetCode().fizzBuzz(n);
+        strings.forEach(s -> System.out.println(s));
+    }
+
+    @Test
     void commonTest() {
-        System.out.println((int)'z'-96);
+        System.out.println((int) 'z' - 96);
     }
 }

@@ -1134,11 +1134,12 @@ public class leetCode {
      * <p>
      * 输入: s = "loveleetcode"
      * 输出: 2
-     *
+     * <p>
      * 提交次数:3
      * 解决方式:自我完成
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param s
      * @return
      */
@@ -1159,6 +1160,42 @@ public class leetCode {
                     res = s.indexOf(s1);
                     min = count[i][1];
                 }
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 给你一个整数 n ，找出从 1 到 n 各个整数的 Fizz Buzz 表示，并用字符串数组 answer（下标从 1 开始）返回结果，其中：
+     * <p>
+     * answer[i] == "FizzBuzz" 如果 i 同时是 3 和 5 的倍数。
+     * answer[i] == "Fizz" 如果 i 是 3 的倍数。
+     * answer[i] == "Buzz" 如果 i 是 5 的倍数。
+     * answer[i] == i （以字符串形式）如果上述条件全不满足。
+     * <p>
+     * <p>
+     * 输入：n = 15
+     * 输出：["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
+     *
+     * 提交次数:1
+     * 解决方式:自我完成
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param n
+     * @return
+     */
+    public List<String> fizzBuzz(int n) {
+        List<String> res = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                res.add("FizzBuzz");
+            } else if (i % 3 == 0) {
+                res.add("Fizz");
+            } else if (i % 5 == 0) {
+                res.add("Buzz");
+            }else{
+                res.add(i+"");
             }
         }
         return res;
