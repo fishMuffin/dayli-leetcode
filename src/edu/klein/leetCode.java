@@ -1045,12 +1045,11 @@ public class leetCode {
      * <p>
      * 输入：l1 = [1,2,4], l2 = [1,3,4]
      * 输出：[1,1,2,3,4,4]
-     *
+     * <p>
      * 提交次数:1
      * 解决方式:参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
-     *
      */
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -1078,6 +1077,7 @@ public class leetCode {
             return l2;
         }
     }
+
     public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
         ListNode prehead = new ListNode(-1);
 
@@ -1097,6 +1097,35 @@ public class leetCode {
         prev.next = l1 == null ? l2 : l1;
 
         return prehead.next;
+    }
+
+    /**
+     * 给定一个包含 [0, n] 中 n 个数的数组 nums ，找出 [0, n] 这个范围内没有出现在数组中的那个数。
+     * <p>
+     * 输入：nums = [3,0,1]
+     * 输出：2
+     * 解释：n = 3，因为有 3 个数字，所以所有的数字都在范围 [0,3] 内。2 是丢失的数字，因为它没有出现在 nums 中。
+     *
+     * 提交次数:1
+     * 解决方式:自我完成
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param nums
+     * @return
+     */
+    public int missingNumber(int[] nums) {
+        int res = 0;
+        int[] count = new int[nums.length+1];
+        for (int i = 0; i < nums.length; i++) {
+            count[nums[i]]++;
+        }
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] == 0) {
+                res = i;
+                break;
+            }
+        }
+        return res;
     }
 
 }

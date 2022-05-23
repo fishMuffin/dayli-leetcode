@@ -263,10 +263,17 @@ class leetCodeTest {
     @Test
     void testMergeTwoLists() {
 //        l1 = [1,2,4], l2 = [1,3,4]
-        ListNode l1 = new ListNode(1, new ListNode(2,new ListNode(4)));
-        ListNode l2 = new ListNode(1, new ListNode(3,new ListNode(4)));
+        ListNode l1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+        ListNode l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
         ListNode listNode = new leetCode().mergeTwoLists2(l1, l2);
         System.out.println(listNode);
+    }
+
+    @Test
+    void testMissingNumber() {
+        int[] nums = {3, 0, 1};
+        int i = new leetCode().missingNumber(nums);
+        System.out.println(i);
     }
 
     @Test
