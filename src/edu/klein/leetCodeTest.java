@@ -305,11 +305,23 @@ class leetCodeTest {
     }
 
     @Test
-    void testIsPalindromeStr(){
+    void testIsPalindromeStr() {
 //        String s="A man, a plan, a canal: Panama";
-        String s="0P";
+        String s = "0P";
         boolean palindrome = new leetCode().isPalindrome(s);
         System.out.println(palindrome);
+    }
+
+    @Test
+    void testMerge() {
+//        int[] nums1 = {1, 2, 3, 0, 0, 0}, nums2 = {2, 5, 6};
+//        int m = 3, n = 3;
+//        int[] nums1 = {0},nums2 = {1};
+//        int m = 0, n = 1;
+        int[] nums1 = {4, 0, 0, 0, 0, 0};
+        int[] nums2 = {1, 2, 3, 5, 6};
+        int m = 1, n = 5;
+        new leetCode().merge(nums1, m, nums2, n);
     }
 
     @Test
