@@ -305,7 +305,20 @@ class leetCodeTest {
     }
 
     @Test
+    void testIsPalindromeStr(){
+//        String s="A man, a plan, a canal: Panama";
+        String s="0P";
+        boolean palindrome = new leetCode().isPalindrome(s);
+        System.out.println(palindrome);
+    }
+
+    @Test
     void commonTest() {
-        System.out.println((int) 'z' - 96);
+        System.out.println((int) 'a');
+        System.out.println((int) 'A');
+        System.out.println((int) 'z');
+        System.out.println((int) 'Z');
+        System.out.println((int) '1');
+        System.out.println((int) '9');
     }
 }

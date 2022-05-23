@@ -1245,7 +1245,7 @@ public class leetCode {
      * <p>
      * 输入: s = "anagram", t = "nagaram"
      * 输出: true
-     *
+     * <p>
      * 提交次数:1
      * 解决方式:自我完成
      * 未来是否需要更优化的解题方法:否
@@ -1262,10 +1262,10 @@ public class leetCode {
         byte[] bytes_s = s.getBytes();
         byte[] bytes_t = t.getBytes();
         for (int i = 0; i < bytes_s.length; i++) {
-            count_s[bytes_s[i]-96]++;
+            count_s[bytes_s[i] - 96]++;
         }
         for (int i = 0; i < bytes_t.length; i++) {
-            count_t[bytes_t[i]-96]++;
+            count_t[bytes_t[i] - 96]++;
         }
         for (int i = 0; i < count_s.length; i++) {
             if (count_s[i] != count_t[i]) res = false;
@@ -1273,4 +1273,40 @@ public class leetCode {
         return res;
     }
 
+
+    /**
+     * 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+     * <p>
+     * 说明：本题中，我们将空字符串定义为有效的回文串。
+     * <p>
+     * 输入: "A man, a plan, a canal: Panama"
+     * 输出: true
+     * 解释："amanaplanacanalpanama" 是回文串
+     *
+     * 提交次数:2
+     * 解决方式:自我完成
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @return
+     */
+    public boolean isPalindrome(String s) {
+        boolean res = true;
+        String str = "";
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90) || (c >= 48 && c <= 57)) {
+                str += c;
+            }
+        }
+        str = str.toLowerCase();
+        for (int i = 0, j = str.length() - 1; i < j; i++,j--) {
+            if(str.charAt(i)!=str.charAt(j)) {
+                res=false;
+                break;
+            }
+        }
+        return res;
+    }
 }
