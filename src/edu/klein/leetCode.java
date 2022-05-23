@@ -1105,17 +1105,18 @@ public class leetCode {
      * 输入：nums = [3,0,1]
      * 输出：2
      * 解释：n = 3，因为有 3 个数字，所以所有的数字都在范围 [0,3] 内。2 是丢失的数字，因为它没有出现在 nums 中。
-     *
+     * <p>
      * 提交次数:1
      * 解决方式:自我完成
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param nums
      * @return
      */
     public int missingNumber(int[] nums) {
         int res = 0;
-        int[] count = new int[nums.length+1];
+        int[] count = new int[nums.length + 1];
         for (int i = 0; i < nums.length; i++) {
             count[nums[i]]++;
         }
@@ -1128,4 +1129,38 @@ public class leetCode {
         return res;
     }
 
+    /**
+     * 给定一个字符串 s ，找到 它的第一个不重复的字符，并返回它的索引 。如果不存在，则返回 -1 。
+     * <p>
+     * 输入: s = "loveleetcode"
+     * 输出: 2
+     *
+     * 提交次数:3
+     * 解决方式:自我完成
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param s
+     * @return
+     */
+    public int firstUniqChar(String s) {
+        int res = -1;
+        byte[] bytes = s.getBytes();
+        int[][] count = new int[276][2];
+        for (int i = 0; i < bytes.length; i++) {
+            int index = bytes[i] - 96;
+            count[index][0]++;
+            count[index][1] += i;
+        }
+        int min = s.length();
+        for (int i = 0; i < count.length; i++) {
+            if (count[i][0] == 1) {
+                if (min > count[i][1]) {
+                    String s1 = Character.toString((char) (i + 96));
+                    res = s.indexOf(s1);
+                    min = count[i][1];
+                }
+            }
+        }
+        return res;
+    }
 }

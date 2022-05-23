@@ -277,8 +277,14 @@ class leetCodeTest {
     }
 
     @Test
+    void testFirstUniqChar() {
+        String s = "loveleetcode";
+        int i = new leetCode().firstUniqChar(s);
+        System.out.println(i);
+    }
+
+    @Test
     void commonTest() {
-        int num = 1 ^ 2;
-        System.out.println(num);
+        System.out.println((int)'z'-96);
     }
 }
