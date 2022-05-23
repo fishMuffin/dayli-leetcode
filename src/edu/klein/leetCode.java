@@ -1,5 +1,7 @@
 package edu.klein;
 
+import edu.klein.common.ListNode;
+
 import java.util.*;
 
 public class leetCode {
@@ -1020,19 +1022,81 @@ public class leetCode {
      * 给你一个整数数组 nums 。如果任一值在数组中出现 至少两次 ，返回 true ；如果数组中每个元素互不相同，返回 false 。
      * 输入：nums = [1,1,1,3,3,4,3,2,4,2]
      * 输出：true
-     *
+     * <p>
      * 提交次数:2
      * 解决方式:参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param nums
      * @return
      */
     public boolean containsDuplicate(int[] nums) {
         Arrays.sort(nums);
-        for (int i = 0; i < nums.length-1; i++) {
-            if(nums[i]==nums[i+1]) return true;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) return true;
         }
         return false;
     }
+
+
+    /**
+     * 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+     * <p>
+     * 输入：l1 = [1,2,4], l2 = [1,3,4]
+     * 输出：[1,1,2,3,4,4]
+     *
+     * 提交次数:1
+     * 解决方式:参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     *
+     */
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        if (l1.val > l2.val) {
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
+        } else {
+            l1.next = mergeTwoLists(l2, l1.next);
+            return l1;
+        }
+    }
+
+    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        } else if (l2 == null) {
+            return l1;
+        } else if (l1.val < l2.val) {
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
+        }
+    }
+    public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+        ListNode prehead = new ListNode(-1);
+
+        ListNode prev = prehead;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                prev.next = l1;
+                l1 = l1.next;
+            } else {
+                prev.next = l2;
+                l2 = l2.next;
+            }
+            prev = prev.next;
+        }
+
+        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
+        prev.next = l1 == null ? l2 : l1;
+
+        return prehead.next;
+    }
+
 }

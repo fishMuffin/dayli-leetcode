@@ -1,5 +1,6 @@
 package edu.klein;
 
+import edu.klein.common.ListNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -221,44 +222,56 @@ class leetCodeTest {
     @Test
     void testSingleNumber() {
 //        int[] nums = {1, 2, 1, 2, 4};
-        int[] nums = {-10,-9,-8,-7,};
+        int[] nums = {-10, -9, -8, -7,};
         int i = new leetCode().singleNumber(nums);
         System.out.println(i);
     }
+
     @Test
-    void testGenerateParenthesis(){
-        int i=3;
+    void testGenerateParenthesis() {
+        int i = 3;
         List<String> strings = new leetCode().generateParenthesis(i);
         System.out.println(strings);
     }
 
     @Test
-    void testPlusOne(){
+    void testPlusOne() {
 //        int[] nums={4,3,2,1};
-        int[] nums={9,9,9,9};
+        int[] nums = {9, 9, 9, 9};
         int[] ints = new leetCode().plusOne(nums);
         System.out.println(ints);
 
     }
+
     @Test
-    void testIsHappy(){
+    void testIsHappy() {
 //        int i=19;
-        int i=2;
+        int i = 2;
         boolean happy = new leetCode().isHappy(i);
         System.out.println(happy);
     }
 
     @Test
-    void testContainsDuplicate(){
+    void testContainsDuplicate() {
 //        int[] nums={1,1,1,3,3,4,3,2,4,2};
 //        int[] nums={-24500,-24499,-24498,4,3,2,4,2};
-        int[] nums={-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10};
+        int[] nums = {-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         boolean b = new leetCode().containsDuplicate(nums);
         System.out.println(b);
     }
+
+    @Test
+    void testMergeTwoLists() {
+//        l1 = [1,2,4], l2 = [1,3,4]
+        ListNode l1 = new ListNode(1, new ListNode(2,new ListNode(4)));
+        ListNode l2 = new ListNode(1, new ListNode(3,new ListNode(4)));
+        ListNode listNode = new leetCode().mergeTwoLists2(l1, l2);
+        System.out.println(listNode);
+    }
+
     @Test
     void commonTest() {
-        int num=1^2;
+        int num = 1 ^ 2;
         System.out.println(num);
     }
 }
