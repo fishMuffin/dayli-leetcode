@@ -1202,11 +1202,11 @@ public class leetCode {
     }
 
     /**
-     * 给你两个整数数组 nums1 和 nums2 ，请你以数组形式返回两数组的交集。返回结果中每个元素出现的次数，应与元素在两个数组中都出现的次数一致（如果出现次数不一致，则考虑取较小值）。可以不考虑输出结果的顺序。
-     *
+     * 给你两个整数数组 nums1 和 nums2 ，请你以数组形式返回两数组的交集。返回结果中每个元素出现的次数，应与元素在两个数组中都出现的次数一致（如果出现次数不一致，则考虑取较小值）。可以不考虑输出结果的顺序。
+     * <p>
      * 输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
      * 输出：[4,9]
-     *
+     * <p>
      * 提交次数:1
      * 解决方式:自我完成
      * 未来是否需要更优化的解题方法:否
@@ -1227,7 +1227,7 @@ public class leetCode {
         }
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < count1.length; i++) {
-            while(count1[i]--!=0&&count2[i]--!=0){
+            while (count1[i]-- != 0 && count2[i]-- != 0) {
                 list.add(i);
             }
         }
@@ -1237,4 +1237,40 @@ public class leetCode {
         }
         return res;
     }
+
+    /**
+     * 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+     * <p>
+     * 注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词
+     * <p>
+     * 输入: s = "anagram", t = "nagaram"
+     * 输出: true
+     *
+     * 提交次数:1
+     * 解决方式:自我完成
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isAnagram(String s, String t) {
+        boolean res = true;
+        int[] count_s = new int[27];
+        int[] count_t = new int[27];
+        byte[] bytes_s = s.getBytes();
+        byte[] bytes_t = t.getBytes();
+        for (int i = 0; i < bytes_s.length; i++) {
+            count_s[bytes_s[i]-96]++;
+        }
+        for (int i = 0; i < bytes_t.length; i++) {
+            count_t[bytes_t[i]-96]++;
+        }
+        for (int i = 0; i < count_s.length; i++) {
+            if (count_s[i] != count_t[i]) res = false;
+        }
+        return res;
+    }
+
 }

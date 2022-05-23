@@ -298,6 +298,13 @@ class leetCodeTest {
     }
 
     @Test
+    void testIsAnagram() {
+        String s = "anagram", t = "nagaram";
+        boolean anagram = new leetCode().isAnagram(s, t);
+        System.out.println(anagram);
+    }
+
+    @Test
     void commonTest() {
         System.out.println((int) 'z' - 96);
     }
