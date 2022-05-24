@@ -1322,7 +1322,7 @@ public class leetCode {
      * 输出：[1,2,2,3,5,6]
      * 解释：需要合并 [1,2,3] 和 [2,5,6] 。
      * 合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。
-     *
+     * <p>
      * 提交次数:2
      * 解决方式:自我完成
      * 未来是否需要更优化的解题方法:是
@@ -1353,6 +1353,7 @@ public class leetCode {
         }
         Arrays.sort(nums1);
     }
+
     public void merge1(int[] nums1, int m, int[] nums2, int n) {
         int p1 = 0, p2 = 0;
         int[] sorted = new int[m + n];
@@ -1373,5 +1374,51 @@ public class leetCode {
             nums1[i] = sorted[i];
         }
     }
+
+    /**
+     * 给你一个字符串 columnTitle ，表示 Excel 表格中的列名称。返回 该列名称对应的列序号 。
+     * <p>
+     * 例如：
+     * A -> 1
+     * B -> 2
+     * C -> 3
+     * ...
+     * Z -> 26
+     * AA -> 27
+     * AB -> 28
+     * ...
+     * <p>
+     * 输入: columnTitle = "ZY"
+     * 输出: 701
+     *
+     * 提交次数:2
+     * 解决方式:参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param columnTitle
+     * @return
+     */
+    public int titleToNumber(String columnTitle) {
+        int res = 0;
+        int mul = 1;
+        for (int i = columnTitle.length() - 1; i >= 0; i--) {
+            res += (columnTitle.charAt(i) - 64) * mul;
+            mul *= 26;
+        }
+        return res;
+    }
+
+    public int titleToNumber1(String columnTitle) {
+        int number = 0;
+        int multiple = 1;
+        for (int i = columnTitle.length() - 1; i >= 0; i--) {
+            int k = columnTitle.charAt(i) - 'A' + 1;
+            number += k * multiple;
+            multiple *= 26;
+        }
+        return number;
+    }
+
 
 }
