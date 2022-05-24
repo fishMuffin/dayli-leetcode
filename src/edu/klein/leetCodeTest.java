@@ -364,12 +364,22 @@ class leetCodeTest {
 
     }
 
+    @Test
+    void testMaxRepeating() {
+//        String sequence = "ababc", word = "ba";
+//        String sequence = "ababc", word = "ab";
+        String sequence="aaabaaaabaaabaaaabaaaabaaaabaaaaba",word="aaaba";
+
+        int i = new leetCode().maxRepeating1(sequence, word);
+        System.out.println(i);
+    }
+
 
     @Test
     void commonTest() {
         System.out.println((int) 'a');
         System.out.println((int) 'z');
-        System.out.println("abca".replace("c",""));
+        System.out.println("abca".replace("c", ""));
         System.out.println((int) ' ');
         System.out.println("ZY".charAt(1) - 64);
         System.out.println((int) 'A');
