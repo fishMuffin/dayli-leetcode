@@ -331,6 +331,13 @@ class leetCodeTest {
         int i = new leetCode().titleToNumber(columnTitle);
         System.out.println(i);
     }
+    @Test
+    void testThirdMax(){
+        int[] nums={2, 2, 3, 1};
+        int i = new leetCode().thirdMax(nums);
+        System.out.println(i);
+    }
+
 
     @Test
     void commonTest() {

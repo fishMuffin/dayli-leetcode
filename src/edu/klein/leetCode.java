@@ -1390,7 +1390,7 @@ public class leetCode {
      * <p>
      * 输入: columnTitle = "ZY"
      * 输出: 701
-     *
+     * <p>
      * 提交次数:2
      * 解决方式:参考答案
      * 未来是否需要更优化的解题方法:否
@@ -1420,5 +1420,47 @@ public class leetCode {
         return number;
     }
 
+
+    /**
+     * 给你一个非空数组，返回此数组中 第三大的数 。如果不存在，则返回数组中最大的数。
+     * <p>
+     * 输入：[1, 2]
+     * 输出：2
+     * 解释：第三大的数不存在, 所以返回最大的数 2 。
+     * <p>
+     * 输入：[2, 2, 3, 1]
+     * 输出：1
+     * 解释：注意，要求返回第三大的数，是指在所有不同数字中排第三大的数。
+     * 此例中存在两个值为 2 的数，它们都排第二。在所有不同数字中排第三大的数为 1 。
+     *
+     * 提交次数:2
+     * 解决方式:自我完成
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @return
+     */
+    public int thirdMax(int[] nums) {
+        if (nums.length == 1) return nums[0];
+        if (nums.length == 2) return Math.max(nums[0], nums[1]);
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int j = 0;
+            for (; j < nums.length - 1 - i; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    int temp = nums[j + 1];
+                    nums[j + 1] = nums[j];
+                    nums[j] = temp;
+                }
+            }
+            if((j+1)==nums.length||nums[j]!=nums[j+1]){
+                count++;
+            }
+            if(count==3) return nums[j];
+        }
+        if(count<3) return nums[nums.length-1];
+        return 0;
+    }
 
 }
