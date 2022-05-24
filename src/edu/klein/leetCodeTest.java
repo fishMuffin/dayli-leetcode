@@ -338,9 +338,19 @@ class leetCodeTest {
         System.out.println(i);
     }
 
+    @Test
+    void testCountSegments(){
+//        String s="Hello, my name is John";
+//        String s=", , , ,        a, eaefa";
+        String s="         ";
+        int i = new leetCode().countSegments(s);
+        System.out.println(i);
+    }
+
 
     @Test
     void commonTest() {
+        System.out.println((int) ' ');
         System.out.println("ZY".charAt(1)-64);
         System.out.println((int) 'A');
         System.out.println((int) 'Z');

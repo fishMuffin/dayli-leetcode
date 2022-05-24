@@ -1432,7 +1432,7 @@ public class leetCode {
      * 输出：1
      * 解释：注意，要求返回第三大的数，是指在所有不同数字中排第三大的数。
      * 此例中存在两个值为 2 的数，它们都排第二。在所有不同数字中排第三大的数为 1 。
-     *
+     * <p>
      * 提交次数:2
      * 解决方式:自我完成
      * 未来是否需要更优化的解题方法:否
@@ -1454,13 +1454,45 @@ public class leetCode {
                     nums[j] = temp;
                 }
             }
-            if((j+1)==nums.length||nums[j]!=nums[j+1]){
+            if ((j + 1) == nums.length || nums[j] != nums[j + 1]) {
                 count++;
             }
-            if(count==3) return nums[j];
+            if (count == 3) return nums[j];
         }
-        if(count<3) return nums[nums.length-1];
+        if (count < 3) return nums[nums.length - 1];
         return 0;
+    }
+
+    /**
+     * 统计字符串中的单词个数，这里的单词指的是连续的不是空格的字符。
+     * <p>
+     * 请注意，你可以假定字符串里不包括任何不可打印的字符。
+     * <p>
+     * 输入: "Hello, my name is John"
+     * 输出: 5
+     * 解释: 这里的单词是指连续的不是空格的字符，所以 "Hello," 算作 1 个单词。
+     *
+     * 提交次数:5
+     * 解决方式:自我完成
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @return
+     */
+    public int countSegments(String s) {
+        int count = 0;
+        boolean flag = true;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != 32) {
+                if (flag)
+                    count++;
+                flag = false;
+            }else{
+                flag=true;
+            }
+        }
+        return count;
     }
 
 }
