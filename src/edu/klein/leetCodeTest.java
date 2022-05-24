@@ -325,37 +325,55 @@ class leetCodeTest {
     }
 
     @Test
-    void testTitleToNumber(){
+    void testTitleToNumber() {
 //        String columnTitle = "ZY";
         String columnTitle = "FXSHRXW";
         int i = new leetCode().titleToNumber(columnTitle);
         System.out.println(i);
     }
+
     @Test
-    void testThirdMax(){
-        int[] nums={2, 2, 3, 1};
+    void testThirdMax() {
+        int[] nums = {2, 2, 3, 1};
         int i = new leetCode().thirdMax(nums);
         System.out.println(i);
     }
 
     @Test
-    void testCountSegments(){
+    void testCountSegments() {
 //        String s="Hello, my name is John";
 //        String s=", , , ,        a, eaefa";
-        String s="         ";
+        String s = "         ";
         int i = new leetCode().countSegments(s);
         System.out.println(i);
+    }
+
+    @Test
+    void testValidPalindrome() {
+//        String s = "abca";
+//        String s = "abc";
+//        String s = "tcaac";
+//        String s = "teee";
+//        String s = "cbbcc";
+//        String s = "eedede";
+//        String s = "hbakab";
+//        String s = "pidbliassaqozokmtgahluruufwbjdtayuhbxwoicviygilgzduudzgligyviciowxbhuyatdjbwfuurulhagtmkozoqassailbdip";
+        String s = "aba";
+        boolean b = new leetCode().validPalindrome(s);
+        System.out.println(b);
+
     }
 
 
     @Test
     void commonTest() {
-        System.out.println((int) ' ');
-        System.out.println("ZY".charAt(1)-64);
-        System.out.println((int) 'A');
-        System.out.println((int) 'Z');
         System.out.println((int) 'a');
         System.out.println((int) 'z');
+        System.out.println("abca".replace("c",""));
+        System.out.println((int) ' ');
+        System.out.println("ZY".charAt(1) - 64);
+        System.out.println((int) 'A');
+        System.out.println((int) 'Z');
         System.out.println((int) '1');
         System.out.println((int) '9');
     }

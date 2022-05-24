@@ -9,6 +9,7 @@ public class commonLogic {
      * 4.投票法
      * 5.二叉树
      * 6.链表
+     * 7.贪心算法
      */
 
 }

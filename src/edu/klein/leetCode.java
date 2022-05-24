@@ -1471,7 +1471,7 @@ public class leetCode {
      * 输入: "Hello, my name is John"
      * 输出: 5
      * 解释: 这里的单词是指连续的不是空格的字符，所以 "Hello," 算作 1 个单词。
-     *
+     * <p>
      * 提交次数:5
      * 解决方式:自我完成
      * 未来是否需要更优化的解题方法:否
@@ -1488,11 +1488,85 @@ public class leetCode {
                 if (flag)
                     count++;
                 flag = false;
-            }else{
-                flag=true;
+            } else {
+                flag = true;
             }
         }
         return count;
     }
+
+    /**
+     * 给定一个非空字符串 s，最多删除一个字符。判断是否能成为回文字符串。
+     * <p>
+     * 输入: s = "abca"
+     * 输出: true
+     * 解释: 你可以删除c字符。
+     *
+     * 提交次数:7
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     *
+     * @param s
+     * @return
+     */
+    public boolean validPalindrome(String s) {
+        int index=1;
+        for (int i = 0, j = s.length() - 1; i < j; ) {
+            if (s.charAt(i) != s.charAt(j)) {
+                index--;
+                if(index<0) return false;
+                return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
+            } else {
+                i++;
+                j--;
+            }
+        }
+        return true;
+    }
+
+    public boolean isPalindrome(String s, int left, int right) {
+        while (left <= right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return false;
+            } else {
+                left++;
+                right--;
+            }
+        }
+        return true;
+    }
+//    public boolean validPalindrome(String s) {
+//        int[][] count = new int[26][3];
+//        for (int i = 0; i < s.length(); i++) {
+//            int index = s.charAt(i) - 97;
+//            count[index][0]++;
+//            count[index][1] = i;
+//            count[index][2] += i;
+//
+//        }
+//        int cnt = 0;
+//        for (int i = 0; i < 26; i++) {
+//            if (count[i][0] % 2 == 1) {
+//                cnt++;
+//                String replace = s.replace(s.charAt(count[i][1]) + "", "");
+//                boolean innerFlag = true;
+//                for (int i1 = 0, j = replace.length() - 1; i1 <= j; i1++, j--) {
+//                    if (replace.charAt(i1) != replace.charAt(j)) {
+//                        innerFlag = false;
+//                        break;
+//                    }
+//                }
+//                if (innerFlag) return true;
+//            }
+//        }
+//        int sum = 0;
+//        for (int i = 0; i < 26; i++) {
+//            sum += count[i][2];
+//        }
+//        if (cnt > 2) return false;
+//        if (cnt == 0) return true;
+//        return false;
+//    }
 
 }
