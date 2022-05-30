@@ -1737,11 +1737,12 @@ public class leetCode {
      * 输入：arr = [100,100,100]
      * 输出：[1,1,1]
      * 解释：所有元素有相同的序号。
-     *
+     * <p>
      * 提交次数:5
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param arr
      * @return
      */
@@ -1767,13 +1768,13 @@ public class leetCode {
 
     public int[] arrayRankTransform2(int[] arr) {
         int[] clone = arr.clone();
-        int[] res=new int[arr.length];
+        int[] res = new int[arr.length];
         Arrays.sort(clone);
         for (int i = 0; i < clone.length; i++) {
             for (int j = 0; j < clone.length; j++) {
-                if(i==j) continue;
-                if(arr[i]==clone[j]){
-                    res[i]=j+1;
+                if (i == j) continue;
+                if (arr[i] == clone[j]) {
+                    res[i] = j + 1;
                 }
             }
         }
@@ -1784,8 +1785,8 @@ public class leetCode {
         int[] ints = Arrays.stream(arr).distinct().toArray();
         Map<Integer, Integer> map = new HashMap<>();
         int[] res = new int[arr.length];
-        if(arr.length==1) {
-            res[0]=1;
+        if (arr.length == 1) {
+            res[0] = 1;
             return res;
         }
         if (ints.length == 1 && arr.length != 1) {
@@ -1808,5 +1809,33 @@ public class leetCode {
             res[i] = map.get(arr[i]);
         }
         return res;
+    }
+
+    /**
+     * 给你一个混合字符串 s ，请你返回 s 中 第二大 的数字，如果不存在第二大的数字，请你返回 -1 。
+     * 混合字符串 由小写英文字母和数字组成。
+     * <p>
+     * 输入：s = "dfa12321afd"
+     * 输出：2
+     * 解释：出现在 s 中的数字包括 [1, 2, 3] 。第二大的数字是 2 。
+     *
+     * @param s
+     * @return
+     */
+    public int secondHighest(String s) {
+        int[] count = new int[10];
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) >= 48 && s.charAt(i) <= 57) {
+                count[s.charAt(i) - 48]++;
+            }
+        }
+        int tick = 1;
+        for (int i = count.length - 1; i >= 0; i--) {
+            if (count[i] != 0) {
+                if (tick == 0) return i;
+                tick--;
+            }
+        }
+        return -1;
     }
 }

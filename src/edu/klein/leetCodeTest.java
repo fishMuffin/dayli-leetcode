@@ -410,10 +410,19 @@ class leetCodeTest {
     }
 
     @Test
+    void testSecondHighest(){
+//        String s = "dfa12321afd";
+        String s = "abc1111";
+//        String s = "ck077";
+        int i = new leetCode().secondHighest(s);
+        System.out.println(i);
+    }
+
+    @Test
     void commonTest() {
-        Integer i = 1;
-        Integer j = 1;
-        System.out.println(i == j);
+//        Integer i = 1;
+//        Integer j = 1;
+//        System.out.println(i == j);
 //        System.out.println((int) 'a');
 //        System.out.println((int) 'z');
 //        System.out.println("abca".replace("c", ""));
@@ -421,7 +430,7 @@ class leetCodeTest {
 //        System.out.println("ZY".charAt(1) - 64);
 //        System.out.println((int) 'A');
 //        System.out.println((int) 'Z');
-//        System.out.println((int) '1');
-//        System.out.println((int) '9');
+        System.out.println((int) '1');
+        System.out.println((int) '9');
     }
 }
