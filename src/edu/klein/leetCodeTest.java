@@ -384,15 +384,32 @@ class leetCodeTest {
 
 
     @Test
+    void testWordPattern() {
+//        String pattern = "abba", str = "dog cat cat dog";
+//        String pattern = "abba", str = "dog dog dog dog";
+//        String pattern = "a", str = "a";
+
+        String pattern="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdd",
+        str="s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s t t";
+        boolean b = new leetCode().wordPattern1(pattern, str);
+        boolean b2 = new leetCode().wordPattern2(pattern, str);
+        System.out.println(b);
+        System.out.println(b2);
+    }
+
+    @Test
     void commonTest() {
-        System.out.println((int) 'a');
-        System.out.println((int) 'z');
-        System.out.println("abca".replace("c", ""));
-        System.out.println((int) ' ');
-        System.out.println("ZY".charAt(1) - 64);
-        System.out.println((int) 'A');
-        System.out.println((int) 'Z');
-        System.out.println((int) '1');
-        System.out.println((int) '9');
+        Integer i=1;
+        Integer j=1;
+        System.out.println(i==j);
+//        System.out.println((int) 'a');
+//        System.out.println((int) 'z');
+//        System.out.println("abca".replace("c", ""));
+//        System.out.println((int) ' ');
+//        System.out.println("ZY".charAt(1) - 64);
+//        System.out.println((int) 'A');
+//        System.out.println((int) 'Z');
+//        System.out.println((int) '1');
+//        System.out.println((int) '9');
     }
 }

@@ -1619,7 +1619,7 @@ public class leetCode {
      * <p>
      * 输入：nums = [1,2,3,1,2,3], k = 2
      * 输出：false
-     *
+     * <p>
      * 提交次数:3
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
@@ -1632,7 +1632,7 @@ public class leetCode {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i]) && Math.abs(map.get(nums[i])-i) <= k) {
+            if (map.containsKey(nums[i]) && Math.abs(map.get(nums[i]) - i) <= k) {
                 return true;
             }
             map.put(nums[i], i);
@@ -1651,6 +1651,73 @@ public class leetCode {
             map.put(num, i);
         }
         return false;
+    }
+
+    /**
+     * 给定一种规律 pattern 和一个字符串 s ，判断 s 是否遵循相同的规律。
+     * <p>
+     * 这里的 遵循 指完全匹配，例如， pattern 里的每个字母和字符串 str 中的每个非空单词之间存在着双向连接的对应规律。
+     * <p>
+     * 输入: pattern = "abba", str = "dog cat cat dog"
+     * 输出: true
+     * <p>
+     * 输入:pattern = "abba", str = "dog cat cat fish"
+     * 输出: false
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param pattern
+     * @param s
+     * @return
+     */
+    public boolean wordPattern(String pattern, String s) {
+        Map<String, Character> map = new HashMap<>();
+        String[] s1 = s.split(" ");
+        if (s1.length != pattern.length()) return false;
+        for (int i = 0; i < pattern.length(); i++) {
+            int i1 = pattern.indexOf(pattern.charAt(i), i + 1);
+            if (i1 != -1 && !s1[i1].equals(s1[i])) {
+                return false;
+            }
+            if ((map.containsKey(s1[i]) && (map.get(s1[i])) != pattern.charAt(i))) {
+                return false;
+            } else {
+                map.put(s1[i], pattern.charAt(i));
+            }
+        }
+        return true;
+    }
+
+    public boolean wordPattern1(String pattern, String s) {
+        String[] split = s.split(" ");
+        if (split.length != pattern.length()) return false;
+        Map<Object, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < split.length; i++) {
+            Integer put1 = map.put(pattern.charAt(i), i);
+            Integer put2 = map.put(split[i], i);
+            // 注意 如果这里用的是int i定义的 则当i=129时 put1,put2的值虽然一样 但是put1 != put2为true
+            if (put1 != put2)
+                return false;
+        }
+        return true;
+    }
+
+    public boolean wordPattern2(String pattern, String str) {
+        String[] words = str.split(" ");
+        if (words.length != pattern.length()) {
+            return false;
+        }
+        Map<Object, Integer> map = new HashMap<>();
+        for (Integer i = 0; i < words.length; i++) {
+            if (map.put(pattern.charAt(i), i) != map.put(words[i], i)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
