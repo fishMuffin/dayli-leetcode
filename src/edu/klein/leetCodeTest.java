@@ -389,8 +389,8 @@ class leetCodeTest {
 //        String pattern = "abba", str = "dog dog dog dog";
 //        String pattern = "a", str = "a";
 
-        String pattern="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdd",
-        str="s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s t t";
+        String pattern = "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdd",
+                str = "s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s t t";
         boolean b = new leetCode().wordPattern1(pattern, str);
         boolean b2 = new leetCode().wordPattern2(pattern, str);
         System.out.println(b);
@@ -398,10 +398,22 @@ class leetCodeTest {
     }
 
     @Test
+    void testArrayRankTransform() {
+        int[] arr = {40, 10, 20, 30};
+//        int[] arr = {40, 40, 40, 40};
+//        int[] arr = {37,12,28,9,100,56,80,5,12};
+//        int[] arr = {100,100,100};
+//        int[] arr = {-43};
+//        int[] arr = {27,46,-3,-36,31,-14,-7,-36,27,-14,41,-40,23};
+        int[] ints = new leetCode().arrayRankTransform(arr);
+        Arrays.stream(ints).forEach(s -> System.out.println(s));
+    }
+
+    @Test
     void commonTest() {
-        Integer i=1;
-        Integer j=1;
-        System.out.println(i==j);
+        Integer i = 1;
+        Integer j = 1;
+        System.out.println(i == j);
 //        System.out.println((int) 'a');
 //        System.out.println((int) 'z');
 //        System.out.println("abca".replace("c", ""));

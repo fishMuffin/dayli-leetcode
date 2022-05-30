@@ -3,6 +3,7 @@ package edu.klein;
 import edu.klein.common.ListNode;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class leetCode {
     /**
@@ -1720,4 +1721,92 @@ public class leetCode {
         return true;
     }
 
+    /**
+     * 给你一个整数数组 arr ，请你将数组中的每个元素替换为它们排序后的序号。
+     * <p>
+     * 序号代表了一个元素有多大。序号编号的规则如下：
+     * <p>
+     * 序号从 1 开始编号。
+     * 一个元素越大，那么序号越大。如果两个元素相等，那么它们的序号相同。
+     * 每个数字的序号都应该尽可能地小。
+     * <p>
+     * 输入：arr = [40,10,20,30]
+     * 输出：[4,1,2,3]
+     * 解释：40 是最大的元素。 10 是最小的元素。 20 是第二小的数字。 30 是第三小的数字。
+     * <p>
+     * 输入：arr = [100,100,100]
+     * 输出：[1,1,1]
+     * 解释：所有元素有相同的序号。
+     *
+     * 提交次数:5
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param arr
+     * @return
+     */
+    public int[] arrayRankTransform(int[] arr) {
+        int length = arr.length;
+        int[] sorted = new int[length];
+        System.arraycopy(arr, 0, sorted, 0, length);
+        Arrays.sort(sorted);
+        Map<Integer, Integer> rankMap = new HashMap<Integer, Integer>();
+        for (int i = 0, rank = 1; i < length; i++) {
+            int num = sorted[i];
+            if (!rankMap.containsKey(num)) {
+                rankMap.put(num, rank);
+                rank++;
+            }
+        }
+        int[] ranks = new int[length];
+        for (int i = 0; i < length; i++) {
+            ranks[i] = rankMap.get(arr[i]);
+        }
+        return ranks;
+    }
+
+    public int[] arrayRankTransform2(int[] arr) {
+        int[] clone = arr.clone();
+        int[] res=new int[arr.length];
+        Arrays.sort(clone);
+        for (int i = 0; i < clone.length; i++) {
+            for (int j = 0; j < clone.length; j++) {
+                if(i==j) continue;
+                if(arr[i]==clone[j]){
+                    res[i]=j+1;
+                }
+            }
+        }
+        return res;
+    }
+
+    public int[] arrayRankTransform1(int[] arr) {
+        int[] ints = Arrays.stream(arr).distinct().toArray();
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] res = new int[arr.length];
+        if(arr.length==1) {
+            res[0]=1;
+            return res;
+        }
+        if (ints.length == 1 && arr.length != 1) {
+            map.put(arr[0], 1);
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (!map.containsKey(arr[i])) {
+                map.put(arr[i], 1);
+            }
+            for (int j = 0; j < arr.length; j++) {
+                if (i == j) continue;
+                if (arr[i] > arr[j]) {
+                    if (map.containsKey(arr[i])) {
+                        map.put(arr[i], map.get(arr[i]) + 1);
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            res[i] = map.get(arr[i]);
+        }
+        return res;
+    }
 }
