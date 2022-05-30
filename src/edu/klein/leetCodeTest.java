@@ -368,10 +368,18 @@ class leetCodeTest {
     void testMaxRepeating() {
 //        String sequence = "ababc", word = "ba";
 //        String sequence = "ababc", word = "ab";
-        String sequence="aaabaaaabaaabaaaabaaaabaaaabaaaaba",word="aaaba";
+        String sequence = "aaabaaaabaaabaaaabaaaabaaaabaaaaba", word = "aaaba";
 
         int i = new leetCode().maxRepeating1(sequence, word);
         System.out.println(i);
+    }
+
+    @Test
+    void testContainsNearbyDuplicate() {
+        int[] nums = {1, 0, 1, 1};
+        int k = 1;
+        boolean b = new leetCode().containsNearbyDuplicate(nums, k);
+        System.out.println(b);
     }
 
 

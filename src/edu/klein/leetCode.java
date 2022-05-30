@@ -1501,7 +1501,7 @@ public class leetCode {
      * 输入: s = "abca"
      * 输出: true
      * 解释: 你可以删除c字符。
-     *
+     * <p>
      * 提交次数:7
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
@@ -1511,11 +1511,11 @@ public class leetCode {
      * @return
      */
     public boolean validPalindrome(String s) {
-        int index=1;
+        int index = 1;
         for (int i = 0, j = s.length() - 1; i < j; ) {
             if (s.charAt(i) != s.charAt(j)) {
                 index--;
-                if(index<0) return false;
+                if (index < 0) return false;
                 return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
             } else {
                 i++;
@@ -1571,40 +1571,86 @@ public class leetCode {
 
     /**
      * 给你一个字符串 sequence ，如果字符串 word 连续重复 k 次形成的字符串是 sequence 的一个子字符串，那么单词 word 的 重复值为 k 。单词 word 的 最大重复值 是单词 word 在 sequence 中最大的重复值。如果 word 不是 sequence 的子串，那么重复值 k 为 0 。
-     *
+     * <p>
      * 给你一个字符串 sequence 和 word ，请你返回 最大重复值 k 。
-     *
+     * <p>
      * 输入：sequence = "ababc", word = "ba"
      * 输出：1
      * 解释："ba" 是 "ababc" 的子字符串，但 "baba" 不是 "ababc" 的子字符串。
-     *
+     * <p>
      * 提交次数:2
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param sequence
      * @param word
      * @return
      */
     public int maxRepeating(String sequence, String word) {
-        int res=0;
+        int res = 0;
         for (int i = 0; i < sequence.length(); ) {
-            int index=sequence.indexOf(word,i);
-            if(index!=-1){
+            int index = sequence.indexOf(word, i);
+            if (index != -1) {
                 res++;
-                i=index+word.length();
+                i = index + word.length();
+
             }
-        }
 //        return sequence.contains(word)?(sequence.length()-sequence.replace(word, "").length())/word.length():0;
+        }
         return res;
     }
+
     public int maxRepeating1(String sequence, String word) {
         int count = 0;
         StringBuilder sb = new StringBuilder(word);
-        while(sequence.contains(sb)) {
+        while (sequence.contains(sb)) {
             count++;
             sb.append(word);
         }
         return count;
     }
+
+    /**
+     * 给你一个整数数组 nums 和一个整数 k ，判断数组中是否存在两个 不同的索引 i 和 j ，满足 nums[i] == nums[j] 且 abs(i - j) <= k 。如果存在，返回 true ；否则，返回 false 。
+     * <p>
+     * 输入：nums = [1,0,1,1], k = 1
+     * 输出：true
+     * <p>
+     * 输入：nums = [1,2,3,1,2,3], k = 2
+     * 输出：false
+     *
+     * 提交次数:3
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i]) && Math.abs(map.get(nums[i])-i) <= k) {
+                return true;
+            }
+            map.put(nums[i], i);
+        }
+        return false;
+    }
+
+    public boolean containsNearbyDuplicate1(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        int length = nums.length;
+        for (int i = 0; i < length; i++) {
+            int num = nums[i];
+            if (map.containsKey(num) && i - map.get(num) <= k) {
+                return true;
+            }
+            map.put(num, i);
+        }
+        return false;
+    }
+
 }
