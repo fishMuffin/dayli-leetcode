@@ -916,7 +916,7 @@ public class leetCode {
     }
 
     /**
-     * Todo https://leetcode.cn/problems/generate-parentheses/
+     *
      * 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
      * <p>
      * 输入：n = 3
@@ -924,23 +924,75 @@ public class leetCode {
      * <p>
      * 难度:中
      * 提交次数:1
-     * 解决方式:
-     * 未来是否需要更优化的解题方法:
+     * 解决方式:参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 优化方向:回溯
      * 未来是否需要复盘:是
      *
      * @param n
      * @return
      */
+    List<String> res = new ArrayList<>();
+
     public List<String> generateParenthesis(int n) {
-        String s = "";
-        for (int i = 0; i < n; i++) {
-            s += "(";
-            for (int j = 0; j < n; j++) {
-                s += ")";
+        if (n < 0) {
+            res.add("");
+        } else {
+            gene("", n, n);
+        }
+        return res;
+    }
+
+    public void gene(String str, int left, int right) {
+        if(left==0&&right==0){
+            res.add(str);
+            return;
+        }
+        if (left == right) {
+            gene(str + "(", left-1, right);
+        }
+        if (left < right) {
+            if (left > 0) {
+                gene(str + "(", left-1, right);
+            }
+            gene(str + ")", left, right-1);
+        }
+    }
+
+    public List<String> generateParenthesis1(int n) {
+        List<String> combinations = new ArrayList<String>();
+        generateAll(new char[2 * n], 0, combinations);
+        return combinations;
+    }
+
+    public void generateAll(char[] current, int pos, List<String> result) {
+        if (pos == current.length) {
+            if (valid(current)) {
+                result.add(new String(current));
+            }
+        } else {
+            current[pos] = '(';
+            generateAll(current, pos + 1, result);
+            current[pos] = ')';
+            generateAll(current, pos + 1, result);
+        }
+    }
+
+    public boolean valid(char[] current) {
+        int balance = 0;
+        for (char c : current) {
+            if (c == '(') {
+                ++balance;
+            } else {
+                --balance;
+            }
+            if (balance < 0) {
+                return false;
             }
         }
-        return null;
+        return balance == 0;
     }
+
 
     /**
      * 给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。
@@ -1818,6 +1870,11 @@ public class leetCode {
      * 输入：s = "dfa12321afd"
      * 输出：2
      * 解释：出现在 s 中的数字包括 [1, 2, 3] 。第二大的数字是 2 。
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我完成
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
      *
      * @param s
      * @return
@@ -1838,4 +1895,6 @@ public class leetCode {
         }
         return -1;
     }
+
+
 }
