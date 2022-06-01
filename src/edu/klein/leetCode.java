@@ -916,7 +916,6 @@ public class leetCode {
     }
 
     /**
-     *
      * 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
      * <p>
      * 输入：n = 3
@@ -944,18 +943,18 @@ public class leetCode {
     }
 
     public void gene(String str, int left, int right) {
-        if(left==0&&right==0){
+        if (left == 0 && right == 0) {
             res.add(str);
             return;
         }
         if (left == right) {
-            gene(str + "(", left-1, right);
+            gene(str + "(", left - 1, right);
         }
         if (left < right) {
             if (left > 0) {
-                gene(str + "(", left-1, right);
+                gene(str + "(", left - 1, right);
             }
-            gene(str + ")", left, right-1);
+            gene(str + ")", left, right - 1);
         }
     }
 
@@ -1894,6 +1893,39 @@ public class leetCode {
             }
         }
         return -1;
+    }
+
+    /**
+     * 对于一个 正整数，如果它和除了它自身以外的所有 正因子 之和相等，我们称它为 「完美数」。
+     * <p>
+     * 给定一个 整数 n， 如果是完美数，返回 true；否则返回 false。
+     * <p>
+     * 输入：num = 28
+     * 输出：true
+     * 解释：28 = 1 + 2 + 4 + 7 + 14
+     * 1, 2, 4, 7, 和 14 是 28 的所有正因子。
+     *
+     * 提交次数:2
+     * 解决方式: 自我完成
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param num
+     * @return
+     */
+    public boolean checkPerfectNumber(int num) {
+        List<Integer> list = new ArrayList<>();
+        if(num!=1) list.add(1);
+        int end=num;
+        for (int i = 2; i < end; i++) {
+            if(num%i==0){
+                end=num/i;
+                list.add(i);
+                list.add(end);
+            }
+        }
+        int sum = list.stream().mapToInt(x -> x).sum();
+        if (sum == num) return true;
+        return false;
     }
 
 

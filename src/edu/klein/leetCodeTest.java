@@ -235,6 +235,14 @@ class leetCodeTest {
     }
 
     @Test
+    void testCheckPerfectNumber(){
+        int num=28;
+        boolean b = new leetCode().checkPerfectNumber(num);
+        System.out.println(b);
+    }
+
+
+    @Test
     void testPlusOne() {
 //        int[] nums={4,3,2,1};
         int[] nums = {9, 9, 9, 9};
