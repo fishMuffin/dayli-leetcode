@@ -235,8 +235,8 @@ class leetCodeTest {
     }
 
     @Test
-    void testCheckPerfectNumber(){
-        int num=28;
+    void testCheckPerfectNumber() {
+        int num = 28;
         boolean b = new leetCode().checkPerfectNumber(num);
         System.out.println(b);
     }
@@ -418,7 +418,7 @@ class leetCodeTest {
     }
 
     @Test
-    void testSecondHighest(){
+    void testSecondHighest() {
 //        String s = "dfa12321afd";
         String s = "abc1111";
 //        String s = "ck077";
@@ -426,21 +426,32 @@ class leetCodeTest {
         System.out.println(i);
     }
 
+    @Test
+    void testIsIsomorphic() {
+        leetCode leetCode = new leetCode();
+//        assert leetCode.isIsomorphic("egg", "add"):"1";
+        assert leetCode.isIsomorphic("abab", "baba"):"2";
+//        assert !leetCode.isIsomorphic("badc", "baba"):"3";
+//        assert !leetCode.isIsomorphic("papap", "titii"):"4";
+//        assert leetCode.isIsomorphic("a", "a"):"5";
+//        assert leetCode.isIsomorphic("13", "42"):"6";
+    }
 
 
     @Test
     void commonTest() {
+        System.out.println(Math.pow(10,2));
 //        Integer i = 1;
 //        Integer j = 1;
 //        System.out.println(i == j);
-//        System.out.println((int) 'a');
-//        System.out.println((int) 'z');
+        System.out.println((int) 'a');
+        System.out.println((int) 'z');
 //        System.out.println("abca".replace("c", ""));
 //        System.out.println((int) ' ');
 //        System.out.println("ZY".charAt(1) - 64);
 //        System.out.println((int) 'A');
 //        System.out.println((int) 'Z');
-        System.out.println((int) '1');
-        System.out.println((int) '9');
+//        System.out.println((int) '1');
+//        System.out.println((int) '9');
     }
 }

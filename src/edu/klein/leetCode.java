@@ -1904,27 +1904,98 @@ public class leetCode {
      * 输出：true
      * 解释：28 = 1 + 2 + 4 + 7 + 14
      * 1, 2, 4, 7, 和 14 是 28 的所有正因子。
-     *
+     * <p>
      * 提交次数:2
      * 解决方式: 自我完成
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param num
      * @return
      */
     public boolean checkPerfectNumber(int num) {
         List<Integer> list = new ArrayList<>();
-        if(num!=1) list.add(1);
-        int end=num;
+        if (num != 1) list.add(1);
+        int end = num;
         for (int i = 2; i < end; i++) {
-            if(num%i==0){
-                end=num/i;
+            if (num % i == 0) {
+                end = num / i;
                 list.add(i);
                 list.add(end);
             }
         }
         int sum = list.stream().mapToInt(x -> x).sum();
         if (sum == num) return true;
+        return false;
+    }
+
+    /**
+     * 给定两个字符串 s 和 t ，判断它们是否是同构的。
+     * <p>
+     * 如果 s 中的字符可以按某种映射关系替换得到 t ，那么这两个字符串是同构的。
+     * <p>
+     * 每个出现的字符都应当映射到另一个字符，同时不改变字符的顺序。不同字符不能映射到同一个字符上，相同字符只能映射到同一个字符上，字符可以映射到自己本身。
+     * <p>
+     * 输入：s = "egg", t = "add"
+     * 输出：true
+     *
+     * 提交次数:9
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isIsomorphic(String s, String t) {
+        for(int i = 0; i < s.length(); i++){
+            if(s.indexOf(s.charAt(i)) != t.indexOf(t.charAt(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isIsomorphic1(String s, String t) {
+        if (s.length() != t.length()) return false;
+        int[][] s_count = new int[128][2];
+        int[][] t_count = new int[128][2];
+        for (int i = 0; i < s.length(); i++) {
+            int s_index = s.charAt(i);
+            int t_index = t.charAt(i);
+            s_count[s_index][0] += 1;
+            s_count[s_index][1] += (i + 1) * (Math.pow(10, (s_count[s_index][0] - 1)));
+            t_count[t_index][0] += 1;
+            t_count[t_index][1] += (i + 1) * (Math.pow(10, (t_count[t_index][0] - 1)));
+        }
+        boolean b = checkValid(s_count, t_count);
+        boolean b1 = checkValid(t_count, s_count);
+        if (b && b1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkValid(int[][] s_count, int[][] t_count) {
+        boolean flag = true;
+        for (int i = 0; i < 128; i++) {
+            if (s_count[i][0] > 1) {
+                flag = false;
+                int j = 0;
+                for (; j < 128; j++) {
+                    if (t_count[j][0] > 1) {
+                        if (s_count[i][0] == t_count[j][0]) {
+                            if (s_count[i][1] == t_count[j][1]) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (flag) return flag;
         return false;
     }
 
