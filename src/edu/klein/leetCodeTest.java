@@ -449,8 +449,22 @@ class leetCodeTest {
 
 //        char[] letters={'c', 'f', 'j'};
 //        assert 'f'==leetCode.nextGreatestLetter(letters, 'c') : letters;
-        char[] letters1={'e', 'e', 'n','n'};
-        assert 'e'==leetCode.nextGreatestLetter(letters1, 'n') : letters1;
+//        char[] letters1={'e', 'e', 'n','n'};
+//        assert 'e'==leetCode.nextGreatestLetter(letters1, 'n') : letters1;
+
+
+//        assert leetCode.repeatedSubstringPattern("abcabcabcabc") : "abcabcabcabc";
+//        assert !leetCode.repeatedSubstringPattern("aba") : "aba";
+//        assert leetCode.repeatedSubstringPattern("ababab") : "ababab";
+//        assert !leetCode.repeatedSubstringPattern("ababba") : "ababba";
+//        assert leetCode.repeatedSubstringPattern("babbabbabbabbab") : "babbabbabbabbab";
+//        assert leetCode.repeatedSubstringPattern("abab") : "abab";
+//        assert leetCode.repeatedSubstringPattern("bb") : "bb";
+//        assert leetCode.repeatedSubstringPattern("zzz") : "zzz";
+//        assert !leetCode.repeatedSubstringPattern("zza") : "zza";
+//        assert leetCode.repeatedSubstringPattern("aaaaaaaaaaaaa") : "aaaaaaaaaaaaa";
+
+
 
     }
 

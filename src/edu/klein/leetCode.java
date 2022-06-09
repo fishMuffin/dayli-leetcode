@@ -2044,7 +2044,7 @@ public class leetCode {
      * <p>
      * 输入: letters = ["c","f","j"], target = "c"
      * 输出: "f"
-     *
+     * <p>
      * 提交次数:2
      * 解决方式: 自己解决
      * 未来是否需要更优化的解题方法:否
@@ -2073,6 +2073,60 @@ public class leetCode {
             }
         }
         return first;
+    }
+
+    /**
+     * 给定一个非空的字符串 s ，检查是否可以通过由它的一个子串重复多次构成。
+     * <p>
+     * 输入: s = "abab"
+     * 输出: true
+     * 解释: 可由子串 "ab" 重复两次构成。
+     *
+     *
+     * 提交次数:8
+     * 解决方式: 自己解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param s
+     * @return
+     */
+    public boolean repeatedSubstringPattern(String s) {
+        if(s.length()==1) return false;
+        if(isRepeatString(1,s)) return true;
+        int len = s.length();
+        int increase = 2;
+        while (true) {
+            if (len % increase != 0) {
+                increase += 1;
+                continue;
+            } else if (increase > len / 2) {
+                break;
+            }
+            boolean repeatString = isRepeatString(increase, s);
+            if (repeatString) {
+                return repeatString;
+            } else {
+                increase += 1;
+            }
+        }
+        return false;
+    }
+
+    private boolean isRepeatString(int increase, String str) {
+        boolean res = true;
+        int start = 0;
+        while (true) {
+            int end = start + increase;
+            String substring1 = str.substring(start, end);
+            String substring2 = str.substring(end, end + increase);
+            if (!substring1.equals(substring2)) {
+                res = false;
+                break;
+            }
+            if (end + increase >= str.length()) break;
+            start += increase;
+        }
+        return res;
     }
 
 
