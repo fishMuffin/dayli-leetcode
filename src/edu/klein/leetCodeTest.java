@@ -441,15 +441,22 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert !leetCode.isUgly(14) : "isUgly:14";
-        assert leetCode.isUgly(6) : "isUgly:6";
-        assert leetCode.isUgly(1) : "isUgly:1";
-        assert leetCode.isUgly(8) : "isUgly:8";
+//        assert !leetCode.isUgly(14) : "isUgly:14";
+//        assert leetCode.isUgly(6) : "isUgly:6";
+//        assert leetCode.isUgly(1) : "isUgly:1";
+//        assert leetCode.isUgly(8) : "isUgly:8";
+
+
+//        char[] letters={'c', 'f', 'j'};
+//        assert 'f'==leetCode.nextGreatestLetter(letters, 'c') : letters;
+        char[] letters1={'e', 'e', 'n','n'};
+        assert 'e'==leetCode.nextGreatestLetter(letters1, 'n') : letters1;
+
     }
 
     @Test
     void commonTest() {
-        System.out.println(Math.pow(10, 2));
+//        System.out.println(Math.pow(10, 2));
 //        Integer i = 1;
 //        Integer j = 1;
 //        System.out.println(i == j);

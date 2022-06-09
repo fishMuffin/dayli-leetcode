@@ -2007,30 +2007,72 @@ public class leetCode {
      * 输入：n = 14
      * 输出：false
      * 解释：14 不是丑数，因为它包含了另外一个质因数 7 。
-     *
-     *
+     * <p>
+     * <p>
      * 提交次数:3
      * 解决方式: 自己解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param n
      * @return
      */
     public boolean isUgly(int n) {
-        if(n==0) return false;
+        if (n == 0) return false;
         while (true) {
             if (n % 2 == 0) {
-                n =  n / 2;
-            } else if ( n % 3 == 0) {
-                 n =  n / 3;
-            } else if ( n % 5 == 0) {
-                 n =  n / 5;
-            }else{
+                n = n / 2;
+            } else if (n % 3 == 0) {
+                n = n / 3;
+            } else if (n % 5 == 0) {
+                n = n / 5;
+            } else {
                 break;
             }
         }
         if (n == 1) return true;
         return n == 2 ? true : n == 3 ? true : n == 5 ? true : false;
+    }
+
+    /**
+     * 给你一个排序后的字符列表 letters ，列表中只包含小写英文字母。另给出一个目标字母  target，请你寻找在这一有序列表里比目标字母大的最小字母。
+     * <p>
+     * 在比较时，字母是依序循环出现的。举个例子：
+     * <p>
+     * 如果目标字母 target = 'z' 并且字符列表为  letters = ['a', 'b']，则答案返回  'a'
+     * <p>
+     * <p>
+     * 输入: letters = ["c","f","j"], target = "c"
+     * 输出: "f"
+     *
+     * 提交次数:2
+     * 解决方式: 自己解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param letters
+     * @param target
+     * @return
+     */
+
+    public char nextGreatestLetter(char[] letters, char target) {
+        int[] count = new int[26];
+        for (int i = 0; i < letters.length; i++) {
+            count[letters[i] - 97]++;
+        }
+        char first = 'a';
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] != 0) {
+                first = (char) (i + 97);
+                break;
+            }
+        }
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] != 0 && i > target - 97) {
+                return (char) (i + 97);
+            }
+        }
+        return first;
     }
 
 
