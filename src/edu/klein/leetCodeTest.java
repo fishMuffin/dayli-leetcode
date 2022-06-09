@@ -430,7 +430,7 @@ class leetCodeTest {
     void testIsIsomorphic() {
         leetCode leetCode = new leetCode();
 //        assert leetCode.isIsomorphic("egg", "add"):"1";
-        assert leetCode.isIsomorphic("abab", "baba"):"2";
+        assert leetCode.isIsomorphic("abab", "baba") : "2";
 //        assert !leetCode.isIsomorphic("badc", "baba"):"3";
 //        assert !leetCode.isIsomorphic("papap", "titii"):"4";
 //        assert leetCode.isIsomorphic("a", "a"):"5";
@@ -439,8 +439,17 @@ class leetCodeTest {
 
 
     @Test
+    void assertTest() {
+        leetCode leetCode = new leetCode();
+        assert !leetCode.isUgly(14) : "isUgly:14";
+        assert leetCode.isUgly(6) : "isUgly:6";
+        assert leetCode.isUgly(1) : "isUgly:1";
+        assert leetCode.isUgly(8) : "isUgly:8";
+    }
+
+    @Test
     void commonTest() {
-        System.out.println(Math.pow(10,2));
+        System.out.println(Math.pow(10, 2));
 //        Integer i = 1;
 //        Integer j = 1;
 //        System.out.println(i == j);

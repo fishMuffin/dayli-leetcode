@@ -1938,7 +1938,7 @@ public class leetCode {
      * <p>
      * 输入：s = "egg", t = "add"
      * 输出：true
-     *
+     * <p>
      * 提交次数:9
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
@@ -1949,8 +1949,8 @@ public class leetCode {
      * @return
      */
     public boolean isIsomorphic(String s, String t) {
-        for(int i = 0; i < s.length(); i++){
-            if(s.indexOf(s.charAt(i)) != t.indexOf(t.charAt(i))){
+        for (int i = 0; i < s.length(); i++) {
+            if (s.indexOf(s.charAt(i)) != t.indexOf(t.charAt(i))) {
                 return false;
             }
         }
@@ -1997,6 +1997,40 @@ public class leetCode {
         }
         if (flag) return flag;
         return false;
+    }
+
+    /**
+     * 丑数 就是只包含质因数 2、3 和 5 的正整数。
+     * <p>
+     * 给你一个整数 n ，请你判断 n 是否为 丑数 。如果是，返回 true ；否则，返回 false 。
+     * <p>
+     * 输入：n = 14
+     * 输出：false
+     * 解释：14 不是丑数，因为它包含了另外一个质因数 7 。
+     *
+     *
+     * 提交次数:3
+     * 解决方式: 自己解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param n
+     * @return
+     */
+    public boolean isUgly(int n) {
+        if(n==0) return false;
+        while (true) {
+            if (n % 2 == 0) {
+                n =  n / 2;
+            } else if ( n % 3 == 0) {
+                 n =  n / 3;
+            } else if ( n % 5 == 0) {
+                 n =  n / 5;
+            }else{
+                break;
+            }
+        }
+        if (n == 1) return true;
+        return n == 2 ? true : n == 3 ? true : n == 5 ? true : false;
     }
 
 
