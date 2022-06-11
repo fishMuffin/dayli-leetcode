@@ -463,9 +463,16 @@ class leetCodeTest {
 //        assert leetCode.repeatedSubstringPattern("zzz") : "zzz";
 //        assert !leetCode.repeatedSubstringPattern("zza") : "zza";
 //        assert leetCode.repeatedSubstringPattern("aaaaaaaaaaaaa") : "aaaaaaaaaaaaa";
+    }
 
-
-
+    @Test
+    void testModifyString() {
+        String s1 = new leetCode().modifyString("ubv?w");
+        String s2 = new leetCode().modifyString("ubva?");
+        String s3 = new leetCode().modifyString("?bvaw");
+        String s4 = new leetCode().modifyString("?s??");
+        String s5 = new leetCode().modifyString("?");
+        System.out.println(s1);
     }
 
     @Test
@@ -474,6 +481,7 @@ class leetCodeTest {
 //        Integer i = 1;
 //        Integer j = 1;
 //        System.out.println(i == j);
+        System.out.println((int) '?');
         System.out.println((int) 'a');
         System.out.println((int) 'z');
 //        System.out.println("abca".replace("c", ""));

@@ -2081,18 +2081,19 @@ public class leetCode {
      * 输入: s = "abab"
      * 输出: true
      * 解释: 可由子串 "ab" 重复两次构成。
-     *
-     *
+     * <p>
+     * <p>
      * 提交次数:8
      * 解决方式: 自己解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param s
      * @return
      */
     public boolean repeatedSubstringPattern(String s) {
-        if(s.length()==1) return false;
-        if(isRepeatString(1,s)) return true;
+        if (s.length() == 1) return false;
+        if (isRepeatString(1, s)) return true;
         int len = s.length();
         int increase = 2;
         while (true) {
@@ -2127,6 +2128,53 @@ public class leetCode {
             start += increase;
         }
         return res;
+    }
+
+
+    /**
+     * 给你一个仅包含小写英文字母和 '?' 字符的字符串 s，请你将所有的 '?' 转换为若干小写字母，使最终的字符串不包含任何 连续重复 的字符。
+     * <p>
+     * 注意：你 不能 修改非 '?' 字符。
+     * <p>
+     * 题目测试用例保证 除 '?' 字符 之外，不存在连续重复的字符。
+     * <p>
+     * 在完成所有转换（可能无需转换）后返回最终的字符串。如果有多个解决方案，请返回其中任何一个。可以证明，在给定的约束条件下，答案总是存在的。
+     * <p>
+     * 输入：s = "ubv?w"
+     * 输出："ubvaw"
+     * 解释：该示例共有 24 种解决方案，只有替换成 "v" 和 "w" 不符合题目要求。因为 "ubvvw" 和 "ubvww" 都包含连续重复的字符。
+     *
+     * @param s
+     * @return
+     */
+    public String modifyString(String s) {
+        if (s.length() == 1) {
+            if (s.charAt(0) == '?')
+                return "a";
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '?') {
+                String replacement = "";
+                if (i == 0) {
+                    if (s.charAt(i + 1) == '?') {
+                        replacement = "a";
+                    } else {
+                        replacement = (char) (s.charAt(i + 1) < 122 ? s.charAt(i + 1) + 1 : 97) + "";
+                    }
+                } else if (i == s.length() - 1) {
+                    if (s.charAt(i - 1) == '?') {
+                        replacement = "a";
+                    } else {
+                        replacement = (char) (s.charAt(i - 1) < 122 ? s.charAt(i - 1) + 1 : 97) + "";
+                    }
+                } else {
+                    int c=(s.charAt(i-1)+1)<122?s.charAt(i-1)+1:97;
+                    replacement=(char) (c==s.charAt(i+1)?c+1:c)+"";
+                }
+                s = s.replaceFirst("\\?", replacement);
+            }
+        }
+        return s;
     }
 
 
