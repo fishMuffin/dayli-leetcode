@@ -439,6 +439,16 @@ class leetCodeTest {
 
 
     @Test
+    void testModifyString() {
+        String s1 = new leetCode().modifyString("ubv?w");
+        String s2 = new leetCode().modifyString("ubva?");
+        String s3 = new leetCode().modifyString("?bvaw");
+        String s4 = new leetCode().modifyString("?s??");
+        String s5 = new leetCode().modifyString("?");
+        System.out.println(s1);
+    }
+
+    @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
 //        assert !leetCode.isUgly(14) : "isUgly:14";
@@ -463,16 +473,9 @@ class leetCodeTest {
 //        assert leetCode.repeatedSubstringPattern("zzz") : "zzz";
 //        assert !leetCode.repeatedSubstringPattern("zza") : "zza";
 //        assert leetCode.repeatedSubstringPattern("aaaaaaaaaaaaa") : "aaaaaaaaaaaaa";
-    }
-
-    @Test
-    void testModifyString() {
-        String s1 = new leetCode().modifyString("ubv?w");
-        String s2 = new leetCode().modifyString("ubva?");
-        String s3 = new leetCode().modifyString("?bvaw");
-        String s4 = new leetCode().modifyString("?s??");
-        String s5 = new leetCode().modifyString("?");
-        System.out.println(s1);
+        assert leetCode.backspaceCompare("ab##","c#d#") : "1";
+        assert leetCode.backspaceCompare("ab#c","ad#c") : "2";
+        assert !leetCode.backspaceCompare("a#c","b") : "3";
     }
 
     @Test

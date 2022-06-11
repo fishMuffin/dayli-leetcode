@@ -2144,6 +2144,11 @@ public class leetCode {
      * 输出："ubvaw"
      * 解释：该示例共有 24 种解决方案，只有替换成 "v" 和 "w" 不符合题目要求。因为 "ubvvw" 和 "ubvww" 都包含连续重复的字符。
      *
+     *
+     * 提交次数:2
+     * 解决方式: 自己解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
      * @param s
      * @return
      */
@@ -2168,13 +2173,50 @@ public class leetCode {
                         replacement = (char) (s.charAt(i - 1) < 122 ? s.charAt(i - 1) + 1 : 97) + "";
                     }
                 } else {
-                    int c=(s.charAt(i-1)+1)<122?s.charAt(i-1)+1:97;
-                    replacement=(char) (c==s.charAt(i+1)?c+1:c)+"";
+                    int c = (s.charAt(i - 1) + 1) < 122 ? s.charAt(i - 1) + 1 : 97;
+                    replacement = (char) (c == s.charAt(i + 1) ? c + 1 : c) + "";
                 }
                 s = s.replaceFirst("\\?", replacement);
             }
         }
         return s;
+    }
+
+    /**
+     * 给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，如果两者相等，返回 true 。# 代表退格字符。
+     * <p>
+     * 注意：如果对空文本输入退格字符，文本继续为空。
+     * <p>
+     * 输入：s = "ab##", t = "c#d#"
+     * 输出：true
+     * 解释：s 和 t 都会变成 ""。
+     *
+     *
+     * 提交次数:2
+     * 解决方式: 自己解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean backspaceCompare(String s, String t) {
+        String s_str = getStack(s);
+        String t_str = getStack(t);
+        return s_str.equals(t_str);
+    }
+
+    private String getStack(String s) {
+        Stack<String> stack_s = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != '#') {
+                stack_s.push(s.charAt((i)) + "");
+            } else {
+                if(!stack_s.isEmpty())
+                    stack_s.pop();
+            }
+        }
+        return stack_s.toString();
     }
 
 
