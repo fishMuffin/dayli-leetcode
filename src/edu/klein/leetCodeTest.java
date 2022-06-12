@@ -473,9 +473,10 @@ class leetCodeTest {
 //        assert leetCode.repeatedSubstringPattern("zzz") : "zzz";
 //        assert !leetCode.repeatedSubstringPattern("zza") : "zza";
 //        assert leetCode.repeatedSubstringPattern("aaaaaaaaaaaaa") : "aaaaaaaaaaaaa";
-        assert leetCode.backspaceCompare("ab##","c#d#") : "1";
-        assert leetCode.backspaceCompare("ab#c","ad#c") : "2";
-        assert !leetCode.backspaceCompare("a#c","b") : "3";
+//        assert leetCode.backspaceCompare("ab##","c#d#") : "1";
+//        assert leetCode.backspaceCompare("ab#c","ad#c") : "2";
+//        assert !leetCode.backspaceCompare("a#c","b") : "3";
+        assert leetCode.longestWord((String[]) Arrays.asList("a", "banana", "app", "appl", "ap", "apply", "apple").toArray())=="apple" : "apple";
     }
 
     @Test

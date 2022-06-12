@@ -2219,5 +2219,43 @@ public class leetCode {
         return stack_s.toString();
     }
 
+    /**
+     * 给出一个字符串数组 words 组成的一本英语词典。返回 words 中最长的一个单词，该单词是由 words 词典中其他单词逐步添加一个字母组成。
+     *
+     * 若其中有多个可行的答案，则返回答案中字典序最小的单词。若无答案，则返回空字符串。
+     *
+     * 输入：words = ["a", "banana", "app", "appl", "ap", "apply", "apple"]
+     * 输出："apple"
+     * 解释："apply" 和 "apple" 都能由词典中的单词组成。但是 "apple" 的字典序小于 "apply"
+     *
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     * @param words
+     * @return
+     */
+    public String longestWord(String[] words) {
+        Arrays.sort(words, (a, b) ->  {
+            if (a.length() != b.length()) {
+                return a.length() - b.length();
+            } else {
+                return b.compareTo(a);
+            }
+        });
+        String longest = "";
+        Set<String> candidates = new HashSet<String>();
+        candidates.add("");
+        int n = words.length;
+        for (int i = 0; i < n; i++) {
+            String word = words[i];
+            if (candidates.contains(word.substring(0, word.length() - 1))) {
+                candidates.add(word);
+                longest = word;
+            }
+        }
+        return longest;
+    }
+
 
 }
