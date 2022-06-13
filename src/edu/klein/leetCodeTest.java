@@ -488,8 +488,8 @@ class leetCodeTest {
 //        int[] list2 = {-100, -98, -1, 2, 3, 4};
 //        assert leetCode.maximumProduct(list) == 60 : "12345";
 //        assert leetCode.maximumProduct(list2) == 39200 : "39200";
-
-
+        int[] list = {1,3,5,4,5,6,7,1,2,3,4,5,6};
+        assert leetCode.findLengthOfLCIS(list) == 6 : "13547";
     }
 
     @Test
