@@ -2387,4 +2387,47 @@ public class leetCode {
         return new String(res);
     }
 
+    /**
+     * 给你一个整型数组 nums ，在数组中找出由三个数组成的最大乘积，并输出这个乘积。
+     * <p>
+     * 输入：nums = [1,2,3,4,5]
+     * 输出：60
+     * <p>
+     * <p>
+     * 提交次数:2
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @return
+     */
+    public int maximumProduct(int[] nums) {
+//        if (nums.length == 3) return nums[0] * nums[1] * nums[2];
+//        List<Integer> list = new ArrayList<>();
+//        for (int i = 0; i < nums.length; i++) {
+//            int tick = 3;
+//            for (int j = 0; j < nums.length; j++) {
+//                if (i == j) continue;
+//                if (nums[i] < nums[j]) {
+//                    tick--;
+//                }
+//            }
+//            if (tick > 0)
+//                list.add(nums[i]);
+//        }
+//        int res = 1;
+//        for (Integer integer : list) {
+//            res *= integer;
+//        }
+//        return res;
+        if (nums.length == 3) return nums[0] * nums[1] * nums[2];
+        int max = 0;
+        Arrays.sort(nums);
+        int len = nums.length;
+        max = Math.max(nums[len - 1] * nums[len - 2] * nums[len - 3], nums[0] * nums[1] * nums[len - 3]);
+        return max;
+    }
+
+
 }

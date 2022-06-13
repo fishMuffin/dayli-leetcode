@@ -482,7 +482,14 @@ class leetCodeTest {
 //        assert leetCode.reformat1("covid2019")=="a0b1c2" : "covid2019";
 //        assert leetCode.reformat2("covid2019")=="a0b1c2" : "covid2019";
 //        assert leetCode.reformat2("ab123")=="1a2b3" : "ab123";
-        assert leetCode.reformat2("619mama")=="1a2b3" : "619mama";
+//        assert leetCode.reformat2("619mama")=="1a2b3" : "619mama";
+
+//        int[] list = {1, 2, 3, 4, 5};
+//        int[] list2 = {-100, -98, -1, 2, 3, 4};
+//        assert leetCode.maximumProduct(list) == 60 : "12345";
+//        assert leetCode.maximumProduct(list2) == 39200 : "39200";
+
+
     }
 
     @Test
