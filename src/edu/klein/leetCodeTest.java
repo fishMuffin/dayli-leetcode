@@ -476,7 +476,13 @@ class leetCodeTest {
 //        assert leetCode.backspaceCompare("ab##","c#d#") : "1";
 //        assert leetCode.backspaceCompare("ab#c","ad#c") : "2";
 //        assert !leetCode.backspaceCompare("a#c","b") : "3";
-        assert leetCode.longestWord((String[]) Arrays.asList("a", "banana", "app", "appl", "ap", "apply", "apple").toArray())=="apple" : "apple";
+//        assert leetCode.longestWord((String[]) Arrays.asList("a", "banana", "app", "appl", "ap", "apply", "apple").toArray())=="apple" : "apple";
+//        assert leetCode.reformat("a0b1c2")=="a0b1c2" : "a0b1c2";
+//        assert leetCode.reformat("covid2019")=="a0b1c2" : "covid2019";
+//        assert leetCode.reformat1("covid2019")=="a0b1c2" : "covid2019";
+//        assert leetCode.reformat2("covid2019")=="a0b1c2" : "covid2019";
+//        assert leetCode.reformat2("ab123")=="1a2b3" : "ab123";
+        assert leetCode.reformat2("619mama")=="1a2b3" : "619mama";
     }
 
     @Test
@@ -485,7 +491,7 @@ class leetCodeTest {
 //        Integer i = 1;
 //        Integer j = 1;
 //        System.out.println(i == j);
-        System.out.println((int) '?');
+//        System.out.println((int) '?');
         System.out.println((int) 'a');
         System.out.println((int) 'z');
 //        System.out.println("abca".replace("c", ""));
@@ -493,7 +499,7 @@ class leetCodeTest {
 //        System.out.println("ZY".charAt(1) - 64);
 //        System.out.println((int) 'A');
 //        System.out.println((int) 'Z');
-//        System.out.println((int) '1');
-//        System.out.println((int) '9');
+        System.out.println((int) '0');
+        System.out.println((int) '9');
     }
 }

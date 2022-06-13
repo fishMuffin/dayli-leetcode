@@ -2143,12 +2143,13 @@ public class leetCode {
      * 输入：s = "ubv?w"
      * 输出："ubvaw"
      * 解释：该示例共有 24 种解决方案，只有替换成 "v" 和 "w" 不符合题目要求。因为 "ubvvw" 和 "ubvww" 都包含连续重复的字符。
-     *
-     *
+     * <p>
+     * <p>
      * 提交次数:2
      * 解决方式: 自己解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param s
      * @return
      */
@@ -2190,12 +2191,13 @@ public class leetCode {
      * 输入：s = "ab##", t = "c#d#"
      * 输出：true
      * 解释：s 和 t 都会变成 ""。
-     *
-     *
+     * <p>
+     * <p>
      * 提交次数:2
      * 解决方式: 自己解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param s
      * @param t
      * @return
@@ -2212,7 +2214,7 @@ public class leetCode {
             if (s.charAt(i) != '#') {
                 stack_s.push(s.charAt((i)) + "");
             } else {
-                if(!stack_s.isEmpty())
+                if (!stack_s.isEmpty())
                     stack_s.pop();
             }
         }
@@ -2221,22 +2223,23 @@ public class leetCode {
 
     /**
      * 给出一个字符串数组 words 组成的一本英语词典。返回 words 中最长的一个单词，该单词是由 words 词典中其他单词逐步添加一个字母组成。
-     *
+     * <p>
      * 若其中有多个可行的答案，则返回答案中字典序最小的单词。若无答案，则返回空字符串。
-     *
+     * <p>
      * 输入：words = ["a", "banana", "app", "appl", "ap", "apply", "apple"]
      * 输出："apple"
      * 解释："apply" 和 "apple" 都能由词典中的单词组成。但是 "apple" 的字典序小于 "apply"
-     *
+     * <p>
      * 提交次数:1
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
+     *
      * @param words
      * @return
      */
     public String longestWord(String[] words) {
-        Arrays.sort(words, (a, b) ->  {
+        Arrays.sort(words, (a, b) -> {
             if (a.length() != b.length()) {
                 return a.length() - b.length();
             } else {
@@ -2257,5 +2260,131 @@ public class leetCode {
         return longest;
     }
 
+
+    /**
+     * 给你一个混合了数字和字母的字符串 s，其中的字母均为小写英文字母。
+     * <p>
+     * 请你将该字符串重新格式化，使得任意两个相邻字符的类型都不同。也就是说，字母后面应该跟着数字，而数字后面应该跟着字母。
+     * <p>
+     * 请你返回 重新格式化后 的字符串；如果无法按要求重新格式化，则返回一个 空字符串 。
+     * <p>
+     * 输入：s = "a0b1c2"
+     * 输出："0a1b2c"
+     * 解释："0a1b2c" 中任意两个相邻字符的类型都不同。 "a0b1c2", "0a1b2c", "0c2a1b" 也是满足题目要求的答案。
+     * <p>
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自己有解决方案 答案更高效
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param s
+     * @return
+     */
+    public String reformat(String s) {
+        StringBuffer res = new StringBuffer("");
+        Stack<Character> charList = new Stack<>();
+        Stack<Character> numList = new Stack<>();
+        if (s.length() <= 1) return s;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) >= 97 && s.charAt(i) <= 122) charList.push(s.charAt(i));
+            if (s.charAt(i) >= 48 && s.charAt(i) <= 57) numList.push(s.charAt(i));
+        }
+        if (Math.abs(charList.size() - numList.size()) > 1) {
+            return res.toString();
+        } else if (charList.size() > numList.size()) {
+            strAppend(s, res, charList, numList);
+        } else {
+            strAppend(s, res, numList, charList);
+        }
+        return res.toString();
+    }
+
+    private void strAppend(String s, StringBuffer res, Stack<Character> charList, Stack<Character> numList) {
+        boolean flag = true;
+        for (int i = 0; i < s.length(); i++) {
+            if (flag) {
+                if (!charList.isEmpty())
+                    res.append(charList.pop());
+            } else {
+                if (!numList.isEmpty())
+                    res.append(numList.pop());
+            }
+            flag = !flag;
+        }
+    }
+
+    public String reformat1(String s) {
+        char[] cs = s.toCharArray();
+        int cnt1 = 0, cnt2 = 0;
+        for (int i = 0; i < cs.length; i++) {
+            char c = cs[i];
+            if (c >= '0' && c <= '9') {
+                cnt1++;
+            } else {
+                cnt2++;
+            }
+        }
+        if (Math.abs(cnt1 - cnt2) > 1) {
+            return "";
+        }
+        boolean num = false;
+        if (cnt1 > cnt2) {
+            num = true;
+        }
+        char[] ans = new char[cs.length];
+        int p1 = 0, p2 = 1;
+        for (int i = 0; i < cs.length; i++) {
+            char c = cs[i];
+            if (c >= '0' && c <= '9') {
+                if (num) {
+                    ans[p1] = c;
+                    p1 += 2;
+                } else {
+                    ans[p2] = c;
+                    p2 += 2;
+                }
+            } else {
+                if (!num) {
+                    ans[p1] = c;
+                    p1 += 2;
+                } else {
+                    ans[p2] = c;
+                    p2 += 2;
+                }
+            }
+        }
+        return new String(ans);
+    }
+
+
+    public String reformat2(String s) {
+        char[] chars = s.toCharArray();
+        int cnt1 = 0, cnt2 = 0;
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if (c >= 'a' && c <= 'z') cnt1++;
+            if (c >= '0' && c <= '9') cnt2++;
+        }
+        if (Math.abs(cnt1 - cnt2) > 1) return "";
+        char[] res = new char[chars.length];
+        int p1 = 0, p2 = 1;
+        boolean isNum = true;
+        if (cnt1 > cnt2) isNum = !isNum;
+        if (!isNum) {
+            p2 = 0;
+            p1 = 1;
+        }
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] >= '0' && chars[i] <= '9') {
+                res[p2] = chars[i];
+                p2 += 2;
+            } else {
+                res[p1] = chars[i];
+                p1 += 2;
+            }
+        }
+        return new String(res);
+    }
 
 }
