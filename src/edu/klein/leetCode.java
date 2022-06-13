@@ -2480,9 +2480,9 @@ public class leetCode {
      * 左子字符串 = "0111" 且 右子字符串 = "01"，得分 = 1 + 1 = 2
      * 左子字符串 = "01110" 且 右子字符串 = "1"，得分 = 2 + 1 = 3
      * <p>
-     * 提交次数:1
+     * 提交次数:3
      * 解决方式: 自我解决
-     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要更优化的解题方法:是
      * 未来是否需要复盘:否
      *
      * @param s
@@ -2531,5 +2531,52 @@ public class leetCode {
         return leftCnt + rightCnt;
     }
 
+
+    /**
+     * 给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。
+     * <p>
+     * 元音字母包括 'a'、'e'、'i'、'o'、'u'，且可能以大小写两种形式出现。
+     * <p>
+     * 输入：s = "leetcode"
+     * 输出："leotcede"
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param s
+     * @return
+     */
+    public String reverseVowels(String s) {
+        String template = "aeiouAEIOU";
+        char[] chars = s.toCharArray();
+        boolean leftFlag;
+        boolean rightFlag;
+        for (int left = 0, right = s.length() - 1; left < right; ) {
+            if (!template.contains(chars[left] + "")) {
+                left++;
+                leftFlag = false;
+            } else {
+                leftFlag = true;
+            }
+            if (!template.contains(chars[right] + "")) {
+                right--;
+                rightFlag = false;
+            } else {
+                rightFlag = true;
+            }
+            if (leftFlag && rightFlag) {
+                if(chars[left]!=chars[right]){
+                    char temp = chars[left];
+                    chars[left] = chars[right];
+                    chars[right] = temp;
+                }
+                left++;
+                right--;
+            }
+        }
+        return new String(chars);
+    }
 
 }

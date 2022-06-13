@@ -451,6 +451,10 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
+        assert leetCode.reverseVowels("leetcode").equals("leotcede") : "leetcode";
+        assert leetCode.reverseVowels("hello").equals("holle") : "hello";
+        assert leetCode.reverseVowels("aA").equals("Aa") : "aA";
+
 //        assert !leetCode.isUgly(14) : "isUgly:14";
 //        assert leetCode.isUgly(6) : "isUgly:6";
 //        assert leetCode.isUgly(1) : "isUgly:1";
@@ -491,10 +495,12 @@ class leetCodeTest {
 //        int[] list = {1,3,5,4,5,6,7,1,2,3,4,5,6};
 //        assert leetCode.findLengthOfLCIS(list) == 6 : "13547";
 
-        assert leetCode.maxScore("011101") == 5 : "011101";
-        assert leetCode.maxScore("00111") == 5 : "00111";
-        assert leetCode.maxScore("1111") == 3 : "1111";
-        assert leetCode.maxScore("000") == 2 : "000:"+leetCode.maxScore1("000");
+//        assert leetCode.maxScore("011101") == 5 : "011101";
+//        assert leetCode.maxScore("00111") == 5 : "00111";
+//        assert leetCode.maxScore("1111") == 3 : "1111";
+//        assert leetCode.maxScore("000") == 2 : "000:"+leetCode.maxScore1("000");
+
+
     }
 
     @Test
