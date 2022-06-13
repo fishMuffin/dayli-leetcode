@@ -488,8 +488,13 @@ class leetCodeTest {
 //        int[] list2 = {-100, -98, -1, 2, 3, 4};
 //        assert leetCode.maximumProduct(list) == 60 : "12345";
 //        assert leetCode.maximumProduct(list2) == 39200 : "39200";
-        int[] list = {1,3,5,4,5,6,7,1,2,3,4,5,6};
-        assert leetCode.findLengthOfLCIS(list) == 6 : "13547";
+//        int[] list = {1,3,5,4,5,6,7,1,2,3,4,5,6};
+//        assert leetCode.findLengthOfLCIS(list) == 6 : "13547";
+
+        assert leetCode.maxScore("011101") == 5 : "011101";
+        assert leetCode.maxScore("00111") == 5 : "00111";
+        assert leetCode.maxScore("1111") == 3 : "1111";
+        assert leetCode.maxScore("000") == 2 : "000:"+leetCode.maxScore1("000");
     }
 
     @Test
