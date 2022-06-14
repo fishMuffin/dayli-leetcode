@@ -451,9 +451,15 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.reverseVowels("leetcode").equals("leotcede") : "leetcode";
-        assert leetCode.reverseVowels("hello").equals("holle") : "hello";
-        assert leetCode.reverseVowels("aA").equals("Aa") : "aA";
+        int[] nums={-4,-2,1,4,8};
+        int[] nums1={2,-1,1};
+        int[] nums2={-10,-12,-54,-12,-544,-10000};
+//        assert leetCode.findClosestNumber(nums)==1 : "-4,-2,1,4,8";
+//        assert leetCode.findClosestNumber(nums1)==1 : "2,-1,1";
+        assert leetCode.findClosestNumber(nums2)==-10 : "-10,-12,-54,-12,-544,-10000";
+//        assert leetCode.reverseVowels("leetcode").equals("leotcede") : "leetcode";
+//        assert leetCode.reverseVowels("hello").equals("holle") : "hello";
+//        assert leetCode.reverseVowels("aA").equals("Aa") : "aA";
 
 //        assert !leetCode.isUgly(14) : "isUgly:14";
 //        assert leetCode.isUgly(6) : "isUgly:6";

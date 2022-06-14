@@ -2567,7 +2567,7 @@ public class leetCode {
                 rightFlag = true;
             }
             if (leftFlag && rightFlag) {
-                if(chars[left]!=chars[right]){
+                if (chars[left] != chars[right]) {
                     char temp = chars[left];
                     chars[left] = chars[right];
                     chars[right] = temp;
@@ -2579,4 +2579,40 @@ public class leetCode {
         return new String(chars);
     }
 
+
+    /**
+     * 给你一个长度为 n 的整数数组 nums ，请你返回 nums 中最 接近 0 的数字。如果有多个答案，请你返回它们中的 最大值 。
+     * <p>
+     * 输入：nums = [-4,-2,1,4,8]
+     * 输出：1
+     * 解释：
+     * -4 到 0 的距离为 |-4| = 4 。
+     * -2 到 0 的距离为 |-2| = 2 。
+     * 1 到 0 的距离为 |1| = 1 。
+     * 4 到 0 的距离为 |4| = 4 。
+     * 8 到 0 的距离为 |8| = 8 。
+     * 所以，数组中距离 0 最近的数字为 1 。
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param nums
+     * @return
+     */
+    public int findClosestNumber(int[] nums) {
+        int res = nums[0];
+        int minLen = Math.abs(nums[0]);
+        for (int i = 1; i < nums.length; i++) {
+            int current = Math.abs(nums[i]);
+            if (minLen > current) {
+                minLen = current;
+                res = nums[i];
+            } else if (minLen == current) {
+                res = Math.max(nums[i], res);
+            }
+        }
+        return res;
+    }
 }
