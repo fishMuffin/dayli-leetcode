@@ -2700,4 +2700,44 @@ public class leetCode {
         return i == len - 1;
     }
 
+
+    /**
+     * 给你一个由 n 个元素组成的整数数组 nums 和一个整数 k 。
+     * <p>
+     * 请你找出平均数最大且 长度为 k 的连续子数组，并输出该最大平均数。
+     * <p>
+     * 任何误差小于 10-5 的答案都将被视为正确答案。
+     * <p>
+     * <p>
+     * <p>
+     * 输入：nums = [1,12,-5,-6,50,3], k = 4
+     * 输出：12.75
+     * 解释：最大平均数 (12-5-6+50)/4 = 51/4 = 12.75
+     *
+     *
+     * 提交次数:5
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param nums
+     * @param k
+     * @return
+     */
+    public double findMaxAverage(int[] nums, int k) {
+        double maxSum = Integer.MIN_VALUE;
+        double sum = 0;
+        int i = 0;
+        while (i <= nums.length) {
+            if (i < k) {
+                sum += nums[i];
+            } else {
+                maxSum = Math.max(maxSum, sum);
+                if (i == nums.length) break;
+                double temp = sum;
+                sum = temp - nums[i - k] + nums[i];
+            }
+            i++;
+        }
+        return maxSum / k;
+    }
 }

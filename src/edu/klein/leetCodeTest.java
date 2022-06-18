@@ -451,20 +451,24 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] nums1 = {0,3,2,1};
-        int[] nums2 = {0,3,3};
-        int[] nums3 = {0,3};
-        int[] nums4 = {0,1,2,4,2,1};
-        int[] nums5 = {0,1,2,1,2,1};
-        int[] nums6 = {0,1,2,3,4,5};
-        assert leetCode.validMountainArray(nums1) : "0,3,2,1";
-        assert !leetCode.validMountainArray(nums2) : "0,3,3";
-        assert !leetCode.validMountainArray(nums3) : "0,3";
-        assert leetCode.validMountainArray(nums4) : "0,1,2,4,2,1";
-        assert !leetCode.validMountainArray(nums5) : "0,1,2,1,2,1";
-        assert !leetCode.validMountainArray(nums6) : "0,1,2,3,4,5";
+        int[] nums1 = {1,12,-5,-6,50,3};
+        assert leetCode.findMaxAverage(nums1,4)==12.75 : "0,3,2,1";
+
+
+//        int[] nums1 = {0,3,2,1};
+//        int[] nums2 = {0,3,3};
+//        int[] nums3 = {0,3};
+//        int[] nums4 = {0,1,2,4,2,1};
+//        int[] nums5 = {0,1,2,1,2,1};
+//        int[] nums6 = {0,1,2,3,4,5};
+//        assert leetCode.validMountainArray(nums1) : "0,3,2,1";
+//        assert !leetCode.validMountainArray(nums2) : "0,3,3";
+//        assert !leetCode.validMountainArray(nums3) : "0,3";
+//        assert leetCode.validMountainArray(nums4) : "0,1,2,4,2,1";
+//        assert !leetCode.validMountainArray(nums5) : "0,1,2,1,2,1";
+//        assert !leetCode.validMountainArray(nums6) : "0,1,2,3,4,5";
 //        assert !leetCode.validMountainArray1(nums6) : "0,1,2,3,4,5";
-        assert leetCode.validMountainArray1(nums4) : "0,1,2,3,4,5";
+//        assert leetCode.validMountainArray1(nums4) : "0,1,2,3,4,5";
 
 
 //        int[] nums={-4,-2,1,4,8};
