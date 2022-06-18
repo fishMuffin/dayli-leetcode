@@ -2466,7 +2466,7 @@ public class leetCode {
     }
 
     /**
-     * 给你一个由若干 0 和 1 组成的字符串 s ，请你计算并返回将该字符串分割成两个 非空 子字符串（即 左 子字符串和 右 子字符串）所能获得的最大得分。
+     * 给你一个由若干 0 和 1 组成的字符串 s ，请你计算并返回将该字符串分割成两个 非空 子字符串（即 左 子字符串和 右 子字符串）所能获得的最大得分。
      * <p>
      * 「分割字符串的得分」为 左 子字符串中 0 的数量加上 右 子字符串中 1 的数量。
      * <p>
@@ -2615,4 +2615,89 @@ public class leetCode {
         }
         return res;
     }
+
+    /**
+     * 给定一个整数数组 arr，如果它是有效的山脉数组就返回 true，否则返回 false。
+     * <p>
+     * 让我们回顾一下，如果 arr 满足下述条件，那么它是一个山脉数组：
+     * <p>
+     * arr.length >= 3
+     * 在 0 < i < arr.length - 1 条件下，存在 i 使得：
+     * arr[0] < arr[1] < ... arr[i-1] < arr[i]
+     * arr[i] > arr[i+1] > ... > arr[arr.length - 1]
+     * <p>
+     * 输入：arr = [0,3,2,1]
+     * 输出：true
+     * <p>
+     * 输入：arr = [3,5,5]
+     * 输出：false
+     * <p>
+     * 提交次数:4
+     * 解决方式: 自我解决+看答案优化
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:否
+     *
+     * @param arr
+     * @return
+     */
+    public boolean validMountainArray2(int[] arr) {
+        if (arr.length < 3) return false;
+        if (arr.length == 3)
+            if (arr[1] > arr[0] && arr[1] > arr[2])
+                return true;
+            else
+                return false;
+        boolean right = true;
+        boolean beforeTure = true;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (i == 0 && arr[i] >= arr[i + 1])
+                return false;
+            if (i == arr.length - 2 && arr[i] <= arr[i + 1])
+                return false;
+            if (beforeTure) {
+                if (arr[i] >= arr[i + 1]) {
+                    beforeTure = false;
+                }
+            } else {
+                if (arr[i] <= arr[i + 1]) {
+                    right = false;
+                }
+            }
+        }
+        return right;
+    }
+
+
+    public boolean validMountainArray1(int[] arr) {
+        int N = arr.length;
+        int i = 0;
+
+        // 递增扫描
+        while (i + 1 < N && arr[i] < arr[i + 1]) {
+            i++;
+        }
+
+        // 最高点不能是数组的第一个位置或最后一个位置
+        if (i == 0 || i == N - 1) {
+            return false;
+        }
+
+        // 递减扫描
+        while (i + 1 < N && arr[i] > arr[i + 1]) {
+            i++;
+        }
+
+        return i == N - 1;
+    }
+
+    public boolean validMountainArray(int[] arr) {
+        int i = 0;
+        int len = arr.length;
+        while (i + 1 < len && arr[i] < arr[i + 1]) i++;
+        if (i == 0 || i == len - 1) return false;
+        while (i + 1 < len && arr[i] > arr[i + 1]) i++;
+        return i == len - 1;
+    }
+
 }

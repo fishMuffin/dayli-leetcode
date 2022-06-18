@@ -451,12 +451,28 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] nums={-4,-2,1,4,8};
-        int[] nums1={2,-1,1};
-        int[] nums2={-10,-12,-54,-12,-544,-10000};
+        int[] nums1 = {0,3,2,1};
+        int[] nums2 = {0,3,3};
+        int[] nums3 = {0,3};
+        int[] nums4 = {0,1,2,4,2,1};
+        int[] nums5 = {0,1,2,1,2,1};
+        int[] nums6 = {0,1,2,3,4,5};
+        assert leetCode.validMountainArray(nums1) : "0,3,2,1";
+        assert !leetCode.validMountainArray(nums2) : "0,3,3";
+        assert !leetCode.validMountainArray(nums3) : "0,3";
+        assert leetCode.validMountainArray(nums4) : "0,1,2,4,2,1";
+        assert !leetCode.validMountainArray(nums5) : "0,1,2,1,2,1";
+        assert !leetCode.validMountainArray(nums6) : "0,1,2,3,4,5";
+//        assert !leetCode.validMountainArray1(nums6) : "0,1,2,3,4,5";
+        assert leetCode.validMountainArray1(nums4) : "0,1,2,3,4,5";
+
+
+//        int[] nums={-4,-2,1,4,8};
+//        int[] nums1={2,-1,1};
+//        int[] nums2={-10,-12,-54,-12,-544,-10000};
 //        assert leetCode.findClosestNumber(nums)==1 : "-4,-2,1,4,8";
 //        assert leetCode.findClosestNumber(nums1)==1 : "2,-1,1";
-        assert leetCode.findClosestNumber(nums2)==-10 : "-10,-12,-54,-12,-544,-10000";
+//        assert leetCode.findClosestNumber(nums2)==-10 : "-10,-12,-54,-12,-544,-10000";
 //        assert leetCode.reverseVowels("leetcode").equals("leotcede") : "leetcode";
 //        assert leetCode.reverseVowels("hello").equals("holle") : "hello";
 //        assert leetCode.reverseVowels("aA").equals("Aa") : "aA";
