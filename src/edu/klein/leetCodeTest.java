@@ -452,12 +452,20 @@ class leetCodeTest {
     void assertTest() {
         leetCode leetCode = new leetCode();
         int[] nums1 = {1,12,-5,-6,50,3};
+        assert leetCode.arrangeCoins(8)==3 : "8";
+        assert leetCode.arrangeCoins(5)==2 : "5";
+        assert leetCode.arrangeCoins(3)==2 : "3";
+        assert leetCode.arrangeCoins(10)==4 : "10";
+////        System.out.println(leetCode.arrangeCoins(1000));
+        System.out.println(leetCode.arrangeCoins(1804289383));
+//        assert leetCode.arrangeCoins(10)==4 : "10";
+
+
+
 //        assert leetCode.firstBadVersion(1)==1 : "5";
 //        assert leetCode.firstBadVersion(5)==4 : "5";
 //        assert leetCode.firstBadVersion(4)==1 : "4";
-
-
-        assert leetCode.firstBadVersion(2126753390)==1702766719 : "4";
+//        assert leetCode.firstBadVersion(2126753390)==1702766719 : "4";
 //        assert leetCode.firstBadVersion(2)==2 : "2";
 
 //        assert leetCode.findMaxAverage(nums1,4)==12.75 : "0,3,2,1";
