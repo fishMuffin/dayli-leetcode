@@ -452,9 +452,15 @@ class leetCodeTest {
     void assertTest() {
         leetCode leetCode = new leetCode();
         int[] nums1 = {1,12,-5,-6,50,3};
-        assert leetCode.findMaxAverage(nums1,4)==12.75 : "0,3,2,1";
+//        assert leetCode.firstBadVersion(1)==1 : "5";
+//        assert leetCode.firstBadVersion(5)==4 : "5";
+//        assert leetCode.firstBadVersion(4)==1 : "4";
 
 
+        assert leetCode.firstBadVersion(2126753390)==1702766719 : "4";
+//        assert leetCode.firstBadVersion(2)==2 : "2";
+
+//        assert leetCode.findMaxAverage(nums1,4)==12.75 : "0,3,2,1";
 //        int[] nums1 = {0,3,2,1};
 //        int[] nums2 = {0,3,3};
 //        int[] nums3 = {0,3};
