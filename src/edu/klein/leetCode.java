@@ -2888,9 +2888,9 @@ public class leetCode {
     public String mostCommonWord(String paragraph, String[] banned) {
         String s = paragraph.toLowerCase();
         for (int i = 0; i < s.length(); i++) {
-            char ch=s.charAt(i);
-            if (( ch>= '!' &&  ch <= '/')|| ch=='?'|| ch==';') {
-                s=s.replace( ch + "", " ");
+            char ch = s.charAt(i);
+            if ((ch >= '!' && ch <= '/') || ch == '?' || ch == ';') {
+                s = s.replace(ch + "", " ");
             }
         }
         String[] s1 = s.split(" ");
@@ -2916,5 +2916,55 @@ public class leetCode {
         }
         return res;
     }
+
+
+    /**
+     * 集合 s 包含从 1 到 n 的整数。不幸的是，因为数据错误，导致集合里面某一个数字复制了成了集合里面的另外一个数字的值，导致集合 丢失了一个数字 并且 有一个数字重复 。
+     * <p>
+     * 给定一个数组 nums 代表了集合 S 发生错误后的结果。
+     * <p>
+     * 请你找出重复出现的整数，再找到丢失的整数，将它们以数组的形式返回。
+     * <p>
+     * <p>
+     * 输入：nums = [1,2,2,4]
+     * 输入：nums = [1,2,2,4,5,6,7]
+     * 输出：[2,3]
+     * <p>
+     * 提交次数:6
+     * 解决方式: 自我解答
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @return
+     */
+    public int[] findErrorNums(int[] nums) {
+        int[] res = new int[10001];
+        int[] result = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            if (res[nums[i]] == 0) {
+                res[nums[i]]++;
+            } else {
+                result[0] = nums[i];
+            }
+        }
+        for (int i = 1; i <= nums.length; i++) {
+            if (res[i] == 0) result[1] = i;
+        }
+        return result;
+    }
+
+    public int[] findErrorNums1(int[] nums) {
+        int[] res = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
+                res[0] = i;
+                res[1] = i + 1;
+                break;
+            }
+        }
+        return res;
+    }
+
 
 }
