@@ -451,14 +451,18 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
+        assert leetCode.isLongPressedName("alex", "aaleex") : "alex-aaleex";
+        assert !leetCode.isLongPressedName("saeed", "ssaaedd") : "saeed-ssaaedd";
+
+
 //        int[] banned = {1, 2, 2, 4, 5, 6, 7};
 //        int[] banned = {2, 2};
 //        int[] banned = {1, 1};
-        int[] banned = {3, 2, 3, 4, 6, 5};
-        int[] errorNums = leetCode.findErrorNums(banned);
-        for (int i = 0; i < errorNums.length; i++) {
-            System.out.println(errorNums[i]);
-        }
+//        int[] banned = {3, 2, 3, 4, 6, 5};
+//        int[] errorNums = leetCode.findErrorNums(banned);
+//        for (int i = 0; i < errorNums.length; i++) {
+//            System.out.println(errorNums[i]);
+//        }
 
 //        String paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
 //        String [] banned1 = {"hit"};
@@ -565,10 +569,10 @@ class leetCodeTest {
 
     @Test
     void commonTest() {
-        String[] split = "a b c,c,c,d".replace(",", " ").split(" ");
-        for (String s : split) {
-            System.out.print(s + "-");
-        }
+//        String[] split = "a b c,c,c,d".replace(",", " ").split(" ");
+//        for (String s : split) {
+//            System.out.print(s + "-");
+//        }
 //        System.out.println(Math.pow(10, 2));
 //        Integer i = 1;
 //        Integer j = 1;

@@ -2919,7 +2919,7 @@ public class leetCode {
 
 
     /**
-     * 集合 s 包含从 1 到 n 的整数。不幸的是，因为数据错误，导致集合里面某一个数字复制了成了集合里面的另外一个数字的值，导致集合 丢失了一个数字 并且 有一个数字重复 。
+     * 集合 s 包含从 1 到n的整数。不幸的是，因为数据错误，导致集合里面某一个数字复制了成了集合里面的另外一个数字的值，导致集合 丢失了一个数字 并且 有一个数字重复 。
      * <p>
      * 给定一个数组 nums 代表了集合 S 发生错误后的结果。
      * <p>
@@ -2967,4 +2967,56 @@ public class leetCode {
     }
 
 
+    /**
+     * 你的朋友正在使用键盘输入他的名字name。偶尔，在键入字符c时，按键可能会被长按，而字符可能被输入 1 次或多次。
+     * <p>
+     * 你将会检查键盘输入的字符typed。如果它对应的可能是你的朋友的名字（其中一些字符可能被长按），那么就返回True。
+     * <p>
+     * 输入：name = "alex", typed = "aaleex"
+     * 输出：true
+     * 解释：'alex' 中的 'a' 和 'e' 被长按。
+     * <p>
+     * 输入：name = "saeed", typed = "ssaaedd"
+     * 输出：false
+     * 解释：'e' 一定需要被键入两次，但在 typed 的输出中不是这样。
+     *
+     * 提交次数:2
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     * @param name
+     * @param typed
+     * @return
+     */
+
+    public boolean isLongPressedName(String name, String typed) {
+        int i = 0, j = 0;
+        while (j < typed.length()) {
+            if (i < name.length() && name.charAt(i) == typed.charAt(j)) {
+                i++;
+                j++;
+            } else if (j > 0 && typed.charAt(j) == typed.charAt(j - 1)) {
+                j++;
+            } else {
+                return false;
+            }
+        }
+        return i == name.length();
+    }
+
+    public boolean isLongPressedName1(String name, String typed) {
+        char[] chars = name.toCharArray();
+        char[] typedChars = typed.toCharArray();
+        int i = 0, j = 0;
+        while (i < chars.length && j < typed.length()) {
+            if (chars[i] == typedChars[j]) {
+                j++;
+            } else if (chars[i + 1] == typedChars[j]) {
+                i++;
+            } else {
+                return false;
+            }
+        }
+        return Math.abs(i - name.length()) <= 1 && j == typed.length();
+    }
 }
