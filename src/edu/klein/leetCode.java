@@ -2833,11 +2833,12 @@ public class leetCode {
      * 输入：n = 8
      * 输出：3
      * 解释：因为第四行不完整，所以返回 3 。
-     *
+     * <p>
      * 提交次数:4
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
+     *
      * @param n
      * @return
      */
@@ -2856,5 +2857,64 @@ public class leetCode {
         return left;
     }
 
+    /**
+     * 给定一个段落 (paragraph) 和一个禁用单词列表 (banned)。返回出现次数最多，同时不在禁用列表中的单词。
+     * <p>
+     * 题目保证至少有一个词不在禁用列表中，而且答案唯一。
+     * <p>
+     * 禁用列表中的单词用小写字母表示，不含标点符号。段落中的单词不区分大小写。答案都是小写字母。
+     * <p>
+     * <p>
+     * <p>
+     * 输入:
+     * paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+     * banned = ["hit"]
+     * 输出: "ball"
+     * 解释:
+     * "hit" 出现了3次，但它是一个禁用的单词。
+     * "ball" 出现了2次 (同时没有其他单词出现2次)，所以它是段落里出现次数最多的，且不在禁用列表中的单词。
+     * 注意，所有这些单词在段落里不区分大小写，标点符号需要忽略（即使是紧挨着单词也忽略， 比如 "ball,"），
+     * "hit"不是最终的答案，虽然它出现次数更多，但它在禁用单词列表中。
+     * <p>
+     * 提交次数:4
+     * 解决方式: 自我解答
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param paragraph
+     * @param banned
+     * @return
+     */
+    public String mostCommonWord(String paragraph, String[] banned) {
+        String s = paragraph.toLowerCase();
+        for (int i = 0; i < s.length(); i++) {
+            char ch=s.charAt(i);
+            if (( ch>= '!' &&  ch <= '/')|| ch=='?'|| ch==';') {
+                s=s.replace( ch + "", " ");
+            }
+        }
+        String[] s1 = s.split(" ");
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < s1.length; i++) {
+            if (s1.equals("")) continue;
+            if (map.containsKey(s1[i])) {
+                map.put(s1[i], map.get(s1[i]) + 1);
+            } else {
+                map.put(s1[i], 1);
+            }
+        }
+        for (String s2 : banned) {
+            if (map.containsKey(s2)) map.remove(s2);
+        }
+        String res = "";
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (res.equals("")) {
+                res = entry.getKey();
+            } else {
+                res = map.get(res) > entry.getValue() ? res : entry.getKey();
+            }
+        }
+        return res;
+    }
 
 }
