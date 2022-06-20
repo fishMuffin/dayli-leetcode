@@ -452,12 +452,16 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] arr1 = {10,2,5,3};
-        int[] arr2 = {3,1,7,11};
-        int[] arr3 = {-2,0,10,-19,4,6,-8};
-        assert leetCode.checkIfExist(arr1) : "10,2,5,3";
-        assert !leetCode.checkIfExist(arr2) : "3,1,7,11";
-        assert !leetCode.checkIfExist(arr3) : "-2,0,10,-19,4,6,-8";
+        assert leetCode.reorderSpaces(" practice   makes   perfect").equals("practice   makes   perfect ") : " practice   makes   perfect";
+        assert leetCode.reorderSpaces("  this   is  a sentence ").equals("this   is   a   sentence") : "  this   is  a sentence ";
+        assert leetCode.reorderSpaces("  hello").equals("hello  ") : "  hello";
+
+//        int[] arr1 = {10,2,5,3};
+//        int[] arr2 = {3,1,7,11};
+//        int[] arr3 = {-2,0,10,-19,4,6,-8};
+//        assert leetCode.checkIfExist(arr1) : "10,2,5,3";
+//        assert !leetCode.checkIfExist(arr2) : "3,1,7,11";
+//        assert !leetCode.checkIfExist(arr3) : "-2,0,10,-19,4,6,-8";
 
 //        assert leetCode.checkOnesSegment("1000000") : "1000000";
 //        assert leetCode.checkOnesSegment("110") : "110";
