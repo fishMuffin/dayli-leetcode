@@ -3105,7 +3105,7 @@ public class leetCode {
                 } else {
                     starting = false;
                     end = false;
-                    res=0;
+                    res = 0;
                 }
             }
             if (c <= 'z' && c >= 'a') {
@@ -3128,6 +3128,45 @@ public class leetCode {
             index--;
         }
         return wordLength;
+    }
+
+
+    /**
+     * 给你一个二进制字符串 s ，该字符串 不含前导零 。
+     * <p>
+     * 如果 s 包含 零个或一个由连续的 '1' 组成的字段 ，返回 true    。否则，返回 false 。
+     * <p>
+     * 输入：s = "110"
+     * 输出：true
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @return
+     */
+    public boolean checkOnesSegment(String s) {
+        int begin = 0;
+        int end = s.length() - 1;
+        boolean startFlag = false;
+        boolean endFlag = false;
+        while (begin < end) {
+            if (!startFlag && s.charAt(begin) != '1') {
+                begin++;
+            } else {
+                startFlag = true;
+            }
+            if (!endFlag && s.charAt(end) != '1') {
+                end--;
+            } else {
+                endFlag = true;
+            }
+            if (startFlag && endFlag) break;
+        }
+        if (begin == end) return true;
+        return !s.substring(begin, end).contains("0");
     }
 
 }

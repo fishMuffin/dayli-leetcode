@@ -452,7 +452,13 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.lengthOfLastWord("luffy is still joyb1oy  ")==5 : "luffy is still joyb1oy  ";
+        assert leetCode.checkOnesSegment("1000000") : "1000000";
+//        assert leetCode.checkOnesSegment("110") : "110";
+        assert !leetCode.checkOnesSegment("1001") : "1001";
+//        assert !leetCode.checkOnesSegment("101101000") : "101101000";
+
+
+//        assert leetCode.lengthOfLastWord("luffy is still joyb1oy  ")==5 : "luffy is still joyb1oy  ";
 //        assert leetCode.lengthOfLastWord("luffy is still joyboy  ")==6 : "luffy is still joyboy  ";
 //        assert leetCode.lengthOfLastWord("luffy is still joyb1oy  sd1 ")==5 : "luffy is still joyb1oy  sd1 ";
 //        assert leetCode.countValidWords("alice and  bob are playing stone-game10")==5 : "alice and  bob are playing stone-game10";
