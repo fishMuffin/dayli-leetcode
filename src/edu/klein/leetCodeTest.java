@@ -452,9 +452,16 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.checkOnesSegment("1000000") : "1000000";
+        int[] arr1 = {10,2,5,3};
+        int[] arr2 = {3,1,7,11};
+        int[] arr3 = {-2,0,10,-19,4,6,-8};
+        assert leetCode.checkIfExist(arr1) : "10,2,5,3";
+        assert !leetCode.checkIfExist(arr2) : "3,1,7,11";
+        assert !leetCode.checkIfExist(arr3) : "-2,0,10,-19,4,6,-8";
+
+//        assert leetCode.checkOnesSegment("1000000") : "1000000";
 //        assert leetCode.checkOnesSegment("110") : "110";
-        assert !leetCode.checkOnesSegment("1001") : "1001";
+//        assert !leetCode.checkOnesSegment("1001") : "1001";
 //        assert !leetCode.checkOnesSegment("101101000") : "101101000";
 
 
@@ -586,7 +593,7 @@ class leetCodeTest {
 
     @Test
     void commonTest() {
-        String regex="^[A-Za-z]+(-)(!|,)$";
+        String regex = "^[A-Za-z]+(-)(!|,)$";
         boolean matches = Pattern.matches(regex, "a-b");
         boolean matches1 = Pattern.matches(regex, "afad");
         boolean matches2 = Pattern.matches(regex, "ba-c");

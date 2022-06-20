@@ -3169,4 +3169,51 @@ public class leetCode {
         return !s.substring(begin, end).contains("0");
     }
 
+    /**
+     * 给你一个整数数组 arr，请你检查是否存在两个整数 N 和 M，满足 N 是 M 的两倍（即，N = 2 * M）。
+     * <p>
+     * 更正式地，检查是否存在两个下标 i 和 j 满足：
+     * <p>
+     * i != j
+     * 0 <= i, j < arr.length
+     * arr[i] == 2 * arr[j]
+     * <p>
+     * 输入：arr = [7,1,14,11]
+     * 输出：true
+     * 解释：N = 14 是 M = 7 的两倍，即 14 = 2 * 7 。
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param arr
+     * @return
+     */
+    public boolean checkIfExist(int[] arr) {
+        int[] countG = new int[1001];
+        int[] countS = new int[1001];
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] >= 0) {
+                countG[arr[i]]++;
+            } else {
+                countS[Math.abs(arr[i])]++;
+            }
+        }
+        return checkCount(countG)||checkCount(countS);
+    }
+
+    private boolean checkCount(int[] count) {
+        for (int i = 1; i < count.length; i++) {
+            if (count[0] > 1) return true;
+            if (count[i] > 0) {
+                int twice = i * 2;
+                if (twice < count.length && count[twice] > 0)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
 }
