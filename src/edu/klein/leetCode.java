@@ -4,6 +4,7 @@ import edu.klein.common.ListNode;
 
 import java.math.BigInteger;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class leetCode {
@@ -2979,11 +2980,12 @@ public class leetCode {
      * 输入：name = "saeed", typed = "ssaaedd"
      * 输出：false
      * 解释：'e' 一定需要被键入两次，但在 typed 的输出中不是这样。
-     *
+     * <p>
      * 提交次数:2
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
+     *
      * @param name
      * @param typed
      * @return
@@ -3018,5 +3020,52 @@ public class leetCode {
             }
         }
         return Math.abs(i - name.length()) <= 1 && j == typed.length();
+    }
+
+
+    /**
+     * 句子仅由小写字母（'a' 到 'z'）、数字（'0' 到 '9'）、连字符（'-'）、标点符号（'!'、'.' 和 ','）以及空格（' '）组成。每个句子可以根据空格分解成 一个或者多个 token ，这些 token 之间由一个或者多个空格 ' ' 分隔。
+     * <p>
+     * 如果一个 token 同时满足下述条件，则认为这个 token 是一个有效单词：
+     * <p>
+     * 仅由小写字母、连字符和/或标点（不含数字）组成。
+     * 至多一个 连字符 '-' 。如果存在，连字符两侧应当都存在小写字母（"a-b" 是一个有效单词，但 "-ab" 和 "ab-" 不是有效单词）。
+     * 至多一个 标点符号。如果存在，标点符号应当位于 token 的 末尾 。
+     * 这里给出几个有效单词的例子："a-b."、"afad"、"ba-c"、"a!" 和 "!" 。
+     * <p>
+     * 给你一个字符串 sentence ，请你找出并返回 sentence 中 有效单词的数目 。
+     * <p>
+     * 输入：sentence = "alice and  bob are playing stone-game10"
+     * 输出：5
+     * 解释：句子中的有效单词是 "alice"、"and"、"bob"、"are" 和 "playing"
+     * "stone-game10" 不是有效单词，因为它含有数字
+     * <p>
+     * 提交次数:7
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param sentence
+     * @return
+     */
+    public int countValidWords(String sentence) {
+        if (sentence.equals("-")) return 0;
+        String[] s = sentence.split(" ");
+        String regex = "^[A-Za-z]*(-)?[A-Za-z]*(!|,|\\.)?$";
+        int res = 0;
+        for (int i = 0; i < s.length; i++) {
+            if (!s[i].equals("") && Pattern.matches(regex, s[i])) {
+                if (s[i].contains("-")) {
+                    if ((s[i].charAt(0) != '-' && s[i].charAt(s[i].length() - 1) != '-')) {
+                        char pre = s[i].charAt(s[i].indexOf("-") - 1);
+                        char next = s[i].charAt(s[i].indexOf("-") + 1);
+                        if (pre <= 'z' && pre >= 'a' && next <= 'z' && next >= 'a')
+                            res++;
+                    }
+                } else
+                    res++;
+            }
+        }
+        return res;
     }
 }
