@@ -3068,4 +3068,66 @@ public class leetCode {
         }
         return res;
     }
+
+    /**
+     * 给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。
+     * <p>
+     * 单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。
+     * <p>
+     * 输入：s = "luffy is still joyb1oy  "
+     * 输出：6
+     * 解释：最后一个单词是长度为6的“joyboy”。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @return
+     */
+    public int lengthOfLastWord(String s) {
+        String s1 = s.toLowerCase();
+        boolean starting = false;
+        boolean end = false;
+        boolean isAlpha = true;
+        int res = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            char c = s1.charAt(i);
+            if (c != ' ') {
+                starting = true;
+            } else {
+                if (starting) end = true;
+            }
+            if (starting && end) {
+                if (isAlpha) {
+                    return res;
+                } else {
+                    starting = false;
+                    end = false;
+                    res=0;
+                }
+            }
+            if (c <= 'z' && c >= 'a') {
+                res++;
+            } else if (c != ' ') {
+                isAlpha = false;
+            }
+        }
+        return res;
+    }
+
+    public int lengthOfLastWord_ref(String s) {
+        int index = s.length() - 1;
+        while (s.charAt(index) == ' ') {
+            index--;
+        }
+        int wordLength = 0;
+        while (index >= 0 && s.charAt(index) != ' ') {
+            wordLength++;
+            index--;
+        }
+        return wordLength;
+    }
+
 }
