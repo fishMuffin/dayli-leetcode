@@ -3338,12 +3338,13 @@ public class leetCode {
      * <p>
      * 输入：arr = [0,2,1,-6,6,7,9,-1,2,0,1]
      * 输出：false
-     *
-     *
+     * <p>
+     * <p>
      * 提交次数:5
      * 解决方式: 自我解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param arr
      * @return
      */
@@ -3368,6 +3369,43 @@ public class leetCode {
             }
             return tick >= 3;
         }
+    }
+
+    /**
+     * 给你一个正整数数组 arr，请你找出一个长度为 m 且在数组中至少重复 k 次的模式。
+     * <p>
+     * 模式 是由一个或多个值组成的子数组（连续的子序列），连续 重复多次但 不重叠 。 模式由其长度和重复次数定义。
+     * <p>
+     * 如果数组中存在至少重复 k 次且长度为 m 的模式，则返回 true ，否则返回  false 。
+     * <p>
+     * 输入：arr = [1,2,1,2,1,2,1,3], m = 2, k = 2
+     * 输出：true
+     * 解释：模式 (1,2) 长度为 2 ，且连续重复 2 次。另一个符合题意的模式是 (2,1) ，同样重复 2 次。
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param arr
+     * @param m
+     * @param k
+     * @return
+     */
+    public boolean containsPattern(int[] arr, int m, int k) {
+        if (m * k > arr.length) return false;
+        for (int i = 0; i < arr.length; i++) {
+            int temp = 0;
+            for (int j = i; j < arr.length && j + m < arr.length; j++) {
+                if (arr[j] == arr[j + m]) {
+                    temp++;
+                }else{
+                    temp=0;
+                }
+                if ((temp / m + 1) >= k) return true;
+            }
+        }
+        return false;
     }
 
 
