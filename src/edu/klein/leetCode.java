@@ -3249,7 +3249,7 @@ public class leetCode {
         }
         if (list.size() == 1) {
             sb.append(list.get(0));
-            sb=appendSpace(sb,count);
+            sb = appendSpace(sb, count);
             return sb.toString();
         }
         int tailAppend = count % (list.size() - 1);
@@ -3257,9 +3257,9 @@ public class leetCode {
         for (int j = 0; j < list.size(); j++) {
             sb.append(list.get(j));
             if (j == list.size() - 1) break;
-            sb=appendSpace(sb,gap);
+            sb = appendSpace(sb, gap);
         }
-        sb=appendSpace(sb,tailAppend);
+        sb = appendSpace(sb, tailAppend);
         return sb.toString();
     }
 
@@ -3268,6 +3268,62 @@ public class leetCode {
             sb.append(" ");
         }
         return sb;
+    }
+
+
+    /**
+     * 给你一个整数 columnNumber ，返回它在 Excel 表中相对应的列名称。
+     * <p>
+     * 例如：
+     * <p>
+     * A -> 1
+     * B -> 2
+     * C -> 3
+     * ...
+     * Z -> 26
+     * AA -> 27
+     * AB -> 28
+     *
+     * ZY -> 701
+     *
+     * ZZY->
+     * ...
+     * <p>
+     * 输入：columnNumber = 2147483647
+     * 输出："FXSHRXW"
+     * <p>
+     * 输入：columnNumber = 701
+     * 输出："ZY"
+     *
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     * @param columnNumber
+     * @return
+     */
+    public String convertToTitle(int columnNumber) {
+        StringBuffer sb = new StringBuffer();
+        while (columnNumber != 0) {
+            columnNumber--;
+            sb.append((char)(columnNumber % 26 + 'A'));
+            columnNumber /= 26;
+        }
+        return sb.reverse().toString();
+    }
+
+    public String convertToTitle_unfinished(int columnNumber) {
+        String res = "";
+        while (columnNumber > 0) {
+            int tail = columnNumber % 26;
+            if (tail != 0){
+                res += (char) (tail + 64) + "";
+                columnNumber-=tail;
+            }else{
+                res+="Z";
+            }
+        }
+        return res;
     }
 
 }

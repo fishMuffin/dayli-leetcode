@@ -452,9 +452,11 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.reorderSpaces(" practice   makes   perfect").equals("practice   makes   perfect ") : " practice   makes   perfect";
-        assert leetCode.reorderSpaces("  this   is  a sentence ").equals("this   is   a   sentence") : "  this   is  a sentence ";
-        assert leetCode.reorderSpaces("  hello").equals("hello  ") : "  hello";
+//        assert leetCode.convertToTitle(701).equals("ZY") : "701";
+        assert leetCode.convertToTitle(2147483647).equals("FXSHRXW") : "2147483647";
+//        assert leetCode.reorderSpaces(" practice   makes   perfect").equals("practice   makes   perfect ") : " practice   makes   perfect";
+//        assert leetCode.reorderSpaces("  this   is  a sentence ").equals("this   is   a   sentence") : "  this   is  a sentence ";
+//        assert leetCode.reorderSpaces("  hello").equals("hello  ") : "  hello";
 
 //        int[] arr1 = {10,2,5,3};
 //        int[] arr2 = {3,1,7,11};
@@ -597,12 +599,21 @@ class leetCodeTest {
 
     @Test
     void commonTest() {
-        String regex = "^[A-Za-z]+(-)(!|,)$";
-        boolean matches = Pattern.matches(regex, "a-b");
-        boolean matches1 = Pattern.matches(regex, "afad");
-        boolean matches2 = Pattern.matches(regex, "ba-c");
-        boolean matches3 = Pattern.matches(regex, "a!");
-        boolean matches4 = Pattern.matches(regex, "!");
+//        System.out.println(701 / 26);
+//        System.out.println(701 / 26);
+        System.out.println(2147483647 % 26);
+        System.out.println((2147483647 - 2147483647 % 26) % 26);
+//        System.out.println(Math.pow(26,6));
+//        System.out.println(2147483647-Math.pow(26,6));
+
+//        System.out.println((int) 'A');
+
+//        String regex = "^[A-Za-z]+(-)(!|,)$";
+//        boolean matches = Pattern.matches(regex, "a-b");
+//        boolean matches1 = Pattern.matches(regex, "afad");
+//        boolean matches2 = Pattern.matches(regex, "ba-c");
+//        boolean matches3 = Pattern.matches(regex, "a!");
+//        boolean matches4 = Pattern.matches(regex, "!");
 
 
 //        String[] split = "a b c,c,c,d".replace(",", " ").split(" ");
@@ -614,14 +625,14 @@ class leetCodeTest {
 //        Integer j = 1;
 //        System.out.println(i == j);
 //        System.out.println((int) '?');
-        System.out.println((int) 'a');
-        System.out.println((int) 'z');
-//        System.out.println("abca".replace("c", ""));
-//        System.out.println((int) ' ');
-//        System.out.println("ZY".charAt(1) - 64);
-//        System.out.println((int) 'A');
-//        System.out.println((int) 'Z');
-        System.out.println((int) '0');
-        System.out.println((int) '9');
+//        System.out.println((int) 'a');
+//        System.out.println((int) 'z');
+////        System.out.println("abca".replace("c", ""));
+////        System.out.println((int) ' ');
+////        System.out.println("ZY".charAt(1) - 64);
+////        System.out.println((int) 'A');
+////        System.out.println((int) 'Z');
+//        System.out.println((int) '0');
+//        System.out.println((int) '9');
     }
 }
