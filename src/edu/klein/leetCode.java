@@ -3399,13 +3399,78 @@ public class leetCode {
             for (int j = i; j < arr.length && j + m < arr.length; j++) {
                 if (arr[j] == arr[j + m]) {
                     temp++;
-                }else{
-                    temp=0;
+                } else {
+                    temp = 0;
                 }
                 if ((temp / m + 1) >= k) return true;
             }
         }
         return false;
+    }
+
+    /**
+     * 给你一个字符串 time ，格式为 hh:mm（小时：分钟），其中某几位数字被隐藏（用 ? 表示）。
+     * <p>
+     * 有效的时间为 00:00 到 23:59 之间的所有时间，包括 00:00 和 23:59 。
+     * <p>
+     * 替换 time 中隐藏的数字，返回你可以得到的最晚有效时间。
+     * <p>
+     * 输入：time = "2?:?0"
+     * 输出："23:50"
+     * 解释：以数字 '2' 开头的最晚一小时是 23 ，以 '0' 结尾的最晚一分钟是 50 。
+     * <p>
+     * 输入：time = "1?:22"
+     * 输出："19:22"
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param time
+     * @return
+     */
+    public String maximumTime(String time) {
+        if (time.charAt(0) == '?') {
+            if (time.charAt(1) == '?') {
+                time = time.replaceFirst("\\?", "2").replaceFirst("\\?", "3");
+            } else if (time.charAt(1) <= '3') {
+                time = time.replaceFirst("\\?", "2");
+            } else {
+                time = time.replaceFirst("\\?", "1");
+            }
+        }
+        if (time.charAt(1) == '?') {
+            if (time.charAt(0) == '2') {
+                time = time.replaceFirst("\\?", "3");
+            } else {
+                time = time.replaceFirst("\\?", "9");
+            }
+        }
+        if (time.charAt(3) == '?') {
+            time = time.replaceFirst("\\?", "5");
+        }
+        if (time.charAt(4) == '?') {
+            time = time.replaceFirst("\\?", "9");
+        }
+        return time;
+    }
+
+    public String maximumTime_ref(String time) {
+        char[] arr = time.toCharArray();
+        if (arr[0] == '?') {
+            arr[0] = ('4' <= arr[1] && arr[1] <= '9') ? '1' : '2';
+        }
+        if (arr[1] == '?') {
+            arr[1] = (arr[0] == '2') ? '3' : '9';
+        }
+        if (arr[3] == '?') {
+            arr[3] = '5';
+        }
+        if (arr[4] == '?') {
+            arr[4] = '9';
+        }
+        return new String(arr);
     }
 
 

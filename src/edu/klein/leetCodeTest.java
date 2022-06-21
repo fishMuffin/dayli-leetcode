@@ -452,16 +452,21 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] arr1 = {5,1,2,1,2,1,1,1,3};
-        int[] arr2 = {1,2,4,4,4,4};
-        int[] arr3 = {1,2,1,2,1,3};
-        int[] arr4 = {2,2};
-        int[] arr5 = {2,2,1,2,2,1,1,1,2,1};
-        assert leetCode.containsPattern(arr1,2,2) : "arr1";
-        assert leetCode.containsPattern(arr2,1,3) : "arr2";
-        assert !leetCode.containsPattern(arr3,2,3) : "arr3";
-        assert leetCode.containsPattern(arr4,1,2) : "arr4";
-        assert !leetCode.containsPattern(arr5,2,2) : "arr5";
+        assert leetCode.maximumTime("2?:?0").equals("23:50") : "2?:?0";
+        assert leetCode.maximumTime("0?:3?").equals("09:39") : "0?:3?";
+        assert leetCode.maximumTime("1?:22").equals("19:22") : "1?:22";
+        assert leetCode.maximumTime("?1:2?").equals("21:29") : "?1:2?";
+
+//        int[] arr1 = {5,1,2,1,2,1,1,1,3};
+//        int[] arr2 = {1,2,4,4,4,4};
+//        int[] arr3 = {1,2,1,2,1,3};
+//        int[] arr4 = {2,2};
+//        int[] arr5 = {2,2,1,2,2,1,1,1,2,1};
+//        assert leetCode.containsPattern(arr1,2,2) : "arr1";
+//        assert leetCode.containsPattern(arr2,1,3) : "arr2";
+//        assert !leetCode.containsPattern(arr3,2,3) : "arr3";
+//        assert leetCode.containsPattern(arr4,1,2) : "arr4";
+//        assert !leetCode.containsPattern(arr5,2,2) : "arr5";
 
 //        int[] arr1 = {0, 2, 1, -6, 6, -7, 9, 1, 2, 0, 1};
 //        int[] arr2 = {0,2,1,-6,6,7,9,-1,2,0,1};
