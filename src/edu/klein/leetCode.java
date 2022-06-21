@@ -3272,7 +3272,7 @@ public class leetCode {
 
 
     /**
-     * 给你一个整数 columnNumber ，返回它在 Excel 表中相对应的列名称。
+     * 给你一个整数 columnNumber ，返回它在 Excel 表中相对应的列名称。
      * <p>
      * 例如：
      * <p>
@@ -3283,9 +3283,9 @@ public class leetCode {
      * Z -> 26
      * AA -> 27
      * AB -> 28
-     *
+     * <p>
      * ZY -> 701
-     *
+     * <p>
      * ZZY->
      * ...
      * <p>
@@ -3294,11 +3294,12 @@ public class leetCode {
      * <p>
      * 输入：columnNumber = 701
      * 输出："ZY"
-     *
+     * <p>
      * 提交次数:1
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
+     *
      * @param columnNumber
      * @return
      */
@@ -3306,7 +3307,7 @@ public class leetCode {
         StringBuffer sb = new StringBuffer();
         while (columnNumber != 0) {
             columnNumber--;
-            sb.append((char)(columnNumber % 26 + 'A'));
+            sb.append((char) (columnNumber % 26 + 'A'));
             columnNumber /= 26;
         }
         return sb.reverse().toString();
@@ -3316,14 +3317,58 @@ public class leetCode {
         String res = "";
         while (columnNumber > 0) {
             int tail = columnNumber % 26;
-            if (tail != 0){
+            if (tail != 0) {
                 res += (char) (tail + 64) + "";
-                columnNumber-=tail;
-            }else{
-                res+="Z";
+                columnNumber -= tail;
+            } else {
+                res += "Z";
             }
         }
         return res;
     }
+
+    /**
+     * 给你一个整数数组 arr，只有可以将其划分为三个和相等的 非空 部分时才返回 true，否则返回 false。
+     * <p>
+     * 形式上，如果可以找出索引 i + 1 < j 且满足 (arr[0] + arr[1] + ... + arr[i] == arr[i + 1] + arr[i + 2] + ... + arr[j - 1] == arr[j] + arr[j + 1] + ... + arr[arr.length - 1]) 就可以将数组三等分。
+     * <p>
+     * 输入：arr = [0,2,1,-6,6,-7,9,1,2,0,1]
+     * 输出：true
+     * 解释：0 + 2 + 1 = -6 + 6 - 7 + 9 + 1 = 2 + 0 + 1
+     * <p>
+     * 输入：arr = [0,2,1,-6,6,7,9,-1,2,0,1]
+     * 输出：false
+     *
+     *
+     * 提交次数:5
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param arr
+     * @return
+     */
+    public boolean canThreePartsEqualSum(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        if (sum % 3 != 0)
+            return false;
+        else {
+            int third = sum / 3;
+            int temp = 0;
+            int tick = 0;
+            for (int i = 0; i < arr.length; i++) {
+                temp += arr[i];
+                if (temp == third) {
+                    sum -= third;
+                    temp = 0;
+                    tick++;
+                }
+            }
+            return tick >= 3;
+        }
+    }
+
 
 }
