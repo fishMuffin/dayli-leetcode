@@ -452,16 +452,23 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] arr1 = {1, 0, 0, 0, 0, 0, 0, 0, 1};
-        int[] arr2 = {1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1};
-        int[] arr3 = {0, 0, 1, 0, 1};
-        int[] arr4 = {0};
-        int[] arr5 = {1};
-        assert leetCode.canPlaceFlowers(arr1, 2) : "arr1";
-        assert leetCode.canPlaceFlowers(arr2, 2) : "arr2";
-        assert leetCode.canPlaceFlowers(arr3, 1) : "arr3";
-        assert leetCode.canPlaceFlowers(arr4, 1) : "arr4";
-        assert !leetCode.canPlaceFlowers(arr5, 1) : "arr5";
+//        assert leetCode.buddyStrings("cbad", "abcd") : "cbad";
+//        assert !leetCode.buddyStrings("ab", "ab") : "ab";
+//        assert leetCode.buddyStrings("aa", "aa") : "aa";
+//        assert leetCode.buddyStrings("ab", "ba") : "ab";
+//        assert leetCode.buddyStrings("abab", "abab") : "abab";
+        assert !leetCode.buddyStrings("abcd", "abcde") : "abcd";
+
+//        int[] arr1 = {1, 0, 0, 0, 0, 0, 0, 0, 1};
+//        int[] arr2 = {1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1};
+//        int[] arr3 = {0, 0, 1, 0, 1};
+//        int[] arr4 = {0};
+//        int[] arr5 = {1};
+//        assert leetCode.canPlaceFlowers(arr1, 2) : "arr1";
+//        assert leetCode.canPlaceFlowers(arr2, 2) : "arr2";
+//        assert leetCode.canPlaceFlowers(arr3, 1) : "arr3";
+//        assert leetCode.canPlaceFlowers(arr4, 1) : "arr4";
+//        assert !leetCode.canPlaceFlowers(arr5, 1) : "arr5";
 
 //        int[] arr1 = {1, 2, 10, 5, 7};
 //        int[] arr2 = {2,3,1,2};

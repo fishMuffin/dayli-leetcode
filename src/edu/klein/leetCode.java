@@ -3617,4 +3617,63 @@ public class leetCode {
         return n;
     }
 
+
+    /**
+     * 给你两个字符串 s 和 goal ，只要我们可以通过交换 s 中的两个字母得到与 goal 相等的结果，就返回 true ；否则返回 false 。
+     * <p>
+     * 交换字母的定义是：取两个下标 i 和 j （下标从 0 开始）且满足 i != j ，接着交换 s[i] 和 s[j] 处的字符。
+     * <p>
+     * 例如，在 "abcd" 中交换下标 0 和下标 2 的元素可以生成 "cbad" 。
+     * <p>
+     * <p>
+     * 输入：s = "ab", goal = "ba"
+     * 输出：true
+     * 解释：你可以交换 s[0] = 'a' 和 s[1] = 'b' 生成 "ba"，此时 s 和 goal 相等。
+     * <p>
+     * 提交次数:5
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param s
+     * @param goal
+     * @return
+     */
+    public boolean buddyStrings(String s, String goal) {
+        if (s.length() != goal.length()) return false;
+        if (s.length() < 2) return false;
+        int[] count = new int[26];
+        boolean isSame = false;
+        for (int i = 0; i < s.length(); i++) {
+            if (count[s.charAt(i) - 'a'] > 0) {
+                isSame = true;
+                break;
+            } else {
+                count[s.charAt(i) - 'a']++;
+            }
+        }
+        if (s.equals(goal) && isSame) return true;
+        char[] chars = s.toCharArray();
+        int start = -1;
+        int end = -1;
+        boolean flag = true;
+        for (int i = 0; i < goal.length(); i++) {
+            if (i - 1 >= 0 && chars[i] != chars[i - 1] && flag) flag = false;
+            if (goal.charAt(i) != chars[i]) {
+                if (start == -1)
+                    start = i;
+                else {
+                    if (end == -1)
+                        end = i;
+                }
+            }
+            if (start != -1 && end != -1) {
+                char temp = chars[start];
+                chars[start] = chars[end];
+                chars[end] = temp;
+                return new String(chars).equals(goal);
+            }
+        }
+        return flag;
+    }
 }
