@@ -452,12 +452,24 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
+        int[] arr1 = {1, 2, 3, 4, 4, 3, 2, 1};
+        int[] arr2 = {1, 1, 1, 2, 2, 2, 3, 3};
+        int[] arr3 = {1, 1, 2, 2, 2, 2, 3, 3};
+        int[] arr4 = {0,0,1,1,1,1,2,2,3,4};
+        int[] arr5 = {1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3};
+        assert leetCode.hasGroupsSizeX(arr1) : "arr1";
+        assert !leetCode.hasGroupsSizeX(arr2) : "arr2";
+        assert leetCode.hasGroupsSizeX(arr3) : "arr3";
+        assert !leetCode.hasGroupsSizeX(arr4) : "arr4";
+        assert !leetCode.hasGroupsSizeX(arr5) : "arr5";
+
+
 //        assert leetCode.buddyStrings("cbad", "abcd") : "cbad";
 //        assert !leetCode.buddyStrings("ab", "ab") : "ab";
 //        assert leetCode.buddyStrings("aa", "aa") : "aa";
 //        assert leetCode.buddyStrings("ab", "ba") : "ab";
 //        assert leetCode.buddyStrings("abab", "abab") : "abab";
-        assert !leetCode.buddyStrings("abcd", "abcde") : "abcd";
+//        assert !leetCode.buddyStrings("abcd", "abcde") : "abcd";
 
 //        int[] arr1 = {1, 0, 0, 0, 0, 0, 0, 0, 1};
 //        int[] arr2 = {1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1};

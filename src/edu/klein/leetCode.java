@@ -3619,7 +3619,7 @@ public class leetCode {
 
 
     /**
-     * 给你两个字符串 s 和 goal ，只要我们可以通过交换 s 中的两个字母得到与 goal 相等的结果，就返回 true ；否则返回 false 。
+     * 给你两个字符串 s 和 goal ，只要我们可以通过交换 s 中的两个字母得到与 goal 相等的结果，就返回 true ；否则返回 false 。
      * <p>
      * 交换字母的定义是：取两个下标 i 和 j （下标从 0 开始）且满足 i != j ，接着交换 s[i] 和 s[j] 处的字符。
      * <p>
@@ -3676,4 +3676,58 @@ public class leetCode {
         }
         return flag;
     }
+
+    /**
+     * 此时，你需要选定一个数字 X，使我们可以将整副牌按下述规则分成 1 组或更多组：
+     * <p>
+     * 每组都有 X 张牌。
+     * 组内所有的牌上都写着相同的整数。
+     * 仅当你可选的 X >= 2 时返回 true。
+     * <p>
+     * 输入：deck = [1,1,1,2,2,2,3,3]
+     * 输出：false
+     * 解释：没有满足要求的分组。
+     * <p>
+     * 输入：deck = [1,2,3,4,4,3,2,1]
+     * 输出：true
+     * 解释：可行的分组是 [1,1]，[2,2]，[3,3]，[4,4]
+     *
+     * 提交次数:5
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param deck
+     * @return
+     */
+    public boolean hasGroupsSizeX(int[] deck) {
+        if (deck.length == 1) return false;
+        List<Integer> list = new ArrayList<>();
+        int[] count = new int[10000];
+        for (int i = 0; i < deck.length; i++) {
+            count[deck[i]]++;
+        }
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] != 0) {
+                if (!list.contains(count[i]))
+                    list.add(count[i]);
+            }
+        }
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < list.size(); i++) {
+            min = Math.min(min, list.get(i));
+        }
+
+        for (int i = 2; i <= min; i++) {
+            boolean flag = true;
+            for (int j = 0; j < list.size(); j++) {
+                if (list.get(j) % i != 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) return true;
+        }
+        return false;
+    }
+
 }
