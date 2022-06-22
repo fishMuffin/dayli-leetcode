@@ -3376,7 +3376,7 @@ public class leetCode {
      * <p>
      * 模式 是由一个或多个值组成的子数组（连续的子序列），连续 重复多次但 不重叠 。 模式由其长度和重复次数定义。
      * <p>
-     * 如果数组中存在至少重复 k 次且长度为 m 的模式，则返回 true ，否则返回  false 。
+     * 如果数组中存在至少重复 k 次且长度为 m 的模式，则返回 true ，否则返回  false 。
      * <p>
      * 输入：arr = [1,2,1,2,1,2,1,3], m = 2, k = 2
      * 输出：true
@@ -3413,7 +3413,7 @@ public class leetCode {
      * <p>
      * 有效的时间为 00:00 到 23:59 之间的所有时间，包括 00:00 和 23:59 。
      * <p>
-     * 替换 time 中隐藏的数字，返回你可以得到的最晚有效时间。
+     * 替换 time 中隐藏的数字，返回你可以得到的最晚有效时间。
      * <p>
      * 输入：time = "2?:?0"
      * 输出："23:50"
@@ -3471,6 +3471,94 @@ public class leetCode {
             arr[4] = '9';
         }
         return new String(arr);
+    }
+
+    /**
+     * 给你一个下标从 0 开始的整数数组 nums ，如果 恰好 删除 一个 元素后，数组 严格递增 ，那么请你返回 true ，否则返回 false 。如果数组本身已经是严格递增的，请你也返回 true 。
+     * <p>
+     * 数组 nums 是 严格递增 的定义为：对于任意下标的 1 <= i < nums.length 都满足 nums[i - 1] < nums[i] 。
+     * <p>
+     * 输入：nums = [1,2,10,5,7]
+     * 输出：true
+     * 解释：从 nums 中删除下标 2 处的 10 ，得到 [1,2,5,7] 。
+     * [1,2,5,7] 是严格递增的，所以返回 true 。
+     * <p>
+     * <p>
+     * [105,924,32,968]
+     * [2,3,1,2]
+     * <p>
+     * <p>
+     * 提交次数:3
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param nums
+     * @return
+     */
+
+    public boolean canBeIncreasing(int[] nums) {
+        int length = nums.length;
+        int last = nums[0];
+        int count = 0;
+        for (int i = 1; i < length; i++) {
+            if (nums[i] <= last) {
+                count++;
+                if (i > 1 && nums[i] <= nums[i - 2]) {
+                    last = nums[i - 1];
+                    continue;
+                }
+            }
+            last = nums[i];
+        }
+        return count <= 1;
+    }
+
+
+    public boolean canBeIncreasing_ref(int[] nums) {
+        int n = nums.length;
+        int count = 0;
+        int last = nums[0];
+        for (int i = 1; i < n; ++i) {
+            // 此时要校验删除哪个元素
+            if (nums[i] <= last) {
+                ++count;
+                // 此时，删除nums[i - 1]不解决问题，只能删除nums[i]
+                if (i > 1 && nums[i] <= nums[i - 2]) {
+                    last = nums[i - 1];
+                    continue;
+                }
+            }
+            last = nums[i];
+        }
+        return count <= 1;
+    }
+
+
+    public boolean canBeIncreasing_unfinsh(int[] nums) {
+        int res[] = new int[nums.length - 1];
+        for (int i = 0; i < nums.length; i++) {
+            if (i + 1 < nums.length && nums[i] > nums[i + 1]) {
+                if (nums[i + 1] < nums[i + 2] && nums[i - 1] > nums[i + 1]) {
+                    for (int j = i, begin = i; j < res.length; j++) {
+                        if (j == begin + 1) j++;
+                        res[i] = nums[j];
+                        i++;
+                    }
+                } else {
+                    for (int j = i + 1; j < nums.length; j++) {
+                        res[i] = nums[j];
+                        i++;
+                    }
+                }
+            } else {
+                res[i] = nums[i];
+            }
+        }
+        for (int i = 0; i < res.length - 1; i++) {
+            if (res[i] > res[i + 1]) return false;
+        }
+        return true;
     }
 
 

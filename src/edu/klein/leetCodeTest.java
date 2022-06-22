@@ -452,10 +452,22 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.maximumTime("2?:?0").equals("23:50") : "2?:?0";
-        assert leetCode.maximumTime("0?:3?").equals("09:39") : "0?:3?";
-        assert leetCode.maximumTime("1?:22").equals("19:22") : "1?:22";
-        assert leetCode.maximumTime("?1:2?").equals("21:29") : "?1:2?";
+        int[] arr1 = {1, 2, 10, 5, 7};
+        int[] arr2 = {2,3,1,2};
+        int[] arr3 = {2,2,2};
+        int[] arr4 = {105,924,32,968};
+        int[] arr5 = {1,2,3};
+        assert leetCode.canBeIncreasing(arr1) : "arr1";
+        assert !leetCode.canBeIncreasing(arr2) : "arr2";
+        assert !leetCode.canBeIncreasing(arr3) : "arr3";
+        assert leetCode.canBeIncreasing(arr4) : "arr4";
+        assert leetCode.canBeIncreasing(arr5) : "arr5";
+
+
+//        assert leetCode.maximumTime("2?:?0").equals("23:50") : "2?:?0";
+//        assert leetCode.maximumTime("0?:3?").equals("09:39") : "0?:3?";
+//        assert leetCode.maximumTime("1?:22").equals("19:22") : "1?:22";
+//        assert leetCode.maximumTime("?1:2?").equals("21:29") : "?1:2?";
 
 //        int[] arr1 = {5,1,2,1,2,1,1,1,3};
 //        int[] arr2 = {1,2,4,4,4,4};
