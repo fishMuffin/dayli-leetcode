@@ -3562,4 +3562,59 @@ public class leetCode {
     }
 
 
+    /**
+     * 假设有一个很长的花坛，一部分地块种植了花，另一部分却没有。可是，花不能种植在相邻的地块上，它们会争夺水源，两者都会死去。
+     * <p>
+     * 给你一个整数数组  flowerbed 表示花坛，由若干 0 和 1 组成，其中 0 表示没种植花，1 表示种植了花。另有一个数 n ，能否在不打破种植规则的情况下种入 n 朵花？能则返回 true ，不能则返回 false。
+     * <p>
+     * 输入：flowerbed = [1,0,0,0,0,0,0,0,1], n = 3
+     * 输出：true
+     * <p>
+     * 提交次数:6
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param flowerbed
+     * @param n
+     * @return
+     */
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        if (n == 0) return true;
+        if (flowerbed.length == 1 && flowerbed[0] == 0 && n <= 1) return true;
+        int count = 0;
+        int start = 0;
+        int preCount = 0;
+        while (start < flowerbed.length && flowerbed[start] == 0) {
+            preCount++;
+            start++;
+        }
+        if (start == flowerbed.length && preCount == start) {
+            return n * 2 - 1 <= preCount;
+        }
+        n = flowerChecker(preCount, n, true);
+        if (n == 0) return true;
+        for (int i = start; i < flowerbed.length; i++) {
+            if (flowerbed[i] == 0) {
+                count++;
+            } else {
+                n = flowerChecker(count, n, false);
+                if (n == 0) return true;
+                count = 0;
+            }
+        }
+        n = flowerChecker(count, n, true);
+        return n <= 0;
+    }
+
+    private int flowerChecker(int count, int n, boolean isEdge) {
+        int countCal = 1;
+        if (isEdge) countCal = 0;
+        if (count >= n * 2 + countCal) return 0;
+        else {
+            n -= ((count - countCal) / 2);
+        }
+        return n;
+    }
+
 }

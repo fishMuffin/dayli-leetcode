@@ -452,16 +452,27 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] arr1 = {1, 2, 10, 5, 7};
-        int[] arr2 = {2,3,1,2};
-        int[] arr3 = {2,2,2};
-        int[] arr4 = {105,924,32,968};
-        int[] arr5 = {1,2,3};
-        assert leetCode.canBeIncreasing(arr1) : "arr1";
-        assert !leetCode.canBeIncreasing(arr2) : "arr2";
-        assert !leetCode.canBeIncreasing(arr3) : "arr3";
-        assert leetCode.canBeIncreasing(arr4) : "arr4";
-        assert leetCode.canBeIncreasing(arr5) : "arr5";
+        int[] arr1 = {1, 0, 0, 0, 0, 0, 0, 0, 1};
+        int[] arr2 = {1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1};
+        int[] arr3 = {0, 0, 1, 0, 1};
+        int[] arr4 = {0};
+        int[] arr5 = {1};
+        assert leetCode.canPlaceFlowers(arr1, 2) : "arr1";
+        assert leetCode.canPlaceFlowers(arr2, 2) : "arr2";
+        assert leetCode.canPlaceFlowers(arr3, 1) : "arr3";
+        assert leetCode.canPlaceFlowers(arr4, 1) : "arr4";
+        assert !leetCode.canPlaceFlowers(arr5, 1) : "arr5";
+
+//        int[] arr1 = {1, 2, 10, 5, 7};
+//        int[] arr2 = {2,3,1,2};
+//        int[] arr3 = {2,2,2};
+//        int[] arr4 = {105,924,32,968};
+//        int[] arr5 = {1,2,3};
+//        assert leetCode.canBeIncreasing(arr1) : "arr1";
+//        assert !leetCode.canBeIncreasing(arr2) : "arr2";
+//        assert !leetCode.canBeIncreasing(arr3) : "arr3";
+//        assert leetCode.canBeIncreasing(arr4) : "arr4";
+//        assert leetCode.canBeIncreasing(arr5) : "arr5";
 
 
 //        assert leetCode.maximumTime("2?:?0").equals("23:50") : "2?:?0";
