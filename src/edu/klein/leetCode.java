@@ -3691,11 +3691,12 @@ public class leetCode {
      * 输入：deck = [1,2,3,4,4,3,2,1]
      * 输出：true
      * 解释：可行的分组是 [1,1]，[2,2]，[3,3]，[4,4]
-     *
+     * <p>
      * 提交次数:5
      * 解决方式: 自我解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param deck
      * @return
      */
@@ -3730,4 +3731,93 @@ public class leetCode {
         return false;
     }
 
+
+    /**
+     * 给你一个字符串 word ，该字符串由数字和小写英文字母组成。
+     * <p>
+     * 请你用空格替换每个不是数字的字符。例如，"a123bc34d8ef34" 将会变成 " 123  34 8  34" 。注意，剩下的这些整数为（相邻彼此至少有一个空格隔开）："123"、"34"、"8" 和 "34" 。
+     * <p>
+     * 返回对 word 完成替换后形成的 不同 整数的数目。
+     * <p>
+     * 只有当两个整数的 不含前导零 的十进制表示不同， 才认为这两个整数也不同。
+     * <p>
+     * 输入：word = "a1b01c001"
+     * 输出：1
+     * 解释："1"、"01" 和 "001" 视为同一个整数的十进制表示，因为在比较十进制值时会忽略前导零的存在。
+     * <p>
+     * 输入：word = "a123bc34d8ef34"
+     * 输出：3
+     * 解释：不同的整数有 "123"、"34" 和 "8" 。注意，"34" 只计数一次。
+     * <p>
+     * 提交次数:4
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     *
+     * @param word
+     * @return
+     */
+    public int numDifferentIntegers(String word) {
+        String[] words = word.split("[a-z]+");
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() == 0) {
+                continue;
+            }
+            int j = 0; //对前导零的处理，因为考虑‘00000’的情况，所以到最后一位的前一位即可
+            while (words[i].charAt(j) == '0' && j < words[i].length() - 1) {
+                j++;
+            }
+            set.add(words[i].substring(j));
+        }
+        return set.size();
+    }
+
+    public int numDifferentIntegers_unfinish(String word) {
+        List<String> list = new ArrayList<>();
+        boolean flag = false;
+        char[] chars = word.toCharArray();
+        int begin = -1;
+        int end = -1;
+        for (int i = 0; i < chars.length; i++) {
+            if (!flag) {
+                if (chars[i] >= '0' && chars[i] <= '9') {
+                    begin = i;
+                    end = i;
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+            } else {
+                if (chars[i] >= '0' && chars[i] <= '9') {
+                    end++;
+                } else {
+                    String substring = word.substring(begin, end + 1);
+                    String toAdd = trimZero(substring);
+                    if (!list.contains(toAdd)) list.add(toAdd);
+                    begin = i;
+                    end = i;
+                    flag = false;
+                }
+            }
+        }
+        if (end > begin || (chars[chars.length - 1] >= '0' && chars[chars.length - 1] <= '9')) {
+            String substring = word.substring(begin, end + 1);
+            String toAdd = trimZero(substring);
+            if (!list.contains(toAdd)) list.add(toAdd);
+        }
+        return list.size();
+    }
+
+    private String trimZero(String input) {
+        if (input.length() == 1) return input;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(input.length() - 1) != '0' && input.charAt(i) == '0') {
+                input = input.replaceFirst("0", "");
+            } else {
+                break;
+            }
+        }
+        return input;
+    }
 }

@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
@@ -452,16 +453,22 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] arr1 = {1, 2, 3, 4, 4, 3, 2, 1};
-        int[] arr2 = {1, 1, 1, 2, 2, 2, 3, 3};
-        int[] arr3 = {1, 1, 2, 2, 2, 2, 3, 3};
-        int[] arr4 = {0,0,1,1,1,1,2,2,3,4};
-        int[] arr5 = {1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3};
-        assert leetCode.hasGroupsSizeX(arr1) : "arr1";
-        assert !leetCode.hasGroupsSizeX(arr2) : "arr2";
-        assert leetCode.hasGroupsSizeX(arr3) : "arr3";
-        assert !leetCode.hasGroupsSizeX(arr4) : "arr4";
-        assert !leetCode.hasGroupsSizeX(arr5) : "arr5";
+        assert leetCode.numDifferentIntegers("a1b01c001")==1 : "a1b01c001";
+//        assert leetCode.numDifferentIntegers("a123bc34d8ef34")==3 : "a123bc34d8ef34";
+//        assert leetCode.numDifferentIntegers("leet1234code234")==2 : "leet1234code234";
+//        assert leetCode.numDifferentIntegers("gi851a851q8510v")==2 : "gi851a851q8510v";
+//        assert leetCode.numDifferentIntegers("0a0") == 1 : "0a0";
+
+//        int[] arr1 = {1, 2, 3, 4, 4, 3, 2, 1};
+//        int[] arr2 = {1, 1, 1, 2, 2, 2, 3, 3};
+//        int[] arr3 = {1, 1, 2, 2, 2, 2, 3, 3};
+//        int[] arr4 = {0,0,1,1,1,1,2,2,3,4};
+//        int[] arr5 = {1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3};
+//        assert leetCode.hasGroupsSizeX(arr1) : "arr1";
+//        assert !leetCode.hasGroupsSizeX(arr2) : "arr2";
+//        assert leetCode.hasGroupsSizeX(arr3) : "arr3";
+//        assert !leetCode.hasGroupsSizeX(arr4) : "arr4";
+//        assert !leetCode.hasGroupsSizeX(arr5) : "arr5";
 
 
 //        assert leetCode.buddyStrings("cbad", "abcd") : "cbad";
@@ -672,10 +679,20 @@ class leetCodeTest {
 
     @Test
     void commonTest() {
+        Pattern compile = Pattern.compile("[0-9]*");
+        Matcher m = compile.matcher("gi851a851q8510v");
+        int count = 0;
+        while (m.find()) {
+            count++;
+            System.out.println(count);
+            System.out.println(m.start());
+            System.out.println(m.end());
+        }
+
 //        System.out.println(701 / 26);
 //        System.out.println(701 / 26);
-        System.out.println(2147483647 % 26);
-        System.out.println((2147483647 - 2147483647 % 26) % 26);
+//        System.out.println(2147483647 % 26);
+//        System.out.println((2147483647 - 2147483647 % 26) % 26);
 //        System.out.println(Math.pow(26,6));
 //        System.out.println(2147483647-Math.pow(26,6));
 
