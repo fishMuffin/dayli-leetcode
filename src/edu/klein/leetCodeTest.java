@@ -453,7 +453,18 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.numDifferentIntegers("a1b01c001")==1 : "a1b01c001";
+        int[] nums1 = {1, 2, 3, 3, 4};
+        int[] nums2 = {1, 2, 3, 2, 4};
+        int[] nums3 = {4, 3, 3, 2, 2};
+        int[] nums4 = {2};
+        int[] nums5 = {5, 3, 2, 4, 1};
+        assert leetCode.isMonotonic(nums1) : "nums1";
+        assert !leetCode.isMonotonic(nums2) : "nums2";
+        assert leetCode.isMonotonic(nums3) : "nums3";
+        assert leetCode.isMonotonic(nums4) : "nums4";
+        assert !leetCode.isMonotonic(nums5) : "nums5";
+
+//        assert leetCode.numDifferentIntegers("a1b01c001")==1 : "a1b01c001";
 //        assert leetCode.numDifferentIntegers("a123bc34d8ef34")==3 : "a123bc34d8ef34";
 //        assert leetCode.numDifferentIntegers("leet1234code234")==2 : "leet1234code234";
 //        assert leetCode.numDifferentIntegers("gi851a851q8510v")==2 : "gi851a851q8510v";

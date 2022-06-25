@@ -3735,7 +3735,7 @@ public class leetCode {
     /**
      * 给你一个字符串 word ，该字符串由数字和小写英文字母组成。
      * <p>
-     * 请你用空格替换每个不是数字的字符。例如，"a123bc34d8ef34" 将会变成 " 123  34 8  34" 。注意，剩下的这些整数为（相邻彼此至少有一个空格隔开）："123"、"34"、"8" 和 "34" 。
+     * 请你用空格替换每个不是数字的字符。例如，"a123bc34d8ef34" 将会变成 " 123  34 8  34" 。注意，剩下的这些整数为（相邻彼此至少有一个空格隔开）："123"、"34"、"8" 和 "34" 。
      * <p>
      * 返回对 word 完成替换后形成的 不同 整数的数目。
      * <p>
@@ -3819,5 +3819,45 @@ public class leetCode {
             }
         }
         return input;
+    }
+
+
+    /**
+     * 如果数组是单调递增或单调递减的，那么它是 单调 的。
+     * <p>
+     * 如果对于所有 i <= j，nums[i] <= nums[j]，那么数组 nums 是单调递增的。 如果对于所有 i <= j，nums[i]> = nums[j]，那么数组 nums 是单调递减的。
+     * <p>
+     * 当给定的数组 nums 是单调数组时返回 true，否则返回 false。
+     * <p>
+     * 输入：nums = [6,5,4,4]
+     * 输出：true
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @return
+     */
+    public boolean isMonotonic(int[] nums) {
+        if (nums.length == 1) return true;
+        boolean isAlwaysUp = true;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] != nums[i + 1]) {
+                isAlwaysUp = nums[i] - nums[i + 1] < 0;
+                if (i == nums.length - 1) return true;
+                break;
+            }
+        }
+        for (int i = 1; i < nums.length - 1; i++) {
+            int sub = nums[i] - nums[i + 1];
+            if (isAlwaysUp) {
+                if (sub > 0) return false;
+            } else {
+                if (sub < 0) return false;
+            }
+        }
+        return true;
     }
 }
