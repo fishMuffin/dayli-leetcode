@@ -3928,11 +3928,57 @@ public class leetCode {
         for (int i = 1; i < keeps.length; i++) {
             if (keeps[i] > maxKeeps) {
                 maxKeeps = keeps[i];
-                res=keysPressed.charAt(i);
-            }else if(keeps[i] == maxKeeps&&keysPressed.charAt(i)>res){
-                res=keysPressed.charAt(i);
+                res = keysPressed.charAt(i);
+            } else if (keeps[i] == maxKeeps && keysPressed.charAt(i) > res) {
+                res = keysPressed.charAt(i);
             }
         }
         return res;
+    }
+
+    /**
+     * 给你长度相等的两个字符串 s1 和 s2 。一次 字符串交换 操作的步骤如下：选出某个字符串中的两个下标（不必不同），并交换这两个下标所对应的字符。
+     * <p>
+     * 如果对 其中一个字符串 执行 最多一次字符串交换 就可以使两个字符串相等，返回 true ；否则，返回 false 。
+     * <p>
+     * 输入：s1 = "bank", s2 = "kanb"
+     * 输出：true
+     * 解释：例如，交换 s2 中的第一个和最后一个字符可以得到 "bank"
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s1
+     * @param s2
+     * @return
+     */
+    public boolean areAlmostEqual(String s1, String s2) {
+        if (s1.equals(s2)) return true;
+        int[] s1_count = new int[26];
+        int[] s2_count = new int[26];
+        int left = -1;
+        int right = -1;
+        int tick = 2;
+        for (int i = 0; i < s1.length(); i++) {
+            char c1 = s1.charAt(i);
+            char c2 = s2.charAt(i);
+            if (c1 != c2) {
+                if (tick > 1) {
+                    left = i;
+                } else if (tick > 0) {
+                    right = i;
+                }
+                tick--;
+            }
+            s1_count[c1 - 'a']++;
+            s2_count[c2 - 'a']++;
+        }
+        if (left == -1 || right == -1) return false;
+        for (int i = 0; i < s1_count.length; i++) {
+            if (s1_count[i] != s2_count[i]) return false;
+        }
+        return tick >= 0 && s1.charAt(left) == s2.charAt(right);
     }
 }

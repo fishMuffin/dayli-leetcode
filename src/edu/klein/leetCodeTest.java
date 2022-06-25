@@ -453,14 +453,18 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] nums1 = {12,23,36,46,62};
-        int[] nums2 = {9,29,49,50};
-        int[] nums3 = {10,20,21,22,23,33,43,45,46,47};
-        int[] nums4 = {10,20,21,22,23,33,43,45,46,47,57,67};
-        assert leetCode.slowestKey(nums1,"spuda") == 'a' : "nums1";
-        assert leetCode.slowestKey(nums2,"cbcd") == 'c' : "nums2";
-        assert leetCode.slowestKey(nums3,"aeodzyabcd") == 'y' : "nums3";
-        assert leetCode.slowestKey(nums4,"aeodzyabcdxk") == 'y' : "nums4";
+        assert leetCode.areAlmostEqual("abcd", "dbca") : "abcd";
+        assert !leetCode.areAlmostEqual("abcd", "dcba") : "dcba";
+
+
+//        int[] nums1 = {12,23,36,46,62};
+//        int[] nums2 = {9,29,49,50};
+//        int[] nums3 = {10,20,21,22,23,33,43,45,46,47};
+//        int[] nums4 = {10,20,21,22,23,33,43,45,46,47,57,67};
+//        assert leetCode.slowestKey(nums1,"spuda") == 'a' : "nums1";
+//        assert leetCode.slowestKey(nums2,"cbcd") == 'c' : "nums2";
+//        assert leetCode.slowestKey(nums3,"aeodzyabcd") == 'y' : "nums3";
+//        assert leetCode.slowestKey(nums4,"aeodzyabcdxk") == 'y' : "nums4";
 
 //        int[] nums1 = {6, 2, 2, 3, 6};
 //        int[] nums2 = {11,7,2,15};
