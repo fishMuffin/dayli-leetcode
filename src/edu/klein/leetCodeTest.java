@@ -453,16 +453,22 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] nums1 = {1, 2, 3, 3, 4};
-        int[] nums2 = {1, 2, 3, 2, 4};
-        int[] nums3 = {4, 3, 3, 2, 2};
-        int[] nums4 = {2};
-        int[] nums5 = {5, 3, 2, 4, 1};
-        assert leetCode.isMonotonic(nums1) : "nums1";
-        assert !leetCode.isMonotonic(nums2) : "nums2";
-        assert leetCode.isMonotonic(nums3) : "nums3";
-        assert leetCode.isMonotonic(nums4) : "nums4";
-        assert !leetCode.isMonotonic(nums5) : "nums5";
+        int[] nums1 = {6, 2, 2, 3, 6};
+        int[] nums2 = {11,7,2,15};
+        assert leetCode.countElements(nums1) == 1 : "nums1";
+        assert leetCode.countElements(nums2) == 2 : "nums2";
+
+
+//        int[] nums1 = {1, 2, 3, 3, 4};
+//        int[] nums2 = {1, 2, 3, 2, 4};
+//        int[] nums3 = {4, 3, 3, 2, 2};
+//        int[] nums4 = {2};
+//        int[] nums5 = {5, 3, 2, 4, 1};
+//        assert leetCode.isMonotonic(nums1) : "nums1";
+//        assert !leetCode.isMonotonic(nums2) : "nums2";
+//        assert leetCode.isMonotonic(nums3) : "nums3";
+//        assert leetCode.isMonotonic(nums4) : "nums4";
+//        assert !leetCode.isMonotonic(nums5) : "nums5";
 
 //        assert leetCode.numDifferentIntegers("a1b01c001")==1 : "a1b01c001";
 //        assert leetCode.numDifferentIntegers("a123bc34d8ef34")==3 : "a123bc34d8ef34";

@@ -3860,4 +3860,30 @@ public class leetCode {
         }
         return true;
     }
+
+    /**
+     * 给你一个整数数组 nums ，统计并返回在 nums 中同时至少具有一个严格较小元素和一个严格较大元素的元素数目。
+     * <p>
+     * 输入：nums = [11,7,2,15]
+     * 输出：2
+     * 解释：元素 7 ：严格较小元素是元素 2 ，严格较大元素是元素 11 。
+     * 元素 11 ：严格较小元素是元素 7 ，严格较大元素是元素 15 。
+     * 总计有 2 个元素都满足在 nums 中同时存在一个严格较小元素和一个严格较大元素。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @return
+     */
+    public int countElements(int[] nums) {
+        Arrays.sort(nums);
+        int count = 0;
+        for (int i = 1; i < nums.length - 1; i++) {
+            if (nums[i] > nums[0] && nums[i] < nums[nums.length - 1]) count++;
+        }
+        return count;
+    }
 }
