@@ -453,10 +453,17 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        String[] list = {"z"};
-        String[] list2 = {"a","a","a","a","a","a","a","a"};
-//        assert leetCode.isPrefixString("z",list) : "z";
-        assert leetCode.isPrefixString("aaaaaaa",list2) : "aaaaaaa";
+        int[] list = {2, 4, 1, 1, 6, 5};
+        int[] list2 = {6,6,5,5,4,1};
+        int[] list3 = {8,2,5,7,7,2,10,3,6,2};
+        assert leetCode.countHillValley(list) == 3 : "list";
+        assert leetCode.countHillValley(list2) == 0 : "list2";
+        assert leetCode.countHillValley(list3) == 6 : "list3";
+
+//        String[] list = {"z"};
+//        String[] list2 = {"a","a","a","a","a","a","a","a"};
+////        assert leetCode.isPrefixString("z",list) : "z";
+//        assert leetCode.isPrefixString("aaaaaaa",list2) : "aaaaaaa";
 
 //        String[] list1_1 = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
 //        String[] list1_2 = {"KFC", "Shogun", "Burger King"};
