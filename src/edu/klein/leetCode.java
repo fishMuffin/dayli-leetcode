@@ -4078,7 +4078,7 @@ public class leetCode {
                         resList.clear();
                         resList.add(list1[i]);
                         break;
-                    }else if(i+j==min){
+                    } else if (i + j == min) {
                         min = i + j;
                         resList.add(list1[i]);
                         break;
@@ -4088,5 +4088,38 @@ public class leetCode {
         }
         String[] res = new String[resList.size()];
         return resList.toArray(res);
+    }
+
+    /**
+     * 给你一个 严格升序排列 的正整数数组 arr 和一个整数 k 。
+     * <p>
+     * 请你找到这个数组里第 k 个缺失的正整数。
+     * <p>
+     * 输入：arr = [2,3,4,7,11], k = 5
+     * 输出：9
+     * 解释：缺失的正整数包括 [1,5,6,8,9,10,12,13,...] 。第 5 个缺失的正整数为 9 。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
+    public int findKthPositive(int[] arr, int k) {
+        int[] count = new int[arr[arr.length - 1] + 1];
+        for (int i = 0; i < arr.length; i++) {
+            count[arr[i]]++;
+        }
+        int res = -1;
+        for (int i = 1; i < count.length; i++) {
+            if (count[i] == 0) {
+                k--;
+                if (k == 0) return i;
+            }
+        }
+        return arr[arr.length - 1] + k;
     }
 }
