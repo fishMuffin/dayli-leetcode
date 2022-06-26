@@ -453,10 +453,23 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.thousandSeparator(123456).equals("123.456") : "123456";
-        assert leetCode.thousandSeparator(1234567).equals("1.234.567") : "1234567";
-        assert leetCode.thousandSeparator(123).equals("123") : "123";
-        assert leetCode.thousandSeparator(12).equals("12") : "12";
+//        list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]，list2 = ["KFC", "Shogun", "Burger King"]
+        String[] list1_1 = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
+        String[] list1_2 = {"KFC", "Shogun", "Burger King"};
+        String[] list2_1 = {"Shogun", "Tapioca Express", "Burger King", "KFC"};
+        String[] list2_2 = {"Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"};
+        String[] list3_1 = {"Shogun","Tapioca Express","Burger King","KFC"};
+        String[] list3_2 = {"KFC","Burger King","Tapioca Express","Shogun"};
+//        leetCode.findRestaurant(list1_1, list1_2);
+        for (String s : leetCode.findRestaurant(list3_1, list3_2)) {
+            System.out.println(s);
+        }
+
+
+//        assert leetCode.thousandSeparator(123456).equals("123.456") : "123456";
+//        assert leetCode.thousandSeparator(1234567).equals("1.234.567") : "1234567";
+//        assert leetCode.thousandSeparator(123).equals("123") : "123";
+//        assert leetCode.thousandSeparator(12).equals("12") : "12";
 
 //        assert leetCode.detectCapitalUse("leetcode") : "leetcode";
 //        assert leetCode.detectCapitalUse("ABC") : "ABC";

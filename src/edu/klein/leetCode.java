@@ -4040,7 +4040,7 @@ public class leetCode {
         int add = len % 3 == 0 ? len / 3 - 1 : len / 3;
         char[] resultChar = new char[chars.length + add];
         for (int i = resultChar.length - 1, j = 1, k = len - 1; i >= 0; i--, j++, k--) {
-            if ( j % 4 == 0) {
+            if (j % 4 == 0) {
                 resultChar[i] = '.';
                 k++;
             } else resultChar[i] = chars[k];
@@ -4049,4 +4049,44 @@ public class leetCode {
     }
 
 
+    /**
+     * 假设 Andy 和 Doris 想在晚餐时选择一家餐厅，并且他们都有一个表示最喜爱餐厅的列表，每个餐厅的名字用字符串表示。
+     * <p>
+     * 你需要帮助他们用最少的索引和找出他们共同喜爱的餐厅。 如果答案不止一个，则输出所有答案并且不考虑顺序。 你可以假设答案总是存在。
+     * <p>
+     * 输入:list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"]，list2 = ["KFC", "Shogun", "Burger King"]
+     * 输出: ["Shogun"]
+     * 解释: 他们共同喜爱且具有最小索引和的餐厅是“Shogun”，它有最小的索引和1(0+1)。
+     * <p>
+     * 提交次数:5
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public String[] findRestaurant(String[] list1, String[] list2) {
+        int min = Integer.MAX_VALUE;
+        List<String> resList = new ArrayList<>();
+        for (int i = 0; i < list1.length; i++) {
+            for (int j = 0; j < list2.length; j++) {
+                if (list1[i].equals(list2[j])) {
+                    if (i + j < min) {
+                        min = i + j;
+                        resList.clear();
+                        resList.add(list1[i]);
+                        break;
+                    }else if(i+j==min){
+                        min = i + j;
+                        resList.add(list1[i]);
+                        break;
+                    }
+                }
+            }
+        }
+        String[] res = new String[resList.size()];
+        return resList.toArray(res);
+    }
 }
