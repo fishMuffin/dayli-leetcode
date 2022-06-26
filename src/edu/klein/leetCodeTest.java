@@ -453,12 +453,15 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
+        assert leetCode.thousandSeparator(123456).equals("123.456") : "123456";
+        assert leetCode.thousandSeparator(1234567).equals("1.234.567") : "1234567";
+        assert leetCode.thousandSeparator(123).equals("123") : "123";
+        assert leetCode.thousandSeparator(12).equals("12") : "12";
 
-
-        assert leetCode.detectCapitalUse("leetcode") : "leetcode";
-        assert leetCode.detectCapitalUse("ABC") : "ABC";
-        assert leetCode.detectCapitalUse("Az") : "Az";
-        assert !leetCode.detectCapitalUse("AzA") : "AzA";
+//        assert leetCode.detectCapitalUse("leetcode") : "leetcode";
+//        assert leetCode.detectCapitalUse("ABC") : "ABC";
+//        assert leetCode.detectCapitalUse("Az") : "Az";
+//        assert !leetCode.detectCapitalUse("AzA") : "AzA";
 
 //        assert leetCode.areAlmostEqual("abcd", "dbca") : "abcd";
 //        assert !leetCode.areAlmostEqual("abcd", "dcba") : "dcba";

@@ -3993,7 +3993,7 @@ public class leetCode {
      * 输入：word = "USA"
      * 输出：true
      * <p>
-     * 提交次数:2
+     * 提交次数:1
      * 解决方式: 自我解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
@@ -4002,7 +4002,8 @@ public class leetCode {
      * @return
      */
     public boolean detectCapitalUse(String word) {
-        if (checkCapital(word)||(word.charAt(0) >= 'A' && word.charAt(0) <= 'Z' && checkCapital(word.substring(1)))) return true;
+        if (checkCapital(word) || (word.charAt(0) >= 'A' && word.charAt(0) <= 'Z' && checkCapital(word.substring(1))))
+            return true;
         return false;
     }
 
@@ -4014,7 +4015,38 @@ public class leetCode {
             min = Math.min(min, c);
             max = Math.max(max, c);
         }
-        if (min >= 97||max <= 90) return true;
+        if (min >= 97 || max <= 90) return true;
         return false;
     }
+
+    /**
+     * 给你一个整数 n，请你每隔三位添加点（即 "." 符号）作为千位分隔符，并将结果以字符串格式返回。
+     * <p>
+     * 输入：n = 123456789
+     * 输出："123.456.789"
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param n
+     * @return
+     */
+    public String thousandSeparator(int n) {
+        if (n <= 1000) return n + "";
+        char[] chars = Integer.toString(n).toCharArray();
+        int len = chars.length;
+        int add = len % 3 == 0 ? len / 3 - 1 : len / 3;
+        char[] resultChar = new char[chars.length + add];
+        for (int i = resultChar.length - 1, j = 1, k = len - 1; i >= 0; i--, j++, k--) {
+            if ( j % 4 == 0) {
+                resultChar[i] = '.';
+                k++;
+            } else resultChar[i] = chars[k];
+        }
+        return new String(resultChar);
+    }
+
+
 }
