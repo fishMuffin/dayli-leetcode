@@ -4157,7 +4157,7 @@ public class leetCode {
     public int getMaximumGenerated(int n) {
         if (n == 0) return 0;
         if (n <= 2) return 1;
-        int[] nums = new int[n+1];
+        int[] nums = new int[n + 1];
         nums[0] = 0;
         nums[1] = 1;
         for (int i = 2; i < nums.length; i++) {
@@ -4173,4 +4173,59 @@ public class leetCode {
         return max;
     }
 
+
+    /**
+     * 给你一个字符串 s 和一个字符串数组 words ，请你判断 s 是否为 words 的 前缀字符串 。
+     * <p>
+     * 字符串 s 要成为 words 的 前缀字符串 ，需要满足：s 可以由 words 中的前 k（k 为 正数 ）个字符串按顺序相连得到，且 k 不超过 words.length 。
+     * <p>
+     * 如果 s 是 words 的 前缀字符串 ，返回 true ；否则，返回 false 。
+     * <p>
+     * 输入：s = "iloveleetcode", words = ["i","love","leetcode","apples"]
+     * 输出：true
+     * 解释：
+     * s 可以由 "i"、"love" 和 "leetcode" 相连得到。
+     * <p>
+     * 提交次数:6
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @param words
+     * @return
+     */
+    public boolean isPrefixString(String s, String[] words) {
+        StringBuffer buffer = new StringBuffer();
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            if (s.contains(word)&&s.length()>=buffer.length()+word.length()) {
+                buffer.append(word);
+            }else{
+                break;
+            }
+        }
+        return s.equals(buffer.toString());
+    }
+
+    public boolean isPrefixString_unfinished(String s, String[] words) {
+        int lenSum = 0;
+        int k = 0;
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            lenSum += word.length();
+            for (int j = 0; j < word.length(); j++) {
+                if (k >= s.length()) {
+                    if (i > 0 || s.length() >= word.length())
+                        return true;
+                    else
+                        return false;
+                }
+                if (s.charAt(k) != word.charAt(j)) return false;
+                k++;
+            }
+        }
+        if (k == lenSum) return true;
+        return false;
+    }
 }
