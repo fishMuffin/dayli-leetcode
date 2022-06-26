@@ -453,9 +453,15 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.areAlmostEqual("abcd", "dbca") : "abcd";
-        assert !leetCode.areAlmostEqual("abcd", "dcba") : "dcba";
 
+
+        assert leetCode.detectCapitalUse("leetcode") : "leetcode";
+        assert leetCode.detectCapitalUse("ABC") : "ABC";
+        assert leetCode.detectCapitalUse("Az") : "Az";
+        assert !leetCode.detectCapitalUse("AzA") : "AzA";
+
+//        assert leetCode.areAlmostEqual("abcd", "dbca") : "abcd";
+//        assert !leetCode.areAlmostEqual("abcd", "dcba") : "dcba";
 
 //        int[] nums1 = {12,23,36,46,62};
 //        int[] nums2 = {9,29,49,50};
@@ -708,15 +714,15 @@ class leetCodeTest {
 
     @Test
     void commonTest() {
-        Pattern compile = Pattern.compile("[0-9]*");
-        Matcher m = compile.matcher("gi851a851q8510v");
-        int count = 0;
-        while (m.find()) {
-            count++;
-            System.out.println(count);
-            System.out.println(m.start());
-            System.out.println(m.end());
-        }
+//        Pattern compile = Pattern.compile("[0-9]*");
+//        Matcher m = compile.matcher("gi851a851q8510v");
+//        int count = 0;
+//        while (m.find()) {
+//            count++;
+//            System.out.println(count);
+//            System.out.println(m.start());
+//            System.out.println(m.end());
+//        }
 
 //        System.out.println(701 / 26);
 //        System.out.println(701 / 26);
@@ -744,13 +750,13 @@ class leetCodeTest {
 //        Integer j = 1;
 //        System.out.println(i == j);
 //        System.out.println((int) '?');
-//        System.out.println((int) 'a');
-//        System.out.println((int) 'z');
+        System.out.println((int) 'a');
+        System.out.println((int) 'z');
 ////        System.out.println("abca".replace("c", ""));
 ////        System.out.println((int) ' ');
 ////        System.out.println("ZY".charAt(1) - 64);
-////        System.out.println((int) 'A');
-////        System.out.println((int) 'Z');
+        System.out.println((int) 'A');
+        System.out.println((int) 'Z');
 //        System.out.println((int) '0');
 //        System.out.println((int) '9');
     }

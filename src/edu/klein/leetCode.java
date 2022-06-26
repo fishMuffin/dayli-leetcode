@@ -3981,4 +3981,40 @@ public class leetCode {
         }
         return tick >= 0 && s1.charAt(left) == s2.charAt(right);
     }
+
+    /**
+     * 我们定义，在以下情况时，单词的大写用法是正确的：
+     * <p>
+     * 全部字母都是大写，比如 "USA" 。
+     * 单词中所有字母都不是大写，比如 "leetcode" 。
+     * 如果单词不只含有一个字母，只有首字母大写， 比如 "Google" 。
+     * 给你一个字符串 word 。如果大写用法正确，返回 true ；否则，返回 false 。
+     * <p>
+     * 输入：word = "USA"
+     * 输出：true
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param word
+     * @return
+     */
+    public boolean detectCapitalUse(String word) {
+        if (checkCapital(word)||(word.charAt(0) >= 'A' && word.charAt(0) <= 'Z' && checkCapital(word.substring(1)))) return true;
+        return false;
+    }
+
+    private boolean checkCapital(String word) {
+        int min = 122;
+        int max = 65;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            min = Math.min(min, c);
+            max = Math.max(max, c);
+        }
+        if (min >= 97||max <= 90) return true;
+        return false;
+    }
 }
