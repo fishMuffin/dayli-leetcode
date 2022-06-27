@@ -4466,9 +4466,9 @@ public class leetCode {
     }
 
     /**
-     * 给定一个  无重复元素 的 有序 整数数组 nums 。
+     * 给定一个  无重复元素 的 有序 整数数组 nums 。
      * <p>
-     * 返回 恰好覆盖数组中所有数字 的 最小有序 区间范围列表 。也就是说，nums 的每个元素都恰好被某个区间范围所覆盖，并且不存在属于某个范围但不属于 nums 的数字 x 。
+     * 返回 恰好覆盖数组中所有数字 的 最小有序 区间范围列表 。也就是说，nums 的每个元素都恰好被某个区间范围所覆盖，并且不存在属于某个范围但不属于 nums 的数字 x 。
      * <p>
      * 列表中的每个区间范围 [a,b] 应该按如下格式输出：
      * <p>
@@ -4493,7 +4493,7 @@ public class leetCode {
      */
     public List<String> summaryRanges(int[] nums) {
         List<String> ret = new ArrayList<>();
-        if(nums.length==0) return ret;
+        if (nums.length == 0) return ret;
         int start = nums[0];
         int end;
         for (int i = 0; i < nums.length; i++) {
@@ -4501,8 +4501,8 @@ public class leetCode {
             else {
                 end = nums[i];
                 ret.add(getTargetString(start, end));
-                if(i+1<nums.length)
-                    start = nums[i+1];
+                if (i + 1 < nums.length)
+                    start = nums[i + 1];
             }
         }
         return ret;
@@ -4515,5 +4515,62 @@ public class leetCode {
         buffer.append("->");
         buffer.append(end);
         return buffer.toString();
+    }
+
+    /**
+     * 假设你是一位很棒的家长，想要给你的孩子们一些小饼干。但是，每个孩子最多只能给一块饼干。
+     * <p>
+     * 对每个孩子 i，都有一个胃口值 g[i]，这是能让孩子们满足胃口的饼干的最小尺寸；并且每块饼干 j，都有一个尺寸 s[j] 。如果 s[j] >= g[i]，我们可以将这个饼干 j 分配给孩子 i ，这个孩子会得到满足。你的目标是尽可能满足越多数量的孩子，并输出这个最大数值。
+     * <p>
+     * 输入: g = [1,6], s = [1,2,3]
+     * 输出: 2
+     * 解释:
+     * 你有两个孩子和三块小饼干，2个孩子的胃口值分别是1,2。
+     * 你拥有的饼干数量和尺寸都足以让所有孩子满足。
+     * 所以你应该输出2.
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:是
+     *
+     * @param g
+     * @param s
+     * @return
+     */
+
+    public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int numOfChildren = g.length, numOfCookies = s.length;
+        int count = 0;
+        for (int i = 0, j = 0; i < numOfChildren && j < numOfCookies; i++, j++) {
+            while (j < numOfCookies && g[i] > s[j]) {
+                j++;
+            }
+            if (j < numOfCookies) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int findContentChildren_unfinished(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int ret = 0;
+        int left = 0;
+        for (int i = 0, j = 0; i < s.length; i++) {
+            if (left > 0)
+                left -= s[i];
+            else
+                left = g[j] - s[i];
+            if (left <= 0) {
+                ret++;
+                j++;
+            }
+            if (j == g.length-1) break;
+        }
+        return ret;
     }
 }
