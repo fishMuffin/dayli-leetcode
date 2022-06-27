@@ -4230,7 +4230,7 @@ public class leetCode {
     }
 
     /**
-     * 给你一个下标从 0 开始的整数数组 nums 。如果两侧距 i 最近的不相等邻居的值均小于 nums[i] ，则下标 i 是 nums 中，某个峰的一部分。类似地，如果两侧距 i 最近的不相等邻居的值均大于 nums[i] ，则下标 i 是 nums 中某个谷的一部分。对于相邻下标 i 和 j ，如果 nums[i] == nums[j] ， 则认为这两下标属于 同一个 峰或谷。
+     * 给你一个下标从 0 开始的整数数组 nums 。如果两侧距 i 最近的不相等邻居的值均小于 nums[i] ，则下标 i 是 nums 中，某个峰的一部分。类似地，如果两侧距 i 最近的不相等邻居的值均大于 nums[i] ，则下标 i 是 nums 中某个谷的一部分。对于相邻下标 i 和 j ，如果 nums[i] == nums[j] ， 则认为这两下标属于 同一个 峰或谷。
      * <p>
      * 注意，要使某个下标所做峰或谷的一部分，那么它左右两侧必须 都 存在不相等邻居。
      * <p>
@@ -4294,13 +4294,13 @@ public class leetCode {
 
 
     /**
-     * 在柠檬水摊上，每一杯柠檬水的售价为 5 美元。顾客排队购买你的产品，（按账单 bills 支付的顺序）一次购买一杯。
+     * 在柠檬水摊上，每一杯柠檬水的售价为 5 美元。顾客排队购买你的产品，（按账单 bills 支付的顺序）一次购买一杯。
      * <p>
      * 每位顾客只买一杯柠檬水，然后向你付 5 美元、10 美元或 20 美元。你必须给每个顾客正确找零，也就是说净交易是每位顾客向你支付 5 美元。
      * <p>
      * 注意，一开始你手头没有任何零钱。
      * <p>
-     * 给你一个整数数组 bills ，其中 bills[i] 是第 i 位顾客付的账。如果你能给每位顾客正确找零，返回 true ，否则返回 false 。
+     * 给你一个整数数组 bills ，其中 bills[i] 是第 i 位顾客付的账。如果你能给每位顾客正确找零，返回 true ，否则返回 false 。
      * <p>
      * 输入：bills = [5,5,5,10,20]
      * 输出：true
@@ -4391,4 +4391,36 @@ public class leetCode {
         ret[0] = nums[len - 3];
         return ret;
     }
+
+    /**
+     * 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
+     * <p>
+     * 输入: nums = [-1,0,3,5,9,12], target = 9
+     * 输出: 4
+     * 解释: 9 出现在 nums 中并且下标为 4
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int search(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (target > nums[mid]) {
+                start = mid + 1;
+            } else if (target < nums[mid]) {
+                end = mid;
+            } else return mid;
+        }
+        return -1;
+    }
+
+
 }
