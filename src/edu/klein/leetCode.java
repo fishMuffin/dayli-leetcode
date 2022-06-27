@@ -4569,8 +4569,40 @@ public class leetCode {
                 ret++;
                 j++;
             }
-            if (j == g.length-1) break;
+            if (j == g.length - 1) break;
         }
         return ret;
+    }
+
+    /**
+     * 给你一个由若干 0 和 1 组成的数组 nums 以及整数 k。如果所有 1 都至少相隔 k 个元素，则返回 True ；否则，返回 False 。
+     * <p>
+     * 输入：nums = [0,1,0,0,0,1,0,0,1], k = 2
+     * 输出：true
+     * 解释：每个 1 都至少相隔 2 个元素。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean kLengthApart(int[] nums, int k) {
+        boolean isStarting = false;
+        int count=0;
+        for (int i = 0; i < nums.length; i++) {
+            if (isStarting&&nums[i] == 0){
+                count++;
+            }else if(!isStarting&&nums[i]==1){
+                isStarting=true;
+            }else if(isStarting&&nums[i]==1){
+                if(count<k) return false;
+                count=0;
+            }
+        }
+        return true;
     }
 }
