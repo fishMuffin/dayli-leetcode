@@ -4343,4 +4343,52 @@ public class leetCode {
         return true;
     }
 
+
+    /**
+     * 给定由一些正数（代表长度）组成的数组 nums ，返回 由其中三个长度组成的、面积不为零的三角形的最大周长 。如果不能形成任何面积不为零的三角形，返回 0。
+     * <p>
+     * 输入：nums = [2,1,2]
+     * 输出：5
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @return
+     */
+    public int largestPerimeter(int[] nums) {
+        Arrays.sort(nums);
+        if (nums.length == 3) {
+            if (isTrian(nums))
+                return getPerimeter(nums);
+            else
+                return 0;
+        }
+        int start = nums.length;
+        while (start >= 3) {
+            if (!isTrian(getTopThree(nums, start)))
+                start--;
+            else
+                return getPerimeter(getTopThree(nums, start));
+        }
+        return 0;
+    }
+
+    private boolean isTrian(int[] nums) {
+        return nums[0] + nums[1] > nums[2];
+    }
+
+    private int getPerimeter(int[] nums) {
+        return nums[0] + nums[1] + nums[2];
+    }
+
+    private int[] getTopThree(int[] nums, int len) {
+        int[] ret = new int[3];
+        ret[2] = nums[len - 1];
+        ret[1] = nums[len - 2];
+        ret[0] = nums[len - 3];
+        return ret;
+    }
 }
