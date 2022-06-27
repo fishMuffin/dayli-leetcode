@@ -4592,17 +4592,71 @@ public class leetCode {
      */
     public boolean kLengthApart(int[] nums, int k) {
         boolean isStarting = false;
-        int count=0;
+        int count = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (isStarting&&nums[i] == 0){
+            if (isStarting && nums[i] == 0) {
                 count++;
-            }else if(!isStarting&&nums[i]==1){
-                isStarting=true;
-            }else if(isStarting&&nums[i]==1){
-                if(count<k) return false;
-                count=0;
+            } else if (!isStarting && nums[i] == 1) {
+                isStarting = true;
+            } else if (isStarting && nums[i] == 1) {
+                if (count < k) return false;
+                count = 0;
             }
         }
         return true;
+    }
+
+    /**
+     * 给你一个字符串 s ，由 n 个字符组成，每个字符不是 'X' 就是 'O' 。
+     * <p>
+     * 一次 操作 定义为从 s 中选出 三个连续字符 并将选中的每个字符都转换为 'O' 。注意，如果字符已经是 'O' ，只需要保持 不变 。
+     * <p>
+     * 返回将 s 中所有字符均转换为 'O' 需要执行的 最少 操作次数。
+     * <p>
+     * 输入：s = "XXXOOXXX"
+     * 输出：2
+     * 解释：XXOX -> OOOX -> OOOO
+     * 第一次操作，选择前 3 个字符，并将这些字符转换为 'O' 。
+     * 然后，选中后 3 个字符，并执行转换。最终得到的字符串全由字符 'O' 组成。
+     * <p>
+     * 提交次数:3
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @return
+     */
+    public int minimumMoves(String s) {
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'X') {
+                i += 2;
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int minimumMoves_unfinished(String s) {
+        int count = 0;
+        boolean left = false;
+        boolean right = false;
+        for (int i = 0, j = s.length() - 1; ; ) {
+            if (j < i) return 0;
+            if (i == j) return 1;
+            if (s.charAt(i) == 'O') i++;
+            else left = true;
+            if (s.charAt(j) == 'O') j--;
+            else right = true;
+            if (left && right) {
+                s = s.substring(i, j + 1);
+                break;
+            }
+        }
+        for (int i = 0; i < s.length(); i += 3) {
+            if (s.substring(i, i + 3 < s.length() ? i + 3 : s.length()).contains("X")) count++;
+        }
+        return count;
     }
 }
