@@ -4611,7 +4611,7 @@ public class leetCode {
      * <p>
      * 一次 操作 定义为从 s 中选出 三个连续字符 并将选中的每个字符都转换为 'O' 。注意，如果字符已经是 'O' ，只需要保持 不变 。
      * <p>
-     * 返回将 s 中所有字符均转换为 'O' 需要执行的 最少 操作次数。
+     * 返回将 s 中所有字符均转换为 'O' 需要执行的 最少 操作次数。
      * <p>
      * 输入：s = "XXXOOXXX"
      * 输出：2
@@ -4658,5 +4658,40 @@ public class leetCode {
             if (s.substring(i, i + 3 < s.length() ? i + 3 : s.length()).contains("X")) count++;
         }
         return count;
+    }
+
+    /**
+     * 环形公交路线上有 n 个站，按次序从 0 到 n - 1 进行编号。我们已知每一对相邻公交站之间的距离，distance[i] 表示编号为 i 的车站和编号为 (i + 1) % n 的车站之间的距离。
+     * <p>
+     * 环线上的公交车都可以按顺时针和逆时针的方向行驶。
+     * <p>
+     * 返回乘客从出发点 start 到目的地 destination 之间的最短距离。
+     * <p>
+     * 输入：distance = [1,2,3,4], start = 1, destination = 2
+     * 输出：2
+     * 解释：公交站 1 和 2 之间的距离是 2 或 8，最小值是 2。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param distance
+     * @param start
+     * @param destination
+     * @return
+     */
+    public int distanceBetweenBusStops(int[] distance, int start, int destination) {
+        int sum = Arrays.stream(distance).sum();
+        int dis = 0;
+        if (start > destination) {
+            int temp = destination;
+            destination = start;
+            start = temp;
+        }
+        for (int i = start; i < destination; i++) {
+            dis += distance[i];
+        }
+        return Math.min(dis, sum - dis);
     }
 }
