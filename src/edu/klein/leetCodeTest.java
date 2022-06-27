@@ -453,8 +453,13 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] list = {-1, 0, 3, 5, 9, 12};
-        assert leetCode.search(list, 9) == 4 : "list";
+        int[] list = {0, 1, 2, 4, 5, 7};
+        int[] list2 = {0,2,3,4,6,8,9};
+        int[] list3 = {-2147483648,-2147483647,2147483647};
+        leetCode.summaryRanges(list3);
+
+//        int[] list = {-1, 0, 3, 5, 9, 12};
+//        assert leetCode.search(list, 9) == 4 : "list";
 
 //        int[] list = {1, 1, 5, 2, 3};
 //        assert leetCode.largestPerimeter(list)==0 : "list";
