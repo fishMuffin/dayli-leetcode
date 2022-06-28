@@ -452,11 +452,14 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] list1 = {1,100,200,1,300,300,300};
-        int[] list2 = {2,1000,2,1000,2,3};
-        assert leetCode.mostFrequent(list1,1 ) == 300 : "list1";
-        assert leetCode.mostFrequent(list2,2 ) == 1000 : "list2";
+        int[] list1 = {1, 2, 2, 3, 1};
+        assert leetCode.findShortestSubArray(list1) == 2 : "list1";
 
+
+//        int[] list1 = {1,100,200,1,300,300,300};
+//        int[] list2 = {2,1000,2,1000,2,3};
+//        assert leetCode.mostFrequent(list1,1 ) == 300 : "list1";
+//        assert leetCode.mostFrequent(list2,2 ) == 1000 : "list2";
 
 
 //        int[] list1_1 = {10,9,8,7};
@@ -768,9 +771,9 @@ class leetCodeTest {
     @Test
     void commonTest() {
 
-        Date date=new Date();
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//年月日时分秒
-        String s=simpleDateFormat.format(date);
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//年月日时分秒
+        String s = simpleDateFormat.format(date);
         System.out.println(s);
 //        Pattern compile = Pattern.compile("[0-9]*");
 //        Matcher m = compile.matcher("gi851a851q8510v");

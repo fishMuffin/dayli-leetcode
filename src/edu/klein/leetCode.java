@@ -2,10 +2,8 @@ package edu.klein;
 
 import edu.klein.common.ListNode;
 
-import java.math.BigInteger;
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 
 public class leetCode {
     /**
@@ -4714,6 +4712,7 @@ public class leetCode {
      * 解决方式: 自我解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param nums
      * @param key
      * @return
@@ -4729,20 +4728,79 @@ public class leetCode {
                     i++;
                     if (nums[i] == target)
                         count[nums[i]]++;
-                    else{
+                    else {
                         i--;
-                        if(target==key) i--;
+                        if (target == key) i--;
                         break;
                     }
                 }
             }
         }
         int times = 0;
-        int ret=0;
+        int ret = 0;
         for (int i = 0; i < count.length; i++) {
-            if (count[i] != 0 && count[i] > times){
+            if (count[i] != 0 && count[i] > times) {
                 times = count[i];
-                ret=i;
+                ret = i;
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * 给定一个非空且只包含非负数的整数数组 nums，数组的 度 的定义是指数组里任一元素出现频数的最大值。
+     * <p>
+     * 你的任务是在 nums 中找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。
+     * <p>
+     * 输入：nums = [1,2,2,3,1]
+     * 输出：2
+     * 解释：
+     * 输入数组的度是 2 ，因为元素 1 和 2 的出现频数最大，均为 2 。
+     * 连续子数组里面拥有相同度的有如下所示：
+     * [1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]
+     * 最短连续子数组 [2, 2] 的长度为 2 ，所以返回 2 。
+     *
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param nums
+     * @return
+     */
+    public int findShortestSubArray(int[] nums) {
+        if(nums.length==1) return 1;
+        int[] count = new int[50000];
+        for (int i = 0; i < nums.length; i++) {
+            count[nums[i]]++;
+        }
+        List<Integer> list = new ArrayList<>();
+        int max = 0;
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] != 0) {
+                if (count[i] > max) {
+                    list.clear();
+                    max = count[i];
+                    list.add(i);
+                } else if (count[i] == max) {
+                    list.add(i);
+                }
+            }
+        }
+        int ret = Integer.MAX_VALUE;
+        for (Integer num : list) {
+            boolean left = false;
+            boolean right = false;
+            for (int i = 0, j = nums.length - 1; i <= j; ) {
+                if (nums[i] != num) i++;
+                else left = true;
+                if (nums[j] != num) j--;
+                else right = true;
+                if (left && right) {
+                    ret = Math.min(ret, j - i + 1);
+                    break;
+                }
             }
         }
         return ret;
