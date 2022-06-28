@@ -4672,9 +4672,9 @@ public class leetCode {
      * 解释：公交站 1 和 2 之间的距离是 2 或 8，最小值是 2。
      * <p>
      * 提交次数:1
-     * 解决方式: 参考答案
-     * 未来是否需要更优化的解题方法:是
-     * 未来是否需要复盘:是
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
      *
      * @param distance
      * @param start
@@ -4693,5 +4693,58 @@ public class leetCode {
             dis += distance[i];
         }
         return Math.min(dis, sum - dis);
+    }
+
+    /**
+     * 给你一个下标从 0 开始的整数数组 nums ，同时给你一个整数 key ，它在 nums 出现过。
+     * <p>
+     * 统计 在 nums 数组中紧跟着 key 后面出现的不同整数 target 的出现次数。换言之，target 的出现次数为满足以下条件的 i 的数目：
+     * <p>
+     * 0 <= i <= n - 2
+     * nums[i] == key 且
+     * nums[i + 1] == target 。
+     * 请你返回出现 最多 次数的 target 。测试数据保证出现次数最多的 target 是唯一的。
+     * <p>
+     * 输入：nums = [1,100,200,1,300,300,300], key = 1
+     * 输出：100
+     * 解释：对于 target = 100 ，在下标 1 和 4 处出现过 2 次，且都紧跟着 key 。
+     * 没有其他整数在 key 后面紧跟着出现，所以我们返回 100 。
+     * <p>
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param nums
+     * @param key
+     * @return
+     */
+    public int mostFrequent(int[] nums, int key) {
+        int[] count = new int[1001];
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == key) {
+                int target = -1;
+                if (i + 1 < nums.length) target = nums[i + 1];
+                else break;
+                while (i + 1 < nums.length) {
+                    i++;
+                    if (nums[i] == target)
+                        count[nums[i]]++;
+                    else{
+                        i--;
+                        if(target==key) i--;
+                        break;
+                    }
+                }
+            }
+        }
+        int times = 0;
+        int ret=0;
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] != 0 && count[i] > times){
+                times = count[i];
+                ret=i;
+            }
+        }
+        return ret;
     }
 }
