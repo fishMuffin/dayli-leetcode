@@ -452,9 +452,20 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        String[] list1 = {"hello", "leetcode"};
-        String order = "hlabcdefgijkmnopqrstuvwxyz";
-        assert leetCode.isAlienSorted(list1, order) : "list1";
+        assert leetCode.reverseStr("abcdefg", 2).equals("bacdfeg") : "abcdefg";
+        assert leetCode.reverseStr("abcdabcdabc", 4).equals("dcbaabcdcba") : "abcdabcdabc";
+        assert leetCode.reverseStr("abcdabcdabcda", 4).equals("dcbaabcddcbaa") : "abcdabcdabcda";
+        assert leetCode.reverseStr("abcd", 3).equals("cbad") : "abcd";
+
+
+
+    }
+
+    @Test
+    void assertTest01(){
+        //        String[] list1 = {"hello", "leetcode"};
+//        String order = "hlabcdefgijkmnopqrstuvwxyz";
+//        assert leetCode.isAlienSorted(list1, order) : "list1";
 
 //        int[] list1 = {1, 2, 2, 3, 1};
 //        assert leetCode.findShortestSubArray(list1) == 2 : "list1";
@@ -769,8 +780,8 @@ class leetCodeTest {
 //        assert leetCode.maxScore("1111") == 3 : "1111";
 //        assert leetCode.maxScore("000") == 2 : "000:"+leetCode.maxScore1("000");
 
-
     }
+
 
     @Test
     void commonTest() {

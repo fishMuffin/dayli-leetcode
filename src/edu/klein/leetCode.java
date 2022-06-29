@@ -4952,7 +4952,78 @@ public class leetCode {
         for (int i = target; i < count.length; i++) {
             if (count[i] > 0) target -= count[i];
         }
-        return target==0;
+        return target == 0;
+    }
+
+
+    /**
+     * 给定一个字符串 s 和一个整数 k，从字符串开头算起，每计数至 2k 个字符，就反转这 2k 字符中的前 k 个字符。
+     * <p>
+     * 如果剩余字符少于 k 个，则将剩余字符全部反转。
+     * 如果剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符，其余字符保持原样。
+     * <p>
+     * 输入：s = "abcdefg", k = 2
+     * 输出："bacdfeg"
+     *
+     *
+     * 提交次数:4
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     * @param s
+     * @param k
+     * @return
+     */
+    public String reverseStr(String s, int k) {
+        int n = s.length();
+        char[] arr = s.toCharArray();
+        for (int i = 0; i < n; i += 2 * k) {
+            reverse(arr, i, Math.min(i + k, n) - 1);
+        }
+        return new String(arr);
+    }
+
+    public void reverse(char[] arr, int left, int right) {
+        while (left < right) {
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+    }
+
+    public String reverseStr_unfinished(String s, int k) {
+        char[] chars = s.toCharArray();
+        int len = chars.length;
+        for (int i = 0; i < len; i++) {
+            if (len < k) {
+                charsReverse(chars, i, len - 1);
+                break;
+            } else if (len < 2 * k) {
+                charsReverse(chars, i, i + k - 1);
+                break;
+            } else if (i > k && ((i + 1) / k) % 2 == 0) {
+                charsReverse(chars, i - (k * 2 - 1), k - 1);
+                if (len - (i + 1) < k) {
+                    charsReverse(chars, i + 1, len - 1);
+                    break;
+                }
+                if (len - (i + 1) < 2 * k) {
+                    charsReverse(chars, i + 1, i + k);
+                    break;
+                }
+            }
+        }
+        return new String(chars);
+    }
+
+    private void charsReverse(char[] chars, int start, int end) {
+        for (int i = start, j = end; i <= j; i++, j--) {
+            char temp = chars[i];
+            chars[i] = chars[j];
+            chars[j] = temp;
+        }
     }
 
 }
