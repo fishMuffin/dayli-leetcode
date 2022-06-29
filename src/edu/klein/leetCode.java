@@ -4916,4 +4916,43 @@ public class leetCode {
         }
         return ret;
     }
+
+    /**
+     * 给你一个非负整数数组 nums 。如果存在一个数 x ，使得 nums 中恰好有 x 个元素 大于或者等于 x ，那么就称 nums 是一个 特殊数组 ，而 x 是该数组的 特征值 。
+     * <p>
+     * 注意： x 不必 是 nums 的中的元素。
+     * <p>
+     * 如果数组 nums 是一个 特殊数组 ，请返回它的特征值 x 。否则，返回 -1 。可以证明的是，如果 nums 是特殊数组，那么其特征值 x 是 唯一的 。
+     * <p>
+     * <p>
+     * 输入：nums = [0,4,3,0,4]
+     * 输出：3
+     * 解释：有 3 个元素大于或等于 3 。
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param nums
+     * @return
+     */
+    public int specialArray(int[] nums) {
+        int[] count = new int[1001];
+        for (int i = 0; i < nums.length; i++) {
+            count[nums[i]]++;
+        }
+        for (int i = nums.length; i > 0; i--) {
+            if (isValidTarget(i, count)) return i;
+        }
+        return -1;
+    }
+
+    private boolean isValidTarget(int target, int[] count) {
+        for (int i = target; i < count.length; i++) {
+            if (count[i] > 0) target -= count[i];
+        }
+        return target==0;
+    }
+
 }
