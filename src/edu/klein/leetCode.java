@@ -4856,14 +4856,13 @@ public class leetCode {
      * 解决方式: 自我解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
-     * "234ASf-dfs-89"
      *
      * @param s
      * @return
      */
     public String reverseOnlyLetters(String s) {
         char[] chars = new char[s.length()];
-        for (int i = 0, j = s.length() - 1; i <= j;) {
+        for (int i = 0, j = s.length() - 1; i <= j; ) {
             char c_left = s.charAt(i);
             char c_right = s.charAt(j);
             if (isAlpha(c_left)) {
@@ -4886,5 +4885,35 @@ public class leetCode {
 
     private boolean isAlpha(char c) {
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+    }
+
+    /**
+     * 给你一个下标从 0 开始的整数数组 nums ，该数组的大小为 n ，请你计算 nums[j] - nums[i] 能求得的 最大差值 ，其中 0 <= i < j < n 且 nums[i] < nums[j] 。
+     * <p>
+     * 返回 最大差值 。如果不存在满足要求的 i 和 j ，返回 -1 。
+     * <p>
+     * 输入：nums = [7,1,5,4]
+     * 输出：4
+     * 解释：
+     * 最大差值出现在 i = 1 且 j = 2 时，nums[j] - nums[i] = 5 - 1 = 4 。
+     * 注意，尽管 i = 1 且 j = 0 时 ，nums[j] - nums[i] = 7 - 1 = 6 > 4 ，但 i > j 不满足题面要求，所以 6 不是有效的答案。
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param nums
+     * @return
+     */
+    public int maximumDifference(int[] nums) {
+        int ret = -1;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] >= nums[j]) continue;
+                ret = Math.max(ret, nums[j] - nums[i]);
+            }
+        }
+        return ret;
     }
 }
