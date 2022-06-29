@@ -4841,4 +4841,50 @@ public class leetCode {
         }
         return true;
     }
+
+    /**
+     * 给你一个字符串 s ，根据下述规则反转字符串：
+     * <p>
+     * 所有非英文字母保留在原有位置。
+     * 所有英文字母（小写或大写）位置反转。
+     * 返回反转后的 s 。
+     * <p>
+     * 输入：s = "Test1ng-Leet=code-Q!"
+     * 输出："Qedo1ct-eeLg=ntse-T!"
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * "234ASf-dfs-89"
+     *
+     * @param s
+     * @return
+     */
+    public String reverseOnlyLetters(String s) {
+        char[] chars = new char[s.length()];
+        for (int i = 0, j = s.length() - 1; i <= j;) {
+            char c_left = s.charAt(i);
+            char c_right = s.charAt(j);
+            if (isAlpha(c_left)) {
+                if (isAlpha(c_right)) {
+                    chars[i] = c_right;
+                    chars[j] = c_left;
+                    i++;
+                    j--;
+                } else {
+                    chars[j] = c_right;
+                    j--;
+                }
+            } else {
+                chars[i] = c_left;
+                i++;
+            }
+        }
+        return new String(chars);
+    }
+
+    private boolean isAlpha(char c) {
+        return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+    }
 }
