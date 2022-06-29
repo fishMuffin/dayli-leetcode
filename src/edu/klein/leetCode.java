@@ -4770,7 +4770,7 @@ public class leetCode {
      * @return
      */
     public int findShortestSubArray(int[] nums) {
-        if(nums.length==1) return 1;
+        if (nums.length == 1) return 1;
         int[] count = new int[50000];
         for (int i = 0; i < nums.length; i++) {
             count[nums[i]]++;
@@ -4804,5 +4804,41 @@ public class leetCode {
             }
         }
         return ret;
+    }
+
+    /**
+     * 某种外星语也使用英文小写字母，但可能顺序 order 不同。字母表的顺序（order）是一些小写字母的排列。
+     * <p>
+     * 给定一组用外星语书写的单词 words，以及其字母表的顺序 order，只有当给定的单词在这种外星语中按字典序排列时，返回 true；否则，返回 false。
+     * <p>
+     * 输入：words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
+     * 输出：false
+     * 解释：在该语言的字母表中，'d' 位于 'l' 之后，那么 words[0] > words[1]，因此单词序列不是按字典序排列的。
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param words
+     * @param order
+     * @return
+     */
+    public boolean isAlienSorted(String[] words, String order) {
+        for (int i = 0; i < words.length - 1; i++) {
+            String word = words[i];
+            String next = words[i + 1];
+            int index = 0;
+            int end = Math.min(word.length(), next.length());
+            while (index < end) {
+                if (word.charAt(index) == next.charAt(index)) index++;
+                else if (order.indexOf(word.charAt(index) + "") > order.indexOf(next.charAt(index) + ""))
+                    return false;
+                else
+                    break;
+                if (index == end && word.length() > next.length()) return false;
+            }
+        }
+        return true;
     }
 }

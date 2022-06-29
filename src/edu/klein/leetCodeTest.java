@@ -452,8 +452,12 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] list1 = {1, 2, 2, 3, 1};
-        assert leetCode.findShortestSubArray(list1) == 2 : "list1";
+        String[] list1 = {"hello", "leetcode"};
+        String order = "hlabcdefgijkmnopqrstuvwxyz";
+        assert leetCode.isAlienSorted(list1, order) : "list1";
+
+//        int[] list1 = {1, 2, 2, 3, 1};
+//        assert leetCode.findShortestSubArray(list1) == 2 : "list1";
 
 
 //        int[] list1 = {1,100,200,1,300,300,300};
