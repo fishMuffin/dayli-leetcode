@@ -5181,7 +5181,7 @@ public class leetCode {
 
 
     /**
-     * 泰波那契序列 Tn 定义如下： 
+     * 泰波那契序列 Tn 定义如下：
      * <p>
      * T0 = 0, T1 = 1, T2 = 1, 且在 n >= 0 的条件下 Tn+3 = Tn + Tn+1 + Tn+2
      * <p>
@@ -5194,6 +5194,7 @@ public class leetCode {
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:是
      * 未来是否需要复盘:是
+     *
      * @param n
      * @return
      */
@@ -5213,11 +5214,47 @@ public class leetCode {
         }
         return s;
     }
+
     public int tribonacci_unfinished(int n) {
         if (n == 0) return 0;
         if (n == 1) return 1;
         if (n == 2) return 1;
-        return tribonacci_unfinished(n - 1) + tribonacci_unfinished(n - 2)+ tribonacci_unfinished(n - 3);
+        return tribonacci_unfinished(n - 1) + tribonacci_unfinished(n - 2) + tribonacci_unfinished(n - 3);
+    }
+
+    /**
+     * 给你一个长度固定的整数数组 arr，请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。
+     * <p>
+     * 注意：请不要在超过该数组长度的位置写入元素。
+     * <p>
+     * 要求：请对输入的数组 就地 进行上述修改，不要从函数返回任何东西。
+     * <p>
+     * 输入：[1,0,2,3,0,4,5,0]
+     * 输出：null
+     * 解释：调用函数后，输入的数组将被修改为：[1,0,0,2,3,0,0,4]
+     * <p>
+     * 提交次数:2
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param arr
+     */
+    public void duplicateZeros(int[] arr) {
+        int[] res = new int[arr.length];
+        res[0] = arr[0];
+        for (int i = 1, j = 1; i < arr.length && j < arr.length; i++) {
+            if (arr[i - 1] == 0) {
+                res[j++] = 0;
+                if (j < arr.length)
+                    res[j++] = arr[i];
+            } else {
+                res[j++] = arr[i];
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = res[i];
+        }
     }
 
 }

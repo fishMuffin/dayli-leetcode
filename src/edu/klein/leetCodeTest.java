@@ -452,9 +452,11 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-//         [[1, 2],[3, 4],[5, 6]],left = 2, right = 5
-        int[][] list1 = {{1, 2}, {3, 4}, {5, 6}};
-        assert leetCode.isCovered(list1, 2, 5) : "list1";
+        int[] list1 = {1,0,2,3,0,4,5,0};
+        leetCode.duplicateZeros(list1);
+
+//        int[][] list1 = {{1, 2}, {3, 4}, {5, 6}};
+//        assert leetCode.isCovered(list1, 2, 5) : "list1";
 
 //        int[] list1 = {1, 2};
 //        int[] list2 = {1, 4, 6, 7};
