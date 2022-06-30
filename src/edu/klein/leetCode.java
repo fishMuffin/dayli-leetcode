@@ -5359,7 +5359,7 @@ public class leetCode {
                 count++;
             } else {
                 count = getCount(chars, count, start);
-                start = i+1;
+                start = i + 1;
             }
             i++;
         }
@@ -5371,11 +5371,11 @@ public class leetCode {
     private int getCount(char[] chars, int count, int start) {
         if (count <= 2) {
             capitalizeTransform(chars, start, start + count);
-            count =0;
+            count = 0;
         } else {
             if (chars[start] >= 'a') chars[start] -= ('a' - 'A');
             capitalizeTransform(chars, start + 1, start + count);
-            count =0;
+            count = 0;
         }
         return count;
     }
@@ -5384,5 +5384,39 @@ public class leetCode {
         for (int i = start; i < end; i++) {
             if (chars[i] <= 'Z') chars[i] += ('a' - 'A');
         }
+    }
+
+    /**
+     * 给你一个字符串数组 words ，数组中的每个字符串都可以看作是一个单词。请你按 任意 顺序返回 words 中是其他单词的子字符串的所有单词。
+     * <p>
+     * 如果你可以删除 words[j] 最左侧和/或最右侧的若干字符得到 word[i] ，那么字符串 words[i] 就是 words[j] 的一个子字符串。
+     * <p>
+     * 输入：words = ["mass","as","hero","superhero"]
+     * 输出：["as","hero"]
+     * 解释："as" 是 "mass" 的子字符串，"hero" 是 "superhero" 的子字符串。
+     * ["hero","as"] 也是有效的答案。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param words
+     * @return
+     */
+    public List<String> stringMatching(String[] words) {
+        Arrays.sort(words, Comparator.comparingInt(String::length));
+        List<String> ret = new ArrayList<>();
+        int i = 0;
+        while (i < words.length) {
+            for (int j = i + 1; j < words.length; j++) {
+                if (words[j].length() > words[i].length() && words[j].contains(words[i])) {
+                    ret.add(words[i]);
+                    break;
+                }
+            }
+            i++;
+        }
+        return ret;
     }
 }
