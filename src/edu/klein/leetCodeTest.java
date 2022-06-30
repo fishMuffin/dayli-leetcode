@@ -452,17 +452,23 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.reverseStr("abcdefg", 2).equals("bacdfeg") : "abcdefg";
-        assert leetCode.reverseStr("abcdabcdabc", 4).equals("dcbaabcdcba") : "abcdabcdabc";
-        assert leetCode.reverseStr("abcdabcdabcda", 4).equals("dcbaabcddcbaa") : "abcdabcdabcda";
-        assert leetCode.reverseStr("abcd", 3).equals("cbad") : "abcd";
+        int[] list1 = {1, 2};
+        int[] list2 = {1, 4, 6, 7};
+        int[] list3 = {1, 2, 3, 7,12,14};
+        assert leetCode.findPoisonedDuration(list1, 2) == 3 : "list1";
+        assert leetCode.findPoisonedDuration(list2, 2) == 7 : "list1";
+        assert leetCode.findPoisonedDuration(list3, 3) == 13 : "list1";
 
+//        assert leetCode.reverseStr("abcdefg", 2).equals("bacdfeg") : "abcdefg";
+//        assert leetCode.reverseStr("abcdabcdabc", 4).equals("dcbaabcdcba") : "abcdabcdabc";
+//        assert leetCode.reverseStr("abcdabcdabcda", 4).equals("dcbaabcddcbaa") : "abcdabcdabcda";
+//        assert leetCode.reverseStr("abcd", 3).equals("cbad") : "abcd";
 
 
     }
 
     @Test
-    void assertTest01(){
+    void assertTest01() {
         //        String[] list1 = {"hello", "leetcode"};
 //        String order = "hlabcdefgijkmnopqrstuvwxyz";
 //        assert leetCode.isAlienSorted(list1, order) : "list1";
