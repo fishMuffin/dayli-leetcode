@@ -5113,4 +5113,40 @@ public class leetCode {
         return true;
     }
 
+    /**
+     * 给你一个整数 n 。如果 n 恰好有三个正除数 ，返回 true ；否则，返回 false 。
+     * <p>
+     * 如果存在整数 k ，满足 n = k * m ，那么整数 m 就是 n 的一个 除数 。
+     * <p>
+     * 输入：n = 4
+     * 输出：true
+     * 解释：4 有三个除数：1、2 和 4 。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param n
+     * @return
+     */
+    public boolean isThree(int n) {
+        int limit = 1;
+        int[] count = new int[n + 1];
+        for (int i = 2; i < n; i++) {
+            if (count[i] == 0) {
+                if (n % i != 0) fillTheGap(count, i);
+                else limit--;
+            }
+            if (limit < 0) return false;
+        }
+        return limit == 0;
+    }
+
+    private void fillTheGap(int[] count, int base) {
+        for (int i = base; i < count.length; i += base) {
+            count[i]++;
+        }
+    }
+
 }

@@ -796,10 +796,10 @@ class leetCodeTest {
     @Test
     void commonTest() {
 
-        Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//年月日时分秒
-        String s = simpleDateFormat.format(date);
-        System.out.println(s);
+//        Date date = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//年月日时分秒
+//        String s = simpleDateFormat.format(date);
+//        System.out.println(s);
 //        Pattern compile = Pattern.compile("[0-9]*");
 //        Matcher m = compile.matcher("gi851a851q8510v");
 //        int count = 0;
