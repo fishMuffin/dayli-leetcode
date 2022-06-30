@@ -5223,11 +5223,11 @@ public class leetCode {
     }
 
     /**
-     * 给你一个长度固定的整数数组 arr，请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。
+     * 给你一个长度固定的整数数组 arr，请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。
      * <p>
      * 注意：请不要在超过该数组长度的位置写入元素。
      * <p>
-     * 要求：请对输入的数组 就地 进行上述修改，不要从函数返回任何东西。
+     * 要求：请对输入的数组 就地 进行上述修改，不要从函数返回任何东西。
      * <p>
      * 输入：[1,0,2,3,0,4,5,0]
      * 输出：null
@@ -5309,6 +5309,7 @@ public class leetCode {
      * 解决方式: 自我解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param nums
      * @return
      */
@@ -5317,13 +5318,71 @@ public class leetCode {
         int right = 0;
         int ret = 0;
         while (right < nums.length) {
-            if (nums[right] != 1){
+            if (nums[right] != 1) {
                 ret = Math.max(ret, right - left);
-                left = right+1;
+                left = right + 1;
             }
             right++;
         }
         ret = Math.max(ret, right - left);
         return ret;
+    }
+
+    /**
+     * 给你一个字符串 title ，它由单个空格连接一个或多个单词组成，每个单词都只包含英文字母。请你按以下规则将每个单词的首字母 大写 ：
+     * <p>
+     * 如果单词的长度为 1 或者 2 ，所有字母变成小写。
+     * 否则，将单词首字母大写，剩余字母变成小写。
+     * 请你返回 大写后 的 title 。
+     * <p>
+     * 输入：title = "First leTTeR of EACH Word"
+     * 输出："First Letter of Each Word"
+     * 解释：
+     * 单词 "of" 长度为 2 ，所以它保持完全小写。
+     * 其他单词长度都至少为 3 ，所以其他单词首字母大写，剩余字母小写。
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param title
+     * @return
+     */
+    public String capitalizeTitle(String title) {
+        char[] chars = title.toCharArray();
+        int i = 0;
+        int count = 0;
+        int start = 0;
+        while (i < title.length()) {
+            if (chars[i] != ' ') {
+                count++;
+            } else {
+                count = getCount(chars, count, start);
+                start = i+1;
+            }
+            i++;
+        }
+        getCount(chars, count, start);
+        return new String(chars);
+    }
+
+
+    private int getCount(char[] chars, int count, int start) {
+        if (count <= 2) {
+            capitalizeTransform(chars, start, start + count);
+            count =0;
+        } else {
+            if (chars[start] >= 'a') chars[start] -= ('a' - 'A');
+            capitalizeTransform(chars, start + 1, start + count);
+            count =0;
+        }
+        return count;
+    }
+
+    private void capitalizeTransform(char[] chars, int start, int end) {
+        for (int i = start; i < end; i++) {
+            if (chars[i] <= 'Z') chars[i] += ('a' - 'A');
+        }
     }
 }

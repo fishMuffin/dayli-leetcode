@@ -452,11 +452,13 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] list1 = {1,0,1,1,0,1};
-        int[] list2 = {1,1,0,1,1,1};
-        assert leetCode.findMaxConsecutiveOnes(list1) == 2 : "list1";
-        assert leetCode.findMaxConsecutiveOnes(list2) == 3 : "list2";
+        assert leetCode.capitalizeTitle("First leTTeR of EACH Word").equals("First Letter of Each Word") : "First leTTeR of EACH Word";
+        assert leetCode.capitalizeTitle("ia A Of EACH Word hV").equals("ia a of Each Word hv") : "ia A of EACH Word";
 
+//        int[] list1 = {1,0,1,1,0,1};
+//        int[] list2 = {1,1,0,1,1,1};
+//        assert leetCode.findMaxConsecutiveOnes(list1) == 2 : "list1";
+//        assert leetCode.findMaxConsecutiveOnes(list2) == 3 : "list2";
 //        int[] list1 = {1,0,2,3,0,4,5,0};
 //        leetCode.duplicateZeros(list1);
 //        int[][] list1 = {{1, 2}, {3, 4}, {5, 6}};
