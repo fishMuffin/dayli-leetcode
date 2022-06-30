@@ -5463,8 +5463,76 @@ public class leetCode {
         if (end - start >= 3) {
             List<Integer> temp = new ArrayList<>();
             temp.add(start);
-            temp.add(end-1);
+            temp.add(end - 1);
             ret.add(temp);
         }
+    }
+
+    /**
+     * 给你一个字符串 s，请你返回 两个相同字符之间的最长子字符串的长度 ，计算长度时不含这两个字符。如果不存在这样的子字符串，返回 -1 。
+     * <p>
+     * 子字符串 是字符串中的一个连续字符序列。
+     * <p>
+     * 输入：s = "abdcabbacgq"
+     * 输出：4
+     * 解释：最优的子字符串是 "abba" ，其他的非最优解包括 "bb" 和 "" 。
+     * "ayadsicwrfybunpqsdsnenvrfiarr"
+     *
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param s
+     * @return
+     */
+
+    public int maxLengthBetweenEqualCharacters(String s) {
+        int[] count = new int[26];
+        int ret = -1;
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+        }
+        List<Character> list = new ArrayList<>();
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] > 1) list.add((char) (i + 'a'));
+        }
+        for (Character c : list) {
+            ret = Math.max(s.lastIndexOf(c) - s.indexOf(c)-1, ret);
+        }
+        return ret;
+    }
+
+    public int maxLengthBetweenEqualCharacters_unfinished(String s) {
+        int[] count = new int[26];
+        int left = 0;
+        int right = s.length() - 1;
+        int ret = -1;
+        while (left < right) {
+            if (count[s.charAt(left) - 'a'] == 0) count[s.charAt(left++) - 'a']++;
+            else
+                return getMaxLength(s, left, right, ret, s.charAt(left));
+            if (count[s.charAt(right) - 'a'] == 0) count[s.charAt(right--) - 'a']++;
+            else
+                return getMaxLength(s, left, right, ret, s.charAt(right));
+        }
+        return ret;
+    }
+
+    private int getMaxLength(String s, int left, int right, int ret, int target) {
+        int right_start = right;
+        right++;
+        while (right < s.length()) {
+            if (s.charAt(right) == target) {
+                return right - left - 1;
+            }
+            right++;
+        }
+        right = right_start;
+        left--;
+        while (left >= 0) {
+            if (s.charAt(left) == target) return right - left - 1;
+            left--;
+        }
+        return -1;
     }
 }

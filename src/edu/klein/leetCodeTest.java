@@ -452,9 +452,13 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        String[] words = {"mass","as","hero","superhero"};
-        leetCode.stringMatching(words);
+        assert leetCode.maxLengthBetweenEqualCharacters("abcafsdfsagfd") == 8 : "abcafsdfsagfd";
+        assert leetCode.maxLengthBetweenEqualCharacters("aydsicwrfybunpqsdsnenvrfirr") == 19 : "aydsicwrfybunpqsdsnenvrfirr";
+        assert leetCode.maxLengthBetweenEqualCharacters("abca") == 2 : "abca";
 
+
+//        String[] words = {"mass","as","hero","superhero"};
+//        leetCode.stringMatching(words);
 //        assert leetCode.capitalizeTitle("First leTTeR of EACH Word").equals("First Letter of Each Word") : "First leTTeR of EACH Word";
 //        assert leetCode.capitalizeTitle("ia A Of EACH Word hV").equals("ia a of Each Word hv") : "ia A of EACH Word";
 //        int[] list1 = {1,0,1,1,0,1};
