@@ -452,12 +452,16 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] list1 = {1, 2};
-        int[] list2 = {1, 4, 6, 7};
-        int[] list3 = {1, 2, 3, 7,12,14};
-        assert leetCode.findPoisonedDuration(list1, 2) == 3 : "list1";
-        assert leetCode.findPoisonedDuration(list2, 2) == 7 : "list1";
-        assert leetCode.findPoisonedDuration(list3, 3) == 13 : "list1";
+//         [[1, 2],[3, 4],[5, 6]],left = 2, right = 5
+        int[][] list1 = {{1, 2}, {3, 4}, {5, 6}};
+        assert leetCode.isCovered(list1, 2, 5) : "list1";
+
+//        int[] list1 = {1, 2};
+//        int[] list2 = {1, 4, 6, 7};
+//        int[] list3 = {1, 2, 3, 7,12,14};
+//        assert leetCode.findPoisonedDuration(list1, 2) == 3 : "list1";
+//        assert leetCode.findPoisonedDuration(list2, 2) == 7 : "list1";
+//        assert leetCode.findPoisonedDuration(list3, 3) == 13 : "list1";
 
 //        assert leetCode.reverseStr("abcdefg", 2).equals("bacdfeg") : "abcdefg";
 //        assert leetCode.reverseStr("abcdabcdabc", 4).equals("dcbaabcdcba") : "abcdabcdabc";

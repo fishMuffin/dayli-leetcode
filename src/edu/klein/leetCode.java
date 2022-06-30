@@ -5056,7 +5056,8 @@ public class leetCode {
      * @param duration
      * @return
      */
-    public int findPoisonedDuration(int[] timeSeries, int duration) {
+    public int
+    findPoisonedDuration(int[] timeSeries, int duration) {
         if (timeSeries.length == 1) return duration;
         Arrays.sort(timeSeries);
         int ret = 0;
@@ -5072,6 +5073,44 @@ public class leetCode {
         }
         ret += duration;
         return ret;
+    }
+
+    /**
+     * 给你一个二维整数数组 ranges 和两个整数 left 和 right 。每个 ranges[i] = [starti, endi] 表示一个从 starti 到 endi 的 闭区间 。
+     * <p>
+     * 如果闭区间 [left, right] 内每个整数都被 ranges 中 至少一个 区间覆盖，那么请你返回 true ，否则返回 false 。
+     * <p>
+     * 已知区间 ranges[i] = [starti, endi] ，如果整数 x 满足 starti <= x <= endi ，那么我们称整数x 被覆盖了。
+     * <p>
+     * 输入：ranges = [[1,2],[3,4],[5,6]], left = 2, right = 5
+     * 输出：true
+     * 解释：2 到 5 的每个整数都被覆盖了：
+     * - 2 被第一个区间覆盖。
+     * - 3 和 4 被第二个区间覆盖。
+     * - 5 被第三个区间覆盖。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param ranges
+     * @param left
+     * @param right
+     * @return
+     */
+    public boolean isCovered(int[][] ranges, int left, int right) {
+        int[] count = new int[51];
+        for (int i = 0; i < ranges.length; i++) {
+            int[] range = ranges[i];
+            for (int j = range[0] >= 1 ? range[0] : 1; j <= range[1] && j <= 50; j++) {
+                count[j]++;
+            }
+        }
+        for (int i = left; i <= right; i++) {
+            if (count[i] == 0) return false;
+        }
+        return true;
     }
 
 }
