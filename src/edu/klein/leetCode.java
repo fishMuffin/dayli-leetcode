@@ -5162,7 +5162,7 @@ public class leetCode {
      * 解决方式: 自我解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
-     *"leetcode"
+     *
      * @param s
      * @return
      */
@@ -5177,6 +5177,47 @@ public class leetCode {
             }
         }
         return Math.max(ret, temp);
+    }
+
+
+    /**
+     * 泰波那契序列 Tn 定义如下： 
+     * <p>
+     * T0 = 0, T1 = 1, T2 = 1, 且在 n >= 0 的条件下 Tn+3 = Tn + Tn+1 + Tn+2
+     * <p>
+     * 给你整数 n，请返回第 n 个泰波那契数 Tn 的值。
+     * <p>
+     * 输入：n = 25
+     * 输出：1389537
+     * <p>
+     * 提交次数:2
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     * @param n
+     * @return
+     */
+    public int tribonacci(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n <= 2) {
+            return 1;
+        }
+        int p = 0, q = 0, r = 1, s = 1;
+        for (int i = 3; i <= n; ++i) {
+            p = q;
+            q = r;
+            r = s;
+            s = p + q + r;
+        }
+        return s;
+    }
+    public int tribonacci_unfinished(int n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        if (n == 2) return 1;
+        return tribonacci_unfinished(n - 1) + tribonacci_unfinished(n - 2)+ tribonacci_unfinished(n - 3);
     }
 
 }
