@@ -5477,11 +5477,12 @@ public class leetCode {
      * 输出：4
      * 解释：最优的子字符串是 "abba" ，其他的非最优解包括 "bb" 和 "" 。
      * "ayadsicwrfybunpqsdsnenvrfiarr"
-     *
+     * <p>
      * 提交次数:2
      * 解决方式: 自我解决
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:否
+     *
      * @param s
      * @return
      */
@@ -5497,7 +5498,7 @@ public class leetCode {
             if (count[i] > 1) list.add((char) (i + 'a'));
         }
         for (Character c : list) {
-            ret = Math.max(s.lastIndexOf(c) - s.indexOf(c)-1, ret);
+            ret = Math.max(s.lastIndexOf(c) - s.indexOf(c) - 1, ret);
         }
         return ret;
     }
@@ -5534,5 +5535,39 @@ public class leetCode {
             left--;
         }
         return -1;
+    }
+
+    /**
+     * 「无零整数」是十进制表示中 不含任何 0的正整数。
+     * <p>
+     * 给你一个整数n，请你返回一个 由两个整数组成的列表 [A, B]，满足：
+     * <p>
+     * A 和 B都是无零整数
+     * A + B = n
+     * 题目数据保证至少有一个有效的解决方案。
+     * <p>
+     * 如果存在多个有效解决方案，你可以返回其中任意一个。
+     * <p>
+     * 输入：n = 1010
+     * 输出：[11,999]
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param n
+     * @return
+     */
+    public int[] getNoZeroIntegers(int n) {
+        int[] res = new int[2];
+        for (int i = 1; i < n; i++) {
+            if (!((n - i) + "").contains("0")&& !(i + "").contains("0")) {
+                res[0] = i;
+                res[1] = n - i;
+                break;
+            }
+        }
+        return res;
     }
 }
