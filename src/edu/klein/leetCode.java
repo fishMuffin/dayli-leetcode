@@ -5149,4 +5149,34 @@ public class leetCode {
         }
     }
 
+    /**
+     * 给你一个字符串 s ，字符串的「能量」定义为：只包含一种字符的最长非空子字符串的长度。
+     * <p>
+     * 请你返回字符串 s 的 能量。
+     * <p>
+     * 输入：s = "abbcccddddeeeeedcba"
+     * 输出：5
+     * 解释：子字符串 "eeeee" 长度为 5 ，只包含字符 'e' 。
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *"leetcode"
+     * @param s
+     * @return
+     */
+    public int maxPower(String s) {
+        int ret = 1;
+        int temp = 1;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) temp++;
+            else {
+                ret = Math.max(ret, temp);
+                temp = 1;
+            }
+        }
+        return Math.max(ret, temp);
+    }
+
 }
