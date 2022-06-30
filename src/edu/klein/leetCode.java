@@ -5297,4 +5297,33 @@ public class leetCode {
             if (i == target.length()) ret++;
         }
     }
+
+    /**
+     * 给定一个二进制数组 nums ， 计算其中最大连续 1 的个数。
+     * <p>
+     * 输入：nums = [1,1,0,1,1,1]
+     * 输出：3
+     * 解释：开头的两位和最后的三位都是连续 1 ，所以最大连续 1 的个数是 3.
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * @param nums
+     * @return
+     */
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int left = 0;
+        int right = 0;
+        int ret = 0;
+        while (right < nums.length) {
+            if (nums[right] != 1){
+                ret = Math.max(ret, right - left);
+                left = right+1;
+            }
+            right++;
+        }
+        ret = Math.max(ret, right - left);
+        return ret;
+    }
 }
