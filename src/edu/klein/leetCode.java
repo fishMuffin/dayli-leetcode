@@ -5233,10 +5233,10 @@ public class leetCode {
      * 输出：null
      * 解释：调用函数后，输入的数组将被修改为：[1,0,0,2,3,0,0,4]
      * <p>
-     * 提交次数:2
-     * 解决方式: 参考答案
-     * 未来是否需要更优化的解题方法:是
-     * 未来是否需要复盘:是
+     * 提交次数:3
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
      *
      * @param arr
      */
@@ -5257,4 +5257,44 @@ public class leetCode {
         }
     }
 
+
+    /**
+     * 给你两个下标从 0 开始的字符串 s 和 target 。你可以从 s 取出一些字符并将其重排，得到若干新的字符串。
+     * <p>
+     * 从 s 中取出字符并重新排列，返回可以形成 target 的 最大 副本数。
+     * <p>
+     * 输入：s = "ilovecodingonleetcode", target = "code"
+     * 输出：2
+     * 解释：
+     * 对于 "code" 的第 1 个副本，选取下标为 4 、5 、6 和 7 的字符。
+     * 对于 "code" 的第 2 个副本，选取下标为 17 、18 、19 和 20 的字符。
+     * 形成的字符串分别是 "ecod" 和 "code" ，都可以重排为 "code" 。
+     * 可以形成最多 2 个 "code" 的副本，所以返回 2 。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param s
+     * @param target
+     * @return
+     */
+    public int rearrangeCharacters(String s, String target) {
+        int ret = 0;
+        int[] count = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+        }
+        while (true) {
+            int i = 0;
+            for (; i < target.length(); i++) {
+                if (count[target.charAt(i) - 'a'] != 0) count[target.charAt(i) - 'a']--;
+                else
+                    return ret;
+
+            }
+            if (i == target.length()) ret++;
+        }
+    }
 }
