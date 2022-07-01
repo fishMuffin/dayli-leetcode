@@ -5551,10 +5551,10 @@ public class leetCode {
      * 输入：n = 1010
      * 输出：[11,999]
      * <p>
-     * 提交次数:1
-     * 解决方式: 参考答案
-     * 未来是否需要更优化的解题方法:是
-     * 未来是否需要复盘:是
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
      *
      * @param n
      * @return
@@ -5589,10 +5589,10 @@ public class leetCode {
      * - "cuaieuouac"
      * - "cuaieuouac"
      * <p>
-     * 提交次数:2
-     * 解决方式: 自我解决
-     * 未来是否需要更优化的解题方法:否
-     * 未来是否需要复盘:否
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
      * <p>
      * uaieuoua
      * aieuoua
@@ -5607,22 +5607,22 @@ public class leetCode {
      */
 
     public int countVowelSubstrings(String word) {
-        clearCnt();										//初始化计数器
+        clearCnt();                                        //初始化计数器
         int l = 0, prev = 0, ans = 0;
-        for(int r = 0; r < word.length(); ++r){			//枚举右指针
+        for (int r = 0; r < word.length(); ++r) {            //枚举右指针
             char c = word.charAt(r);
-            if(vowels.contains(c)){
+            if (vowels.contains(c)) {
                 ++cnt[c];
-                if(isLegal()){							//若子串合法，计算以当前右指针所在字符结束的合法子串数
-                    if(prev == 0) prev = 1;				//若以上一个字符结束无合法子串，则初始子串数为1，否则为上一个字符结束的合法子串数
-                    while(tryDelete(word.charAt(l))){	//尝试右移左指针增加以当前右指针结束的合法子串数
+                if (isLegal()) {                            //若子串合法，计算以当前右指针所在字符结束的合法子串数
+                    if (prev == 0) prev = 1;                //若以上一个字符结束无合法子串，则初始子串数为1，否则为上一个字符结束的合法子串数
+                    while (tryDelete(word.charAt(l))) {    //尝试右移左指针增加以当前右指针结束的合法子串数
                         ++prev;
                         ++l;
                     }
                     ans += prev;
                 }
-            }else{
-                l = r + 1;								//若右指针指向的字符非元音字符，则重置左指针至下一个字符，并重置子串数和计数器
+            } else {
+                l = r + 1;                                //若右指针指向的字符非元音字符，则重置左指针至下一个字符，并重置子串数和计数器
                 prev = 0;
                 clearCnt();
             }
@@ -5631,7 +5631,7 @@ public class leetCode {
     }
 
     //用于判断字符是否为元音字符
-    private HashSet<Character> vowels = new HashSet<Character>(){{
+    private HashSet<Character> vowels = new HashSet<Character>() {{
         add('a');
         add('e');
         add('i');
@@ -5641,7 +5641,8 @@ public class leetCode {
 
     //用于统计当前双指针内元音字符出现的次数以便判断子串是否合法以及左指针是否可以右移
     int[] cnt = new int[256];
-    private void clearCnt(){
+
+    private void clearCnt() {
         cnt['a'] = 0;
         cnt['e'] = 0;
         cnt['i'] = 0;
@@ -5650,13 +5651,13 @@ public class leetCode {
     }
 
     //判断当前子串是否合法
-    private boolean isLegal(){
+    private boolean isLegal() {
         return cnt['a'] > 0 && cnt['e'] > 0 && cnt['i'] > 0 && cnt['o'] > 0 && cnt['u'] > 0;
     }
 
     //判断左指针左移后子串是否合法，若合法则左移
-    private boolean tryDelete(char c){
-        if(cnt[c] < 2) return false;
+    private boolean tryDelete(char c) {
+        if (cnt[c] < 2) return false;
         --cnt[c];
         return true;
     }
@@ -5688,7 +5689,7 @@ public class leetCode {
         char c_begin = substring.charAt(begin);
         char c_end = substring.charAt(end);
         if (map.get(c_begin) > 1) {
-            Map<Character, Integer> mapClone=new HashMap<>();
+            Map<Character, Integer> mapClone = new HashMap<>();
             mapClone.putAll(map);
             mapClone.put(c_begin, mapClone.get(c_begin) - 1);
             if (mapClone.get(c_end) > 1) {
@@ -5698,7 +5699,7 @@ public class leetCode {
         }
         while (begin < end) {
             char c = substring.charAt(begin);
-            Map<Character, Integer> mapClone=new HashMap<>();
+            Map<Character, Integer> mapClone = new HashMap<>();
             mapClone.putAll(map);
             if (mapClone.get(c) > 1) {
                 res += 1;
@@ -5721,5 +5722,32 @@ public class leetCode {
 
     private boolean isVowel(char c) {
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+
+    /**
+     * 给你一个字符串 num ，表示一个大整数。请你在字符串 num 的所有 非空子字符串 中找出 值最大的奇数 ，并以字符串形式返回。如果不存在奇数，则返回一个空字符串 "" 。
+     * <p>
+     * 子字符串 是字符串中的一个连续的字符序列。
+     * <p>
+     * 输入：num = "35427"
+     * 输出："35427"
+     * 解释："35427" 本身就是一个奇数。
+     * <p>
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param num
+     * @return
+     */
+    public String largestOddNumber(String num) {
+        for (int i = num.length() - 1; i >= 0; i--) {
+            if (num.charAt(i) % 2 != 0) {
+                return num.substring(0, i + 1);
+            }
+        }
+        return "";
     }
 }
