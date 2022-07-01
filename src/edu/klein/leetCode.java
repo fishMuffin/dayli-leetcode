@@ -5551,10 +5551,10 @@ public class leetCode {
      * 输入：n = 1010
      * 输出：[11,999]
      * <p>
-     * 提交次数:2
-     * 解决方式: 自我解决
-     * 未来是否需要更优化的解题方法:否
-     * 未来是否需要复盘:否
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
      *
      * @param n
      * @return
@@ -5562,12 +5562,164 @@ public class leetCode {
     public int[] getNoZeroIntegers(int n) {
         int[] res = new int[2];
         for (int i = 1; i < n; i++) {
-            if (!((n - i) + "").contains("0")&& !(i + "").contains("0")) {
+            if (!((n - i) + "").contains("0") && !(i + "").contains("0")) {
                 res[0] = i;
                 res[1] = n - i;
                 break;
             }
         }
         return res;
+    }
+
+    /**
+     * 子字符串 是字符串中的一个连续（非空）的字符序列。
+     * <p>
+     * 元音子字符串 是 仅 由元音（'a'、'e'、'i'、'o' 和 'u'）组成的一个子字符串，且必须包含 全部五种 元音。
+     * <p>
+     * 给你一个字符串 word ，统计并返回 word 中 元音子字符串的数目 。
+     * <p>
+     * 输入：word = "cuaieuouac"
+     * 输出：7
+     * 解释：下面列出 word 中的元音子字符串（斜体加粗部分）：
+     * - "cuaieuouac"
+     * - "cuaieuouac"
+     * - "cuaieuouac"
+     * - "cuaieuouac"
+     * - "cuaieuouac"
+     * - "cuaieuouac"
+     * - "cuaieuouac"
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     * <p>
+     * uaieuoua
+     * aieuoua
+     * ieuoua
+     * uaieuou
+     * uaieuo
+     * aieuou
+     * aieuo
+     *
+     * @param word
+     * @return
+     */
+
+    public int countVowelSubstrings(String word) {
+        clearCnt();										//初始化计数器
+        int l = 0, prev = 0, ans = 0;
+        for(int r = 0; r < word.length(); ++r){			//枚举右指针
+            char c = word.charAt(r);
+            if(vowels.contains(c)){
+                ++cnt[c];
+                if(isLegal()){							//若子串合法，计算以当前右指针所在字符结束的合法子串数
+                    if(prev == 0) prev = 1;				//若以上一个字符结束无合法子串，则初始子串数为1，否则为上一个字符结束的合法子串数
+                    while(tryDelete(word.charAt(l))){	//尝试右移左指针增加以当前右指针结束的合法子串数
+                        ++prev;
+                        ++l;
+                    }
+                    ans += prev;
+                }
+            }else{
+                l = r + 1;								//若右指针指向的字符非元音字符，则重置左指针至下一个字符，并重置子串数和计数器
+                prev = 0;
+                clearCnt();
+            }
+        }
+        return ans;
+    }
+
+    //用于判断字符是否为元音字符
+    private HashSet<Character> vowels = new HashSet<Character>(){{
+        add('a');
+        add('e');
+        add('i');
+        add('o');
+        add('u');
+    }};
+
+    //用于统计当前双指针内元音字符出现的次数以便判断子串是否合法以及左指针是否可以右移
+    int[] cnt = new int[256];
+    private void clearCnt(){
+        cnt['a'] = 0;
+        cnt['e'] = 0;
+        cnt['i'] = 0;
+        cnt['o'] = 0;
+        cnt['u'] = 0;
+    }
+
+    //判断当前子串是否合法
+    private boolean isLegal(){
+        return cnt['a'] > 0 && cnt['e'] > 0 && cnt['i'] > 0 && cnt['o'] > 0 && cnt['u'] > 0;
+    }
+
+    //判断左指针左移后子串是否合法，若合法则左移
+    private boolean tryDelete(char c){
+        if(cnt[c] < 2) return false;
+        --cnt[c];
+        return true;
+    }
+
+    public int countVowelSubstrings_unfinished(String word) {
+        Map<Character, Integer> map = new HashMap<>();
+        int start = 0;
+        int ret = 0;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (isVowel(c)) {
+                if (map.size() == 0) start = i;
+                map.put(c, map.get(c) == null ? 1 : map.get(c) + 1);
+            } else {
+                if (map.size() == 5) {
+                    ret += getTheVowelCount(word.substring(start, i), map);
+                } else if (map.size() != 0) {
+                    map.clear();
+                }
+            }
+        }
+        return ret;
+    }
+
+    private int getTheVowelCount(String substring, Map<Character, Integer> map) {
+        int res = 1;
+        int begin = 0;
+        int end = substring.length() - 1;
+        char c_begin = substring.charAt(begin);
+        char c_end = substring.charAt(end);
+        if (map.get(c_begin) > 1) {
+            Map<Character, Integer> mapClone=new HashMap<>();
+            mapClone.putAll(map);
+            mapClone.put(c_begin, mapClone.get(c_begin) - 1);
+            if (mapClone.get(c_end) > 1) {
+                mapClone.put(c_end, mapClone.get(c_end) - 1);
+                res += getTheVowelCount(substring.substring(begin + 1, end), mapClone);
+            }
+        }
+        while (begin < end) {
+            char c = substring.charAt(begin);
+            Map<Character, Integer> mapClone=new HashMap<>();
+            mapClone.putAll(map);
+            if (mapClone.get(c) > 1) {
+                res += 1;
+                mapClone.put(c, mapClone.get(c) - 1);
+                begin++;
+            } else {
+                char c1 = substring.charAt(end);
+                if (map.get(c1) > 1) {
+                    res += 1;
+                    map.put(c1, map.get(c1) - 1);
+                    end--;
+                } else {
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+
+
+    private boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 }
