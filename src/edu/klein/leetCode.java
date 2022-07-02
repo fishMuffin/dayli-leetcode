@@ -5750,4 +5750,61 @@ public class leetCode {
         }
         return "";
     }
+
+    /**
+     * 给你一个字符串 num ，表示一个大整数。如果一个整数满足下述所有条件，则认为该整数是一个 优质整数 ：
+     * 该整数是 num 的一个长度为 3 的 子字符串 。
+     * 该整数由唯一一个数字重复 3 次组成。
+     * 以字符串形式返回 最大的优质整数 。如果不存在满足要求的整数，则返回一个空字符串 "" 。
+     * 注意：
+     * 子字符串 是字符串中的一个连续字符序列。
+     * num 或优质整数中可能存在 前导零 。
+     * 输入：num = "6777133339"
+     * 输出："777"
+     * 解释：num 中存在两个优质整数："777" 和 "333" 。
+     * "777" 是最大的那个，所以返回 "777" 。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param num
+     * @return
+     */
+    public String largestGoodInteger(String num) {
+        int[] count = new int[10];
+        String res = "";
+        for (int i = 0; i < num.length(); i++) {
+            count[num.charAt(i) - '0']++;
+        }
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] >= 3) {
+                res = findTheGoodOne(num, (char) (i + '0'), res, count);
+            }
+        }
+        return res;
+    }
+
+    private String findTheGoodOne(String num, char c, String res, int[] count) {
+        int start = num.indexOf(c);
+        for (int i = start + 1; i < start + 3; i++) {
+            if (num.charAt(i) != c) {
+                count[c - '0'] -= (i - start);
+                if (count[c - '0'] >= 3)
+                    return findTheGoodOne(num.substring(i), c, res, count);
+                return res;
+            }
+        }
+        if (res.equals("")) {
+            count[c - '0'] -= 3;
+            return num.substring(start, start + 3);
+        } else {
+            if (num.charAt(start) > res.charAt(0)) {
+                count[c - '0'] -= 3;
+                return num.substring(start, start + 3);
+            } else
+                return res;
+        }
+    }
 }

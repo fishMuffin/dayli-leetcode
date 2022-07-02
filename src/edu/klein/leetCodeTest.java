@@ -452,8 +452,10 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.countVowelSubstrings("cuaieuouac") == 7 : "cuaieuouac";
+//        assert leetCode.largestGoodInteger("6777133339").equals("777") : "6777133339";
+        assert leetCode.largestGoodInteger("677133337779").equals("777") : "677133337779";
 
+//        assert leetCode.countVowelSubstrings("cuaieuouac") == 7 : "cuaieuouac";
 //        assert leetCode.maxLengthBetweenEqualCharacters("abcafsdfsagfd") == 8 : "abcafsdfsagfd";
 //        assert leetCode.maxLengthBetweenEqualCharacters("aydsicwrfybunpqsdsnenvrfirr") == 19 : "aydsicwrfybunpqsdsnenvrfirr";
 //        assert leetCode.maxLengthBetweenEqualCharacters("abca") == 2 : "abca";
