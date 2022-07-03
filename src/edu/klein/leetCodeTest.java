@@ -453,13 +453,18 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] list1 = {1, 100, 1, 1, 1, 100, 1, 1, 100, 1};
-        int[] list2 = {10, 15, 20};
-        int[] list3 = {0,1,2,2};
-        assert leetCode.minCostClimbingStairs(list1) == 6 : "1,100,1,1,1,100,1,1,100,1";
-        assert leetCode.minCostClimbingStairs(list2) == 15 : "list2";
-        assert leetCode.minCostClimbingStairs(list3) == 2 : "list3";
+        assert leetCode.reformatNumber("123 4-567").equals("123-45-67") : "123 4-567";
+        assert leetCode.reformatNumber("123 4-5678").equals("123-456-78") : "123 4-5678";
+        assert leetCode.reformatNumber("123 4-5").equals("123-45") : "123 4-5678";
+        assert leetCode.reformatNumber("123 4").equals("12-34") : "123 4";
+        assert leetCode.reformatNumber("93 182433").equals("931-824-33") : "93 182433";
 
+//        int[] list1 = {1, 100, 1, 1, 1, 100, 1, 1, 100, 1};
+//        int[] list2 = {10, 15, 20};
+//        int[] list3 = {0,1,2,2};
+//        assert leetCode.minCostClimbingStairs(list1) == 6 : "1,100,1,1,1,100,1,1,100,1";
+//        assert leetCode.minCostClimbingStairs(list2) == 15 : "list2";
+//        assert leetCode.minCostClimbingStairs(list3) == 2 : "list3";
 //        assert leetCode.isPrefixOfWord("i love eating burger", "burg") == 4 : "burg";
 //        assert leetCode.isPrefixOfWord("i love eating dburger", "burg") == -1 : "dburger";
 //        assert leetCode.isPrefixOfWord("i am tired", "you") == -1 : "you";
