@@ -5935,4 +5935,108 @@ public class leetCode {
         }
         return ret;
     }
+
+    /**
+     * 给你一个长度为 n 的整数数组，每次操作将会使 n - 1 个元素增加 1 。返回让数组所有元素相等的最小操作次数。
+     * <p>
+     * 输入：nums = [1,2,3]
+     * 输出：3
+     * 解释：
+     * 只需要3次操作（注意每次操作会增加两个元素的值）：
+     * [1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param nums
+     * @return
+     */
+    public int minMoves(int[] nums) {
+        int minNum = Arrays.stream(nums).min().getAsInt();
+        int res = 0;
+        for (int num : nums) {
+            res += num - minNum;
+        }
+        return res;
+    }
+
+    /**
+     * 给你一个 下标从 0 开始 的整数数组 nums ，其中 nums[i] 表示第 i 名学生的分数。另给你一个整数 k 。
+     * <p>
+     * 从数组中选出任意 k 名学生的分数，使这 k 个分数间 最高分 和 最低分 的 差值 达到 最小化 。
+     * <p>
+     * 返回可能的 最小差值 。
+     * <p>
+     * 输入：nums = [9,4,1,7], k = 2
+     * 输出：2
+     * 解释：选出 2 名学生的分数，有 6 种方法：
+     * - [9,4,1,7] 最高分和最低分之间的差值是 9 - 4 = 5
+     * - [9,4,1,7] 最高分和最低分之间的差值是 9 - 1 = 8
+     * - [9,4,1,7] 最高分和最低分之间的差值是 9 - 7 = 2
+     * - [9,4,1,7] 最高分和最低分之间的差值是 4 - 1 = 3
+     * - [9,4,1,7] 最高分和最低分之间的差值是 7 - 4 = 3
+     * - [9,4,1,7] 最高分和最低分之间的差值是 7 - 1 = 6
+     * 可能的最小差值是 2
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     * TODO
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int minimumDifference(int[] nums, int k) {
+        if (k == 1 || nums.length <= 1) return 0;
+        int ret = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                ret = Math.min(Math.abs(nums[i] - nums[j]), ret);
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * 有 n 个人前来排队买票，其中第 0 人站在队伍 最前方 ，第 (n - 1) 人站在队伍 最后方 。
+     * 给你一个下标从 0 开始的整数数组 tickets ，数组长度为 n ，其中第 i 人想要购买的票数为 tickets[i] 。
+     * 每个人买票都需要用掉 恰好 1 秒 。一个人 一次只能买一张票 ，如果需要购买更多票，他必须走到  队尾 重新排队（瞬间 发生，不计时间）。如果一个人没有剩下需要买的票，那他将会 离开 队伍。
+     * 返回位于位置 k（下标从 0 开始）的人完成买票需要的时间（以秒为单位）。
+     * <p>
+     * 输入：tickets = [5,1,1,1], k = 0
+     * 输出：8
+     * 解释：
+     * - 第一轮，队伍中的每个人都买到一张票，队伍变为 [4, 0, 0, 0] 。
+     * - 接下来的 4 轮，只有位置 0 的人在买票。
+     * 位置 0 的人成功买到 5 张票，用掉 4 + 1 + 1 + 1 + 1 = 8 秒。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     * <p>
+     *
+     * @param tickets
+     * @param k
+     * @return
+     */
+    public int timeRequiredToBuy(int[] tickets, int k) {
+        int ret = 0;
+        while (tickets[k] > 0) {
+            for (int i = 0; i < tickets.length; i++) {
+                if (tickets[k] == 0) return ret;
+                if (tickets[i] > 0) {
+                    tickets[i]--;
+                    ret++;
+                }
+            }
+        }
+
+        return ret;
+    }
+
 }
