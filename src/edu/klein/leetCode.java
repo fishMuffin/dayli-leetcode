@@ -6289,6 +6289,7 @@ public class leetCode {
 
     /**
      * 1672. 最富有客户的资产总量
+     *
      * @param accounts
      * @return
      */
@@ -6303,19 +6304,39 @@ public class leetCode {
 
     /**
      * 1929. 数组串联
+     *
      * @param nums
      * @return
      */
     public int[] getConcatenation(int[] nums) {
-        int[] ret=new int[nums.length*2];
-        int j=0,i=0,k=0;
-        while (j<2&&k<nums.length*2){
-            if(i>=nums.length) {
-                i=0;
+        int[] ret = new int[nums.length * 2];
+        int j = 0, i = 0, k = 0;
+        while (j < 2 && k < nums.length * 2) {
+            if (i >= nums.length) {
+                i = 0;
                 j++;
             }
-            ret[k++]=nums[i++];
+            ret[k++] = nums[i++];
         }
         return ret;
+    }
+
+    /**
+     * 2114. 句子中的最多单词数
+     *
+     * @param sentences
+     * @return
+     */
+    public int mostWordsFound(String[] sentences) {
+        int count = 0;
+        for (int i = 0; i < sentences.length; i++) {
+            String sentence = sentences[i];
+            int temp = 0;
+            for (int i1 = 0; i1 < sentence.length(); i1++) {
+                if (sentence.charAt(i1) == ' ') temp++;
+            }
+            count = Math.max(count, temp);
+        }
+        return count+1;
     }
 }
