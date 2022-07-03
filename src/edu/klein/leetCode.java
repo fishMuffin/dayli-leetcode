@@ -6015,9 +6015,9 @@ public class leetCode {
      * 位置 0 的人成功买到 5 张票，用掉 4 + 1 + 1 + 1 + 1 = 8 秒。
      * <p>
      * 提交次数:1
-     * 解决方式: 参考答案
-     * 未来是否需要更优化的解题方法:是
-     * 未来是否需要复盘:是
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
      * <p>
      *
      * @param tickets
@@ -6036,6 +6036,65 @@ public class leetCode {
             }
         }
 
+        return ret;
+    }
+
+    /**
+     * 给你一个整数数组 cost ，其中 cost[i] 是从楼梯第 i 个台阶向上爬需要支付的费用。一旦你支付此费用，即可选择向上爬一个或者两个台阶。
+     * 你可以选择从下标为 0 或下标为 1 的台阶开始爬楼梯。
+     * 请你计算并返回达到楼梯顶部的最低花费。
+     * <p>
+     * 输入：cost = [1,100,1,1,1,100,1,1,100,1]
+     * 输出：6
+     * 解释：你将从下标为 0 的台阶开始。
+     * - 支付 1 ，向上爬两个台阶，到达下标为 2 的台阶。
+     * - 支付 1 ，向上爬两个台阶，到达下标为 4 的台阶。
+     * - 支付 1 ，向上爬两个台阶，到达下标为 6 的台阶。
+     * - 支付 1 ，向上爬一个台阶，到达下标为 7 的台阶。
+     * - 支付 1 ，向上爬两个台阶，到达下标为 9 的台阶。
+     * - 支付 1 ，向上爬一个台阶，到达楼梯顶部。
+     * 总花费为 6 。
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param cost
+     * @return
+     */
+    public int minCostClimbingStairs(int[] cost) {
+        int n = cost.length;
+        int prev = 0, curr = 0;
+        for (int i = 2; i <= n; i++) {
+            int next = Math.min(curr + cost[i - 1], prev + cost[i - 2]);
+            prev = curr;
+            curr = next;
+        }
+        return curr;
+    }
+
+
+    public int minCostClimbingStairs_unfinished(int[] cost) {
+        if (cost.length == 2) return Math.max(cost[0], cost[1]);
+        int start = Math.min(cost[0] + cost[1], cost[0] + cost[2]) < Math.min(cost[1] + cost[2], cost[1]) + (cost.length > 3 ? cost[3] : 0) ? cost[0] : cost[1];
+        int startIndex = start == cost[0] ? 0 : 1;
+        int next, ret = start;
+        for (int i = startIndex; i < cost.length; ) {
+            if (i + 2 < cost.length) {
+                if (start + cost[i + 1] < start + cost[i + 2]) {
+                    i += 1;
+                    next = cost[i];
+                } else {
+                    i += 2;
+                    next = cost[i];
+                }
+            } else {
+                i++;
+                next = 0;
+            }
+            ret += next;
+        }
         return ret;
     }
 
