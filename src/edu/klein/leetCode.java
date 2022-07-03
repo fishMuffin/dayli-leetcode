@@ -6275,6 +6275,7 @@ public class leetCode {
 
     /**
      * 1920. 基于排列构建数组
+     *
      * @param nums
      * @return
      */
@@ -6286,4 +6287,17 @@ public class leetCode {
         return ret;
     }
 
+    /**
+     * 1672. 最富有客户的资产总量
+     * @param accounts
+     * @return
+     */
+    public int maximumWealth(int[][] accounts) {
+        int ret = Integer.MIN_VALUE;
+        for (int i = 0; i < accounts.length; i++) {
+            int[] account = accounts[i];
+            ret = Math.max(ret, Arrays.stream(account).sum());
+        }
+        return ret;
+    }
 }
