@@ -6257,7 +6257,7 @@ public class leetCode {
         int start = -1;
         for (int i = 0; i < count; i++) {
             int i1 = password.indexOf(c + "", start + 1);
-            if (i1!=0&&i1 == start + 1) {
+            if (i1 != 0 && i1 == start + 1) {
                 return true;
             } else {
                 start = i1;
@@ -6273,5 +6273,17 @@ public class leetCode {
     }
 
 
+    /**
+     * 1920. 基于排列构建数组
+     * @param nums
+     * @return
+     */
+    public int[] buildArray(int[] nums) {
+        int[] ret = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            ret[i] = nums[nums[i]];
+        }
+        return ret;
+    }
 
 }
