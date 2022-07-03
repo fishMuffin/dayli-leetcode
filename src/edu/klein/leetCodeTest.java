@@ -4,6 +4,7 @@ import edu.klein.common.ListNode;
 import org.junit.jupiter.api.Test;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -809,7 +810,14 @@ class leetCodeTest {
 
 
     @Test
-    void commonTest() {
+    void commonTest() throws ParseException {
+        Date date = new Date();
+        int day = date.getDay();
+        System.out.println(day);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date parse = simpleDateFormat.parse("2019-8-31");
+        int day1 = parse.getDay();
+        System.out.println(day1);
 
 //        Date date = new Date();
 //        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//年月日时分秒

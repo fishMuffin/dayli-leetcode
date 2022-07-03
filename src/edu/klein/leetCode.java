@@ -2,6 +2,8 @@ package edu.klein;
 
 import edu.klein.common.ListNode;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -5806,5 +5808,50 @@ public class leetCode {
             } else
                 return res;
         }
+    }
+
+    /**
+     * 给你一个日期，请你设计一个算法来判断它是对应一周中的哪一天。
+     * <p>
+     * 输入为三个整数：day、month 和 year，分别表示日、月、年。
+     * <p>
+     * 您返回的结果必须是这几个值中的一个 {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}。
+     * <p>
+     * 输入：day = 31, month = 8, year = 2019
+     * 输出："Saturday"
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param day
+     * @param month
+     * @param year
+     * @return
+     */
+    public String dayOfTheWeek(int day, int month, int year) {
+        String[] week = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        int[] monthDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30};
+        /* 输入年份之前的年份的天数贡献 */
+        int days = 365 * (year - 1971) + (year - 1969) / 4;
+        /* 输入年份中，输入月份之前的月份的天数贡献 */
+        for (int i = 0; i < month - 1; ++i) {
+            days += monthDays[i];
+        }
+        if ((year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) && month >= 3) {
+            days += 1;
+        }
+        /* 输入月份中的天数贡献 */
+        days += day;
+        return week[(days + 3) % 7];
+    }
+
+    public String dayOfTheWeek_unfinished(int day, int month, int year) throws Exception {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date parse = simpleDateFormat.parse(new StringBuffer().append(year).append("-").append(month).append("-").append(day).toString());
+        int day1 = parse.getDay();
+        String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        return days[day1];
     }
 }
