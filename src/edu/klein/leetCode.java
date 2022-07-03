@@ -5854,4 +5854,85 @@ public class leetCode {
         String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         return days[day1];
     }
+
+
+    /**
+     * 给你一个字符串 sentence 作为句子并指定检索词为 searchWord ，其中句子由若干用 单个空格 分隔的单词组成。请你检查检索词 searchWord 是否为句子 sentence 中任意单词的前缀。
+     * <p>
+     * 如果 searchWord 是某一个单词的前缀，则返回句子 sentence 中该单词所对应的下标（下标从 1 开始）。如果 searchWord 是多个单词的前缀，则返回匹配的第一个单词的下标（最小下标）。如果 searchWord 不是任何单词的前缀，则返回 -1 。
+     * <p>
+     * 字符串 s 的 前缀 是 s 的任何前导连续子字符串。
+     * <p>
+     * 输入：sentence = "this problem is an easy problem", searchWord = "pro"
+     * 输出：2
+     * 解释："pro" 是 "problem" 的前缀，而 "problem" 是句子中第 2 个也是第 6 个单词，但是应该返回最小下标 2 。
+     * <p>
+     * 提交次数:5
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param sentence
+     * @param searchWord
+     * @return
+     */
+    public int isPrefixOfWord(String sentence, String searchWord) {
+        char target = searchWord.charAt(0);
+        int count = 0, start = 0, j = 0;
+        for (int i = 0; i < sentence.length(); i++) {
+            if (sentence.charAt(i) == ' ') {
+                start = i + 1;
+                count++;
+            }
+            if (sentence.charAt(i) == target && i == start) {
+                while (j < searchWord.length() && i < sentence.length()) {
+                    if (sentence.charAt(i) == ' ') {
+                        start = i + 1;
+                        count++;
+                        break;
+                    }
+                    if (sentence.charAt(i) != searchWord.charAt(j)) break;
+                    i++;
+                    j++;
+                }
+                if (j == searchWord.length()) return count + 1;
+                else j = 0;
+            }
+        }
+        return -1;
+    }
+
+
+    public int isPrefixOfWord_unfinished(String sentence, String searchWord) {
+        int count = 0;
+        int j = 0;
+        int ret = -1;
+        int start = 0;
+        for (int i = 0; i < sentence.length(); i++) {
+            char c = sentence.charAt(i);
+            if (c == ' ') {
+                start = i + 1;
+                count++;
+            }
+            if (c == searchWord.charAt(j)) {
+                while (j < searchWord.length()) {
+                    if (sentence.charAt(i) == ' ') {
+                        start = i + 1;
+                        count++;
+                    }
+                    if (sentence.charAt(i) != searchWord.charAt(j)) {
+                        j = 0;
+                        break;
+                    }
+                    if (j == searchWord.length() - 1 && i - start == j) {
+                        ret = count + 1;
+                        break;
+                    }
+                    j++;
+                    i++;
+                }
+            }
+        }
+        return ret;
+    }
 }

@@ -453,9 +453,19 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-//        assert leetCode.largestGoodInteger("6777133339").equals("777") : "6777133339";
-        assert leetCode.largestGoodInteger("677133337779").equals("777") : "677133337779";
 
+
+        assert leetCode.isPrefixOfWord("i love eating burger", "burg") == 4 : "burg";
+        assert leetCode.isPrefixOfWord("i love eating dburger", "burg") == -1 : "dburger";
+        assert leetCode.isPrefixOfWord("i am tired", "you") == -1 : "you";
+        assert leetCode.isPrefixOfWord("e other side", "they") == -1 : "they";
+        assert leetCode.isPrefixOfWord("hello from the other side", "ther") == -1 : "ther";
+        assert leetCode.isPrefixOfWord("hello from the other side", "oth") == 4 : "oth";
+        assert leetCode.isPrefixOfWord("corona dream", "d") == 2 : "d";
+        assert leetCode.isPrefixOfWord("dumb dream duck duck i", "drea") == 2 : "drea";
+
+//        assert leetCode.largestGoodInteger("6777133339").equals("777") : "6777133339";
+//        assert leetCode.largestGoodInteger("677133337779").equals("777") : "677133337779";
 //        assert leetCode.countVowelSubstrings("cuaieuouac") == 7 : "cuaieuouac";
 //        assert leetCode.maxLengthBetweenEqualCharacters("abcafsdfsagfd") == 8 : "abcafsdfsagfd";
 //        assert leetCode.maxLengthBetweenEqualCharacters("aydsicwrfybunpqsdsnenvrfirr") == 19 : "aydsicwrfybunpqsdsnenvrfirr";
