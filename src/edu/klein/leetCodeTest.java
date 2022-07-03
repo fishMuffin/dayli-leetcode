@@ -453,12 +453,14 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        assert leetCode.reformatNumber("123 4-567").equals("123-45-67") : "123 4-567";
-        assert leetCode.reformatNumber("123 4-5678").equals("123-456-78") : "123 4-5678";
-        assert leetCode.reformatNumber("123 4-5").equals("123-45") : "123 4-5678";
-        assert leetCode.reformatNumber("123 4").equals("12-34") : "123 4";
-        assert leetCode.reformatNumber("93 182433").equals("931-824-33") : "93 182433";
+        int[] list2 = {9, 4, 1, 7};
+        assert leetCode.minimumDifference(list2, 3) == 5 : "list2";
 
+//        assert leetCode.reformatNumber("123 4-567").equals("123-45-67") : "123 4-567";
+//        assert leetCode.reformatNumber("123 4-5678").equals("123-456-78") : "123 4-5678";
+//        assert leetCode.reformatNumber("123 4-5").equals("123-45") : "123 4-5678";
+//        assert leetCode.reformatNumber("123 4").equals("12-34") : "123 4";
+//        assert leetCode.reformatNumber("93 182433").equals("931-824-33") : "93 182433";
 //        int[] list1 = {1, 100, 1, 1, 1, 100, 1, 1, 100, 1};
 //        int[] list2 = {10, 15, 20};
 //        int[] list3 = {0,1,2,2};

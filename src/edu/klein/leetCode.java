@@ -5980,17 +5980,54 @@ public class leetCode {
      * - [9,4,1,7] 最高分和最低分之间的差值是 7 - 1 = 6
      * 可能的最小差值是 2
      * <p>
-     * 提交次数:1
+     * 提交次数:2
      * 解决方式: 参考答案
-     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
-     * TODO
+     *
+     * 1,4,7,9,10
+     * 2
      *
      * @param nums
      * @param k
      * @return
      */
+
     public int minimumDifference(int[] nums, int k) {
+        if (k == 1 || nums.length <= 1) return 0;
+        Arrays.sort(nums);
+        int ret = Integer.MAX_VALUE;
+        for (int i = 0; i <= nums.length - k; i++) {
+            ret = Math.min(ret, nums[i + k - 1] - nums[i]);
+        }
+        return ret;
+    }
+
+    public int minimumDifference_unfinished2(int[] nums, int k) {
+        if (k == 1 || nums.length <= 1) return 0;
+        int ret = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            int end = (i + k) > nums.length ? nums.length : (i + k);
+            int temp = Integer.MIN_VALUE;
+            for (int j = i + 1; j < end; j++) {
+                temp = Math.max(Math.abs(nums[j] - nums[i]), temp);
+            }
+            ret = Math.min(temp, ret);
+        }
+        return ret;
+    }
+
+    public int minimumDifference_unfinished1(int[] nums, int k) {
+        int ret = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < k; j++) {
+                ret = Math.min(Math.abs(nums[j] - nums[i]), ret);
+            }
+        }
+        return ret;
+    }
+
+    public int minimumDifference_unfinished(int[] nums, int k) {
         if (k == 1 || nums.length <= 1) return 0;
         int ret = Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
