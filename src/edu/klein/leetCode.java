@@ -6272,4 +6272,6 @@ public class leetCode {
         return password.matches("[a-z]+") && password.matches("[A-Z]+") && password.matches("[0-9]+") && password.matches("[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\+]+") && !password.matches("(.)\\1{1}") && password.length() >= 8;
     }
 
+
+
 }
