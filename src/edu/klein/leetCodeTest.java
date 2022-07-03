@@ -453,9 +453,13 @@ class leetCodeTest {
     @Test
     void assertTest() {
         leetCode leetCode = new leetCode();
-        int[] list2 = {9, 4, 1, 7};
-        assert leetCode.minimumDifference(list2, 3) == 5 : "list2";
 
+//        assert leetCode.strongPasswordCheckerII("IloveLe3tcode!") : "IloveLe3tcode";
+//        assert !leetCode.strongPasswordCheckerII("IloveLe3tcode!!") : "IloveLe3tcode!!";
+        assert leetCode.strongPasswordCheckerII("I0agor2l$4R2tEmlZ6k5JnT-*or!I56RW84IgJSPU0xzh#NgSg2^f(LhP-Jkq4") : "I0agor2l$4R2tEmlZ6k5JnT-*or!I56RW84IgJSPU0xzh#NgSg2^f(LhP-Jkq4";
+
+//        int[] list2 = {9, 4, 1, 7};
+//        assert leetCode.minimumDifference(list2, 3) == 5 : "list2";
 //        assert leetCode.reformatNumber("123 4-567").equals("123-45-67") : "123 4-567";
 //        assert leetCode.reformatNumber("123 4-5678").equals("123-456-78") : "123 4-5678";
 //        assert leetCode.reformatNumber("123 4-5").equals("123-45") : "123 4-5678";

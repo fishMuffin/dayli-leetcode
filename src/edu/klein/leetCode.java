@@ -5727,7 +5727,7 @@ public class leetCode {
     }
 
     /**
-     * 给你一个字符串 num ，表示一个大整数。请你在字符串 num 的所有 非空子字符串 中找出 值最大的奇数 ，并以字符串形式返回。如果不存在奇数，则返回一个空字符串 "" 。
+     * 给你一个字符串 num ，表示一个大整数。请你在字符串 num 的所有 非空子字符串 中找出 值最大的奇数 ，并以字符串形式返回。如果不存在奇数，则返回一个空字符串 "" 。
      * <p>
      * 子字符串 是字符串中的一个连续的字符序列。
      * <p>
@@ -5813,9 +5813,9 @@ public class leetCode {
     /**
      * 给你一个日期，请你设计一个算法来判断它是对应一周中的哪一天。
      * <p>
-     * 输入为三个整数：day、month 和 year，分别表示日、月、年。
+     * 输入为三个整数：day、month 和 year，分别表示日、月、年。
      * <p>
-     * 您返回的结果必须是这几个值中的一个 {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}。
+     * 您返回的结果必须是这几个值中的一个 {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}。
      * <p>
      * 输入：day = 31, month = 8, year = 2019
      * 输出："Saturday"
@@ -5859,7 +5859,7 @@ public class leetCode {
     /**
      * 给你一个字符串 sentence 作为句子并指定检索词为 searchWord ，其中句子由若干用 单个空格 分隔的单词组成。请你检查检索词 searchWord 是否为句子 sentence 中任意单词的前缀。
      * <p>
-     * 如果 searchWord 是某一个单词的前缀，则返回句子 sentence 中该单词所对应的下标（下标从 1 开始）。如果 searchWord 是多个单词的前缀，则返回匹配的第一个单词的下标（最小下标）。如果 searchWord 不是任何单词的前缀，则返回 -1 。
+     * 如果 searchWord 是某一个单词的前缀，则返回句子 sentence 中该单词所对应的下标（下标从 1 开始）。如果 searchWord 是多个单词的前缀，则返回匹配的第一个单词的下标（最小下标）。如果 searchWord 不是任何单词的前缀，则返回 -1 。
      * <p>
      * 字符串 s 的 前缀 是 s 的任何前导连续子字符串。
      * <p>
@@ -5984,7 +5984,7 @@ public class leetCode {
      * 解决方式: 参考答案
      * 未来是否需要更优化的解题方法:否
      * 未来是否需要复盘:是
-     *
+     * <p>
      * 1,4,7,9,10
      * 2
      *
@@ -6041,7 +6041,7 @@ public class leetCode {
     /**
      * 有 n 个人前来排队买票，其中第 0 人站在队伍 最前方 ，第 (n - 1) 人站在队伍 最后方 。
      * 给你一个下标从 0 开始的整数数组 tickets ，数组长度为 n ，其中第 i 人想要购买的票数为 tickets[i] 。
-     * 每个人买票都需要用掉 恰好 1 秒 。一个人 一次只能买一张票 ，如果需要购买更多票，他必须走到  队尾 重新排队（瞬间 发生，不计时间）。如果一个人没有剩下需要买的票，那他将会 离开 队伍。
+     * 每个人买票都需要用掉 恰好 1 秒 。一个人 一次只能买一张票 ，如果需要购买更多票，他必须走到  队尾 重新排队（瞬间 发生，不计时间）。如果一个人没有剩下需要买的票，那他将会 离开 队伍。
      * 返回位于位置 k（下标从 0 开始）的人完成买票需要的时间（以秒为单位）。
      * <p>
      * 输入：tickets = [5,1,1,1], k = 0
@@ -6191,6 +6191,85 @@ public class leetCode {
             }
         }
         return new String(retChars);
+    }
+
+
+    /**
+     * 如果一个密码满足以下所有条件，我们称它是一个 强 密码：
+     * <p>
+     * 它有至少 8 个字符。
+     * 至少包含 一个小写英文 字母。
+     * 至少包含 一个大写英文 字母。
+     * 至少包含 一个数字 。
+     * 至少包含 一个特殊字符 。特殊字符为："!@#$%^&*()-+" 中的一个。
+     * 它 不 包含 2 个连续相同的字符（比方说 "aab" 不符合该条件，但是 "aba" 符合该条件）。
+     * 给你一个字符串 password ，如果它是一个 强 密码，返回 true，否则返回 false 。
+     * <p>
+     * <p>
+     * 输入：password = "Me+You--IsMyDream"
+     * 输出：false
+     * 解释：密码不包含数字，且包含 2 个连续相同的字符。所以我们返回 false 。
+     * <p>
+     * 提交次数:2
+     * 解决方式: 自我解决
+     * 未来是否需要更优化的解题方法:否
+     * 未来是否需要复盘:否
+     *
+     * @param password
+     * @return
+     */
+    public boolean strongPasswordCheckerII(String password) {
+        boolean flag1 = false, flag2 = false, flag3 = false, flag4 = false;
+        int[] count = new int[128];
+        for (int i = 0; i < password.length(); i++) {
+            count[password.charAt(i)]++;
+        }
+        for (int i = 'a'; i <= 'z'; i++) {
+            if (count[i] > 0) {
+                flag1 = true;
+                break;
+            }
+        }
+        for (int i = 'A'; i <= 'Z'; i++) {
+            if (count[i] > 0) {
+                flag2 = true;
+                break;
+            }
+        }
+        for (int i = '0'; i <= '9'; i++) {
+            if (count[i] > 0) {
+                flag3 = true;
+                break;
+            }
+        }
+        if (count['!'] > 0 || count['@'] > 0 || count['#'] > 0 || count['$'] > 0 || count['%'] > 0 || count['^'] > 0 || count['&'] > 0 || count['*'] > 0 || count['('] > 0 || count[')'] > 0 || count['-'] > 0 || count['+'] > 0)
+            flag4 = true;
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] > 1) {
+                if (isRepeat((char) i, password, count[i])) return false;
+            }
+        }
+        return flag1 && flag2 && flag3 && flag4 && password.length() >= 8;
+    }
+
+
+    private boolean isRepeat(char c, String password, int count) {
+        int start = -1;
+        for (int i = 0; i < count; i++) {
+            int i1 = password.indexOf(c + "", start + 1);
+            if (i1!=0&&i1 == start + 1) {
+                return true;
+            } else {
+                start = i1;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean strongPasswordCheckerII_unfinished(String password) {
+        Pattern.matches(password, "[a-z]+");
+        return password.matches("[a-z]+") && password.matches("[A-Z]+") && password.matches("[0-9]+") && password.matches("[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\+]+") && !password.matches("(.)\\1{1}") && password.length() >= 8;
     }
 
 }
