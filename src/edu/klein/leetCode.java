@@ -6300,4 +6300,22 @@ public class leetCode {
         }
         return ret;
     }
+
+    /**
+     * 1929. 数组串联
+     * @param nums
+     * @return
+     */
+    public int[] getConcatenation(int[] nums) {
+        int[] ret=new int[nums.length*2];
+        int j=0,i=0,k=0;
+        while (j<2&&k<nums.length*2){
+            if(i>=nums.length) {
+                i=0;
+                j++;
+            }
+            ret[k++]=nums[i++];
+        }
+        return ret;
+    }
 }
