@@ -6421,12 +6421,32 @@ public class leetCode {
 
     /**
      * 2160. 拆分数位后四位数字的最小和
+     *
      * @param num
      * @return
      */
     public int minimumSum(int num) {
         char[] chars = (num + "").toCharArray();
         Arrays.sort(chars);
-        return Integer.parseInt(chars[0]+""+chars[2])+Integer.parseInt(chars[1]+""+chars[3]);
+        return Integer.parseInt(chars[0] + "" + chars[2]) + Integer.parseInt(chars[1] + "" + chars[3]);
+    }
+
+    /**
+     * 771. 宝石与石头
+     *
+     * @param jewels
+     * @param stones
+     * @return
+     */
+    public int numJewelsInStones(String jewels, String stones) {
+        int ret=0;
+        int[] count = new int['z' - 'A' + 1];
+        for (int i = 0; i < jewels.length(); i++) {
+            count[jewels.charAt(i)-'A']++;
+        }
+        for (int i = 0; i < stones.length(); i++) {
+            if (count[stones.charAt(i)-'A']>0) ret++;
+        }
+        return ret;
     }
 }
