@@ -6355,12 +6355,7 @@ public class leetCode {
         return ret;
     }
 
-    /**
-     * 1486. 数组异或操作
-     * @param n
-     * @param start
-     * @return
-     */
+
     public int xorOperation(int n, int start) {
         int in = -1;
         for (int i = 0; i < n; i++) {
@@ -6370,5 +6365,68 @@ public class leetCode {
                 in ^= (start + 2 * i);
         }
         return in;
+    }
+
+    /**
+     * 一个数组的 异或总和 定义为数组中所有元素按位 XOR 的结果；如果数组为 空 ，则异或总和为 0 。
+     * <p>
+     * 例如，数组 [2,5,6] 的 异或总和 为 2 XOR 5 XOR 6 = 1 。
+     * 给你一个数组 nums ，请你求出 nums 中每个 子集 的 异或总和 ，计算并返回这些值相加之 和 。
+     * <p>
+     * 注意：在本题中，元素 相同 的不同子集应 多次 计数。
+     * <p>
+     * 数组 a 是数组 b 的一个 子集 的前提条件是：从 b 删除几个（也可能不删除）元素能够得到 a 。
+     * <p>
+     * 输入：nums = [5,1,6]
+     * 输出：28
+     * 解释：[5,1,6] 共有 8 个子集：
+     * - 空子集的异或总和是 0 。
+     * - [5] 的异或总和为 5 。
+     * - [1] 的异或总和为 1 。
+     * - [6] 的异或总和为 6 。
+     * - [5,1] 的异或总和为 5 XOR 1 = 4 。
+     * - [5,6] 的异或总和为 5 XOR 6 = 3 。
+     * - [1,6] 的异或总和为 1 XOR 6 = 7 。
+     * - [5,1,6] 的异或总和为 5 XOR 1 XOR 6 = 2 。
+     * 0 + 5 + 1 + 6 + 4 + 3 + 7 + 2 = 28
+     * <p>
+     * TODO
+     * <p>
+     * 提交次数:1
+     * 解决方式: 参考答案
+     * 未来是否需要更优化的解题方法:是
+     * 未来是否需要复盘:是
+     *
+     * @param nums
+     * @return
+     */
+    int xor = 0;
+    int res1 = 0;
+
+    public int subsetXORSum(int[] nums) {
+        dfs(nums, 0);
+        return res1;
+    }
+
+    void dfs(int[] nums, int count) {
+        if (count == nums.length) {
+            res1 += xor;
+            return;
+        }
+
+        dfs(nums, count + 1);
+        xor ^= nums[count];
+        dfs(nums, count + 1);
+    }
+
+    /**
+     * 2160. 拆分数位后四位数字的最小和
+     * @param num
+     * @return
+     */
+    public int minimumSum(int num) {
+        char[] chars = (num + "").toCharArray();
+        Arrays.sort(chars);
+        return Integer.parseInt(chars[0]+""+chars[2])+Integer.parseInt(chars[1]+""+chars[3]);
     }
 }
