@@ -6339,4 +6339,18 @@ public class leetCode {
         }
         return count+1;
     }
+
+    /**
+     * 2011. 执行操作后的变量值
+     * @param operations
+     * @return
+     */
+    public int finalValueAfterOperations(String[] operations) {
+        int ret=0;
+        for (int i = 0; i < operations.length; i++) {
+            if(operations[i].contains("+")) ret++;
+            else ret--;
+        }
+        return ret;
+    }
 }
