@@ -6337,21 +6337,38 @@ public class leetCode {
             }
             count = Math.max(count, temp);
         }
-        return count+1;
+        return count + 1;
     }
 
     /**
      * 2011. 执行操作后的变量值
+     *
      * @param operations
      * @return
      */
     public int finalValueAfterOperations(String[] operations) {
-        int ret=0;
+        int ret = 0;
         for (int i = 0; i < operations.length; i++) {
-            if(operations[i].contains("+")) ret++;
+            if (operations[i].contains("+")) ret++;
             else ret--;
         }
         return ret;
     }
 
+    /**
+     * 1486. 数组异或操作
+     * @param n
+     * @param start
+     * @return
+     */
+    public int xorOperation(int n, int start) {
+        int in = -1;
+        for (int i = 0; i < n; i++) {
+            if (in == -1)
+                in = start + 2 * i;
+            else
+                in ^= (start + 2 * i);
+        }
+        return in;
+    }
 }
