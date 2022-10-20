@@ -1,7 +1,7 @@
 package edu.klein;
 
 import edu.klein.common.ListNode;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,13 +21,14 @@ class leetCodeTest {
 //		int target = 6;
         int[] nums = new int[]{3, 3};
         int target = 6;
-        int[] res = new edu.klein.leetCode().twoSum(nums, target);
+
+        int[] res = new leetCode().twoSum(nums, target);
         output(res);
     }
 
     @Test
     public void testDivisorGame() {
-        boolean b = new edu.klein.leetCode().divisorGame(3);
+        boolean b = new leetCode().divisorGame(3);
         System.out.println(b);
     }
 
