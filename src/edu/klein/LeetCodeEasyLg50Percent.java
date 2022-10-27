@@ -68,20 +68,43 @@ public class LeetCodeEasyLg50Percent {
      * 返回可以通过分割得到的平衡字符串的 最大数量 。
      * <p>
      * 输入：s = "RLLLLRRRLR" 输出：3 解释：s 可以分割为 "RL"、"LLLRRR"、"LR" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
-     *
-     *
+     * <p>
+     * <p>
      * 提交次数:1 解决方式: 参考答案 未来是否需要更优化的解题方法:否 未来是否需要复盘:是
+     *
      * @param s
      * @return
      */
     public int balancedStringSplit(String s) {
-        int res=0,d=0;
+        int res = 0, d = 0;
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if(ch=='L') d++;
-            else d--;
-            if(d==0) res++;
+            if (ch == 'L') {
+                d++;
+            } else {
+                d--;
+            }
+            if (d == 0) {
+                res++;
+            }
         }
         return res;
+    }
+
+    /**
+     * LCP 01. 猜数字
+     *
+     * @param guess
+     * @param answer
+     * @return
+     */
+    public int game(int[] guess, int[] answer) {
+        int ans = 0;
+        for (int i = 0; i < guess.length; i++) {
+            if (guess[i] == answer[i]) {
+                ans++;
+            }
+        }
+        return ans;
     }
 }
