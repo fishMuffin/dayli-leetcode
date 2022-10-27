@@ -1,5 +1,7 @@
 package edu.klein;
 
+import java.util.Stack;
+
 public class LeetCodeEasyLg50Percent {
 
     /**
@@ -50,6 +52,35 @@ public class LeetCodeEasyLg50Percent {
         int res = 0;
         for (int i = 1; i < num; i++) {
             res += i;
+        }
+        return res;
+    }
+
+    /**
+     * 1221. 分割平衡字符串
+     * <p>
+     * 在一个 平衡字符串 中，'L' 和 'R' 字符的数量是相同的。
+     * <p>
+     * 给你一个平衡字符串 s，请你将它分割成尽可能多的平衡字符串。
+     * <p>
+     * 注意：分割得到的每个字符串都必须是平衡字符串，且分割得到的平衡字符串是原平衡字符串的连续子串。
+     * <p>
+     * 返回可以通过分割得到的平衡字符串的 最大数量 。
+     * <p>
+     * 输入：s = "RLLLLRRRLR" 输出：3 解释：s 可以分割为 "RL"、"LLLRRR"、"LR" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
+     *
+     *
+     * 提交次数:1 解决方式: 参考答案 未来是否需要更优化的解题方法:否 未来是否需要复盘:是
+     * @param s
+     * @return
+     */
+    public int balancedStringSplit(String s) {
+        int res=0,d=0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if(ch=='L') d++;
+            else d--;
+            if(d==0) res++;
         }
         return res;
     }
