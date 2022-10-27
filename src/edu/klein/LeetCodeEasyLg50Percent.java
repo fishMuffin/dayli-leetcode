@@ -1,5 +1,8 @@
 package edu.klein;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class LeetCodeEasyLg50Percent {
@@ -103,6 +106,26 @@ public class LeetCodeEasyLg50Percent {
         for (int i = 0; i < guess.length; i++) {
             if (guess[i] == answer[i]) {
                 ans++;
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 1431. 拥有最多糖果的孩子
+     *
+     * @param candies
+     * @param extraCandies
+     * @return
+     */
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        List<Boolean> ans = new ArrayList<>();
+        int maxCandies = Arrays.stream(candies).max().getAsInt();
+        for (int i = 0; i < candies.length; i++) {
+            if (candies[i] + extraCandies >= maxCandies) {
+                ans.add(true);
+            } else {
+                ans.add(false);
             }
         }
         return ans;
