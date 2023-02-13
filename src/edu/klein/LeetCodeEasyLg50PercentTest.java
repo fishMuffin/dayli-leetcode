@@ -36,5 +36,19 @@ public class LeetCodeEasyLg50PercentTest {
         System.out.println(rllllrrrlr);
     }
 
+    @Test
+    public void testMaxProfit() {
+        int[] list1 = {7, 1, 5, 3, 6, 4, 2, 10};
+        int[] list2 = {7, 6, 4, 3, 1};
+        int[] list3 = {2, 4, 1};
+//        assert lg50Percent.maxProfit(list1) == 5 : "list1";
+        int i1 = lg50Percent.maxProfit_self2(list1);
+        System.out.println(i1);
+//        int i2 = lg50Percent.maxProfit(list2);
+//        System.out.println(i2);
+//        int i3 = lg50Percent.maxProfit(list3);
+//        System.out.println(i3);
+    }
+
 
 }
