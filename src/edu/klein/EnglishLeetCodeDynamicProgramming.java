@@ -7,6 +7,9 @@ import java.util.Stack;
 
 public class EnglishLeetCodeDynamicProgramming {
 
+
+
+
     /**
      * 1043. Partition Array for Maximum Sum
      * <p>
@@ -28,6 +31,7 @@ public class EnglishLeetCodeDynamicProgramming {
      * @return
      */
 
+
     public int maxSumAfterPartitioningMyFirstFailure(int[] arr, int k) {
         int tempSum = 0;
         int index = 0;
@@ -35,13 +39,13 @@ public class EnglishLeetCodeDynamicProgramming {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > max) {
                 max = arr[i];
-                if(i+1<=k){
-                    tempSum+=(i+1)*max;
+                if (i + 1 <= k) {
+                    tempSum += (i + 1) * max;
                 }
 
 //                tempSum += (k - (i + 1)) * max;
             } else {
-                if (i-index + 1 <= k) {
+                if (i - index + 1 <= k) {
                     tempSum += max;
                 } else {
                     tempSum += arr[i];
@@ -62,24 +66,46 @@ public class EnglishLeetCodeDynamicProgramming {
 //        }
         return 0;
     }
+
+    public int maxSumAfterPartitioningSecondTrySuccess(int[] arr, int k) {
+        int[] ret = new int[arr.length];
+        int max = arr[0];
+        for (int i = 0; i < k; i++) {
+            max = Math.max(arr[i], max);
+            ret[i] = max * (i+1);
+        }
+        for (int i = k; i < arr.length; i++) {
+            max = arr[i];
+            for (int j = 1; j <= k; j++) {
+                max = Math.max(max, arr[i - j + 1]);
+                ret[i] = Math.max(ret[i], ret[i - j] + j * max);
+            }
+        }
+        return ret[ret.length - 1];
+    }
+
     public int maxSumAfterPartitioning(int[] A, int K) {
         int len = A.length;
         int[] dp = new int[len];
 
         int max = A[0];
-        for(int i = 0; i < K; i++){
+        for (int i = 0; i < K; i++) {
             max = Math.max(max, A[i]);
-            dp[i] = max * (i+1);
+            dp[i] = max * (i + 1);
         }
 
-        for(int i = K;i < len; i++){
+        for (int i = K; i < len; i++) {
             max = A[i];
-            for(int j = 1; j <= K; j++){
+            for (int j = 1; j <= K; j++) {
                 max = Math.max(max, A[i - j + 1]);
                 dp[i] = Math.max(dp[i], dp[i - j] + max * j);
             }
         }
-
+        System.out.println("other:");
+        for (int i : dp) {
+            System.out.print(i+",");
+        }
+        System.out.println();
         return dp[len - 1];
     }
 
