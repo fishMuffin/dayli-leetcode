@@ -19,8 +19,12 @@ public class EnglishLeetCodeDynamicProgrammingTest {
     public void testMaxSumAfterPartitioning() {
         int i = instance.maxSumAfterPartitioning(new int[]{1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3}, 4);
         System.out.println(i);
-        int i2 = instance.maxSumAfterPartitioningSecondTrySuccess(new int[]{1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3}, 4);
+        int i2 = instance.maxSumAfterPartitioningSecondTrySuccess(
+            new int[]{1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3}, 4);
         System.out.println(i2);
+        int i3 = instance.maxSumAfterPartitioningThirdTry(
+            new int[]{1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3}, 4);
+        System.out.println(i3);
     }
 
     @Test

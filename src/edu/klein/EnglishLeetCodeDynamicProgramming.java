@@ -7,8 +7,27 @@ import java.util.Stack;
 
 public class EnglishLeetCodeDynamicProgramming {
 
-
-
+    public int maxSumAfterPartitioningThirdTry(int[] arr, int k) {
+        int[] ret = new int[arr.length];
+        int max = arr[0];
+        for (int i = 0; i < k; i++) {
+            max = Math.max(arr[i], max);
+            ret[i] = max * (i + 1);
+        }
+        for (int i = k; i < arr.length; i++) {
+            max = arr[i];
+            for (int j = 0; j < k; j++) {
+                max = Math.max(max, arr[i - j]);
+                ret[i] = Math.max(ret[i], ret[i - (j+1)] + max * (j + 1));
+            }
+        }
+        System.out.println("Third:");
+        for (int i : ret) {
+            System.out.print(i + ",");
+        }
+        System.out.println();
+        return ret[ret.length - 1];
+    }
 
     /**
      * 1043. Partition Array for Maximum Sum
@@ -72,7 +91,7 @@ public class EnglishLeetCodeDynamicProgramming {
         int max = arr[0];
         for (int i = 0; i < k; i++) {
             max = Math.max(arr[i], max);
-            ret[i] = max * (i+1);
+            ret[i] = max * (i + 1);
         }
         for (int i = k; i < arr.length; i++) {
             max = arr[i];
@@ -103,7 +122,7 @@ public class EnglishLeetCodeDynamicProgramming {
         }
         System.out.println("other:");
         for (int i : dp) {
-            System.out.print(i+",");
+            System.out.print(i + ",");
         }
         System.out.println();
         return dp[len - 1];
