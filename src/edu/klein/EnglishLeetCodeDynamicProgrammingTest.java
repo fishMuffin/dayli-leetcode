@@ -16,6 +16,15 @@ public class EnglishLeetCodeDynamicProgrammingTest {
     }
 
     @Test
+    public void testMaxScoreWords() {
+        int i = instance.maxScoreWordsFirstTry80Percent(new String[]{"dog", "cat", "dad", "good"},
+            new char[]{'a', 'a', 'c', 'd', 'd', 'd', 'g', 'o', 'o'},
+            new int[]{1, 0, 9, 5, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0});
+        System.out.println(i);
+    }
+
+    @Test
     public void testMaxSumAfterPartitioning() {
         int i = instance.maxSumAfterPartitioning(new int[]{1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3}, 4);
         System.out.println(i);

@@ -2,31 +2,63 @@ package edu.klein;
 
 import java.util.AbstractCollection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
 public class EnglishLeetCodeDynamicProgramming {
 
-    public int maxSumAfterPartitioningThirdTry(int[] arr, int k) {
-        int[] ret = new int[arr.length];
-        int max = arr[0];
-        for (int i = 0; i < k; i++) {
-            max = Math.max(arr[i], max);
-            ret[i] = max * (i + 1);
+    /**
+     * 1255. Maximum Score Words Formed by Letters Given a list of words, list of  single letters
+     * (might be repeating) and score of every character.
+     * <p>
+     * Return the maximum score of any valid set of words formed by using the given letters
+     * (words[i] cannot be used two or more times).
+     * <p>
+     * It is not necessary to use all characters in letters and each letter can only be used once.
+     * Score of letters 'a', 'b', 'c', ... ,'z' is given by score[0], score[1], ... , score[25]
+     * respectively.
+     * <p>
+     * Input: words = ["dog","cat","dad","good"], letters = ["a","a","c","d","d","d","g","o","o"],
+     * score = [1,0,9,5,0,0,3,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0] Output: 23 Explanation: Score
+     * a=1, c=9, d=5, g=3, o=2 Given letters, we can form the words "dad" (5+1+5) and "good"
+     * (3+2+2+5) with a score of 23. Words "dad" and "dog" only get a score of 21.
+     *
+     * @param words
+     * @param letters
+     * @param score
+     * @return
+     */
+    public int maxScoreWordsFirstTry80Percent(String[] words, char[] letters, int[] score) {
+        int[] count = new int[26];
+        for (int i = 0; i < letters.length; i++) {
+            count[letters[i] - 'a']++;
         }
-        for (int i = k; i < arr.length; i++) {
-            max = arr[i];
-            for (int j = 0; j < k; j++) {
-                max = Math.max(max, arr[i - j]);
-                ret[i] = Math.max(ret[i], ret[i - (j+1)] + max * (j + 1));
+        int[] scoreCount = new int[words.length];
+        for (int i = 0; i < words.length; i++) {
+            int[] tempCount = count.clone();
+            for (int k = i; k < words.length; k++) {
+                String word = words[k];
+                Boolean isAddable = true;
+                int wordScore = 0;
+                for (int j = 0; j < word.length(); j++) {
+                    char c = word.charAt(j);
+                    int letterIndex = c - 'a';
+                    if (tempCount[letterIndex] != 0) {
+                        tempCount[letterIndex]--;
+                        wordScore += score[letterIndex];
+                    } else {
+                        isAddable = false;
+                        break;
+                    }
+                }
+                if (isAddable) {
+                    scoreCount[i] += wordScore;
+                }
             }
         }
-        System.out.println("Third:");
-        for (int i : ret) {
-            System.out.print(i + ",");
-        }
-        System.out.println();
-        return ret[ret.length - 1];
+        int ret = Arrays.stream(scoreCount).max().getAsInt();
+        return ret;
     }
 
     /**
@@ -84,6 +116,28 @@ public class EnglishLeetCodeDynamicProgramming {
 //            index++;
 //        }
         return 0;
+    }
+
+    public int maxSumAfterPartitioningThirdTry(int[] arr, int k) {
+        int[] ret = new int[arr.length];
+        int max = arr[0];
+        for (int i = 0; i < k; i++) {
+            max = Math.max(arr[i], max);
+            ret[i] = max * (i + 1);
+        }
+        for (int i = k; i < arr.length; i++) {
+            max = arr[i];
+            for (int j = 0; j < k; j++) {
+                max = Math.max(max, arr[i - j]);
+                ret[i] = Math.max(ret[i], ret[i - (j + 1)] + max * (j + 1));
+            }
+        }
+        System.out.println("Third:");
+        for (int i : ret) {
+            System.out.print(i + ",");
+        }
+        System.out.println();
+        return ret[ret.length - 1];
     }
 
     public int maxSumAfterPartitioningSecondTrySuccess(int[] arr, int k) {
